@@ -71,11 +71,11 @@ export default {
     },
 
     inlineEdit () {
-      return this.$store.state.detailPanel.inlineCompId === this._uid   // FIXME: _uid is Vue internal
+      return this.$store.state.inlineCompId === this._uid   // FIXME: _uid is Vue internal
     },
 
     writable () {
-      return this.$store.state.detailPanel.writable
+      return this.$store.state.writable
     },
 
     assocDefs () {

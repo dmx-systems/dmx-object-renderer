@@ -9,14 +9,6 @@ import dm5 from 'dm5'
 
 export default {
 
-  // Note: we can't do the store registrations in index.js as we have no access to the store object there,
-  // and we can't import the store object either as it is not part of a Node.js module. So we use the
-  // component's created() hook to do the registrations.
-  created () {
-    console.log('dm5-object-renderer created')
-    this.$store.registerModule('objectRenderer', require('../object-renderer').default)
-  },
-
   mixins: [
     require('./mixins/mode').default,
     require('./mixins/info-mode').default,
@@ -26,15 +18,11 @@ export default {
   computed: {
 
     object () {
-      return this.$store.state.objectRenderer.object
-    },
-
-    writable () {
-      return this.$store.state.objectRenderer.writable
+      return this.$store.state.object
     },
 
     objectRenderers () {
-      return this.$store.state.objectRenderer.objectRenderers
+      return this.$store.state.objectRenderers
     },
 
     objectRenderer () {

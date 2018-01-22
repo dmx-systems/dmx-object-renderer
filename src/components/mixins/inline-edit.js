@@ -1,7 +1,7 @@
 export default {
   computed: {
     inlineEdit () {
-      return this.$store.state.detailPanel.inlineCompId
+      return this.$store.state.inlineCompId
     }
   }
 }
