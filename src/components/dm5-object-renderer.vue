@@ -1,7 +1,5 @@
 <template>
-  <div class="dm5-object-renderer" v-if="object">
-    <component :is="objectRenderer" :object="object" :level="0"></component>
-  </div>
+  <component class="dm5-object-renderer" :is="objectRenderer" v-if="object" :object="object" :level="0"></component>
 </template>
 
 <script>
@@ -9,13 +7,17 @@ import dm5 from 'dm5'
 
 export default {
 
-  mixins: [
-    require('./mixins/mode').default,
-    require('./mixins/info-mode').default,
-    require('./mixins/inline-edit').default
-  ],
+  created () {
+    // console.log('created', this.object.id)
+  },
+
+  mounted () {
+    // console.log('mounted', this.object.id)
+  },
 
   computed: {
+
+    // TODO: reusability => pass data as props instead of accessing store
 
     object () {
       return this.$store.state.object
@@ -26,7 +28,6 @@ export default {
     },
 
     objectRenderer () {
-      console.log('objectRenderer', this.object, this.objectRenderers[this.object.typeUri])
       return this.objectRenderers[this.object.typeUri] || 'dm5-object'
     }
   },
@@ -39,10 +40,6 @@ export default {
 
 <style>
 .dm5-object-renderer .field {
-  margin-top: 1.2em;
-}
-
-.dm5-object-renderer .button {
   margin-top: 1.2em;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="infoMode" class="dm5-html-field" v-html="object.value" ref="html"></div>
+  <div class="dm5-html-field" v-if="infoMode" v-html="object.value" ref="html"></div>
   <div v-else>
     <!-- Without this wrapper <div> the Quill toolbar remains visible when switching to info mode.   -->
     <!-- This is because the Quill toolbar becomes a *sibling* (not a child) of the <quill> element. -->
