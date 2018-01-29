@@ -34,6 +34,14 @@ import dm5 from 'dm5'
 
 export default {
 
+  created () {
+    // console.log('dm5-object created', this.object.id)
+  },
+
+  mounted () {
+    // console.log('dm5-object mounted', this.object.id)
+  },
+
   mixins: [
     require('./mixins/object').default,
     require('./mixins/level').default,

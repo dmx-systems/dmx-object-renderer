@@ -8,20 +8,22 @@ import dm5 from 'dm5'
 export default {
 
   created () {
-    // console.log('created', this.object.id)
+    // console.log('dm5-object-renderer created', this.object)
   },
 
   mounted () {
-    // console.log('mounted', this.object.id)
+    // console.log('dm5-object-renderer mounted', this.object)
+  },
+
+  props: {
+    // The selected Topic/Assoc/TopicType/AssocType.
+    // Undefined if nothing is selected.
+    object: dm5.DeepaMehtaObject
   },
 
   computed: {
 
     // TODO: reusability => pass data as props instead of accessing store
-
-    object () {
-      return this.$store.state.object
-    },
 
     objectRenderers () {
       return this.$store.state.objectRenderers
