@@ -5,26 +5,16 @@
 <script>
 export default {
 
-  created () {
-    // console.log('dm5-object-renderer created', this.object)
-  },
-
-  mounted () {
-    // console.log('dm5-object-renderer mounted', this.object)
-  },
-
   inject: ['context'],
 
   computed: {
-
-    // TODO: reusability => use injected context instead of accessing store
 
     object () {
       return this.context.object
     },
 
     objectRenderers () {
-      return this.$store.state.objectRenderers
+      return this.context.objectRenderers
     },
 
     objectRenderer () {
