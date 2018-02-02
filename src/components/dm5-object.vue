@@ -42,6 +42,8 @@ export default {
     // console.log('dm5-object mounted', this.object.id)
   },
 
+  inject: ['context'],
+
   mixins: [
     require('./mixins/object').default,
     require('./mixins/level').default,
@@ -79,11 +81,11 @@ export default {
     },
 
     inlineEdit () {
-      return this.$store.state.inlineCompId === this._uid   // FIXME: _uid is Vue internal
+      return this.context.inlineCompId === this._uid   // FIXME: _uid is Vue internal
     },
 
     writable () {
-      return this.$store.state.writable
+      return this.context.writable
     },
 
     assocDefs () {

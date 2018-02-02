@@ -1,6 +1,6 @@
 <template>
-  <div v-if="infoMode">{{object[prop]}}</div>
-  <el-checkbox v-else v-model="object[prop]"></el-checkbox>
+  <div v-if="infoMode">{{object.value}}</div>
+  <el-checkbox v-else v-model="object.value"></el-checkbox>
 </template>
 
 <script>
@@ -10,7 +10,6 @@ export default {
   // That's why simple components mix in "mode-prop" (not "mode").
   mixins: [
     require('./mixins/object').default,
-    require('./mixins/prop').default,
     require('./mixins/mode-prop').default,
     require('./mixins/info-mode').default
   ]

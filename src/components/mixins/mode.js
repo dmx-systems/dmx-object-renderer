@@ -1,7 +1,10 @@
 export default {
+
+  inject: ['context'],
+
   computed: {
     mode () {
-      return this.$store.state.mode
+      return this.context.mode
     }
   }
 }
