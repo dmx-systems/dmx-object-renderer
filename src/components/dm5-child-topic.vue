@@ -1,7 +1,8 @@
 <template>
   <div v-if="!deleted" :class="['dm5-child-topic', mode, levelClass]">
-    <dm5-object v-if="showRelatingAssoc" :object="object.assoc" :level="level" :assoc-def="assocDef"></dm5-object>
-    <dm5-object :object="object" :level="level" :assoc-def="assocDef"></dm5-object>
+    <dm5-object v-if="showRelatingAssoc" :object="object.assoc" :mode="mode" :level="level" :assoc-def="assocDef">
+    </dm5-object>
+    <dm5-object :object="object" :mode="mode" :level="level" :assoc-def="assocDef"></dm5-object>
     <!-- Reveal Button -->
     <el-button class="hover-button" v-if="showRevealButton" type="text" @click="reveal">Reveal</el-button>
     <!-- Remove Button -->
@@ -23,7 +24,7 @@ export default {
     require('./mixins/object').default,       // child topic to render
     require('./mixins/level').default,
     require('./mixins/assoc-def').default,    // assoc def leading to child topic
-    require('./mixins/mode').default,
+    require('./mixins/mode-prop').default,
     require('./mixins/info-mode').default
   ],
 

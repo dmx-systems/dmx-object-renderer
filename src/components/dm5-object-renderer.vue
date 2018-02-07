@@ -1,11 +1,16 @@
 <template>
-  <component class="dm5-object-renderer" :is="objectRenderer" v-if="object" :object="object" :level="0"></component>
+  <component class="dm5-object-renderer" :is="objectRenderer" v-if="object" :object="object" :mode="mode" :level="0">
+  </component>
 </template>
 
 <script>
 export default {
 
   inject: ['context'],
+
+  mixins: [
+    require('./mixins/mode-prop').default
+  ],
 
   computed: {
 

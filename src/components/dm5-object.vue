@@ -12,14 +12,14 @@
     <template v-else v-for="assocDef in assocDefs">
       <!-- one -->
       <template v-if="isOne(assocDef)">
-        <dm5-child-topic v-if="childs(assocDef)" :object="childs(assocDef)" :level="level+1" :assoc-def="assocDef"
-          :key="assocDef.assocDefUri">
+        <dm5-child-topic v-if="childs(assocDef)" :object="childs(assocDef)" :mode="mode" :level="level+1"
+          :assoc-def="assocDef" :key="assocDef.assocDefUri">
         </dm5-child-topic>
       </template>
       <!-- many -->
       <template v-else>
-        <dm5-child-topic v-for="(child, i) in childs(assocDef)" class="multi" :object="child" :level="level+1"
-          :assoc-def="assocDef" :key="assocDef.assocDefUri + '-' + i">
+        <dm5-child-topic v-for="(child, i) in childs(assocDef)" class="multi" :object="child" :mode="mode"
+          :level="level+1" :assoc-def="assocDef" :key="assocDef.assocDefUri + '-' + i">
         </dm5-child-topic>
         <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(assocDef)"
           @click="addChild(assocDef)">
@@ -47,7 +47,7 @@ export default {
   mixins: [
     require('./mixins/object').default,
     require('./mixins/level').default,
-    require('./mixins/mode').default,
+    require('./mixins/mode-prop').default,
     require('./mixins/info-mode').default
   ],
 
