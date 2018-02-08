@@ -6,17 +6,22 @@
 <script>
 export default {
 
+  created () {
+    // console.log('dm5-object-renderer created')
+  },
+
+  destroyed () {
+    // console.log('dm5-object-renderer destroyed')
+  },
+
   inject: ['context'],
 
   mixins: [
+    require('./mixins/object').default,
     require('./mixins/mode-prop').default
   ],
 
   computed: {
-
-    object () {
-      return this.context.object
-    },
 
     objectRenderers () {
       return this.context.objectRenderers
