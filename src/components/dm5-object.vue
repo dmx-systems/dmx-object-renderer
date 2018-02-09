@@ -42,7 +42,7 @@ export default {
     // console.log('dm5-object mounted', this.object.id)
   },
 
-  // TODO ### inject: ['context'],
+  inject: ['context'],
 
   mixins: [
     require('./mixins/object').default,
@@ -81,7 +81,7 @@ export default {
     },
 
     inlineEdit () {
-      return false  // TODO ### this.context.inlineCompId === this._uid   // FIXME: _uid is Vue internal
+      return this.context.inlineId === this._uid  // FIXME: _uid is Vue internal
     },
 
     writable () {
@@ -102,8 +102,8 @@ export default {
       if (this.infoMode && this.writable) {
         // inline editing is only supported for simple objects
         if (this.isSimple) {
-          console.log('inline edit', this.object.typeUri, this.object.value)
-          this.$store.dispatch('editInline', this._uid)     // FIXME: _uid is Vue internal
+          console.log('editInline', this.object.typeUri, this.object.value)
+          this.context.inlineId = this._uid     // FIXME: _uid is Vue internal
         } else {
           console.log('non-simple', this.object.typeUri, this.object.value)
         }
@@ -112,6 +112,7 @@ export default {
 
     submitInline () {
       this.$store.dispatch('submitInline')
+      this.context.inlineId = undefined
     },
 
     // add value

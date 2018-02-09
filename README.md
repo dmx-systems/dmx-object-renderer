@@ -4,7 +4,7 @@
 
 **0.1** -- Feb 3, 2018
 
-* Factored out as a standalone component from `dm5-detail-panel`:  
+* Factored out as a standalone component from:  
   https://github.com/jri/dm5-detail-panel
 
 ------------

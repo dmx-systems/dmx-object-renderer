@@ -1,5 +1,5 @@
 <template>
-  <component class="dm5-object-renderer" :is="objectRenderer" v-if="object" :object="object" :mode="mode" :level="0">
+  <component class="dm5-object-renderer" :is="objectRenderer" :object="object" :mode="mode" :level="0">
   </component>
 </template>
 
@@ -7,7 +7,7 @@
 export default {
 
   created () {
-    // console.log('dm5-object-renderer created')
+    // console.log('dm5-object-renderer created', this.object.id)
   },
 
   destroyed () {
@@ -31,6 +31,12 @@ export default {
   computed: {
     objectRenderer () {
       return this.renderers[this.object.typeUri] || 'dm5-object'
+    }
+  },
+
+  provide: {
+    context: {
+      inlineId: undefined
     }
   },
 
