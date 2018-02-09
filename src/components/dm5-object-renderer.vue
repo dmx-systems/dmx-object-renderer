@@ -1,5 +1,7 @@
 <template>
-  <component class="dm5-object-renderer" :is="objectRenderer" :object="object" :mode="mode" :level="0">
+  <!-- TODO: move CSS class to root element -->
+  <dm5-assoc v-if="isAssoc" :assoc="object" :mode="mode"></dm5-assoc>
+  <component v-else class="dm5-object-renderer" :is="objectRenderer" :object="object" :mode="mode" :level="0">
   </component>
 </template>
 
@@ -29,6 +31,11 @@ export default {
   },
 
   computed: {
+
+    isAssoc () {
+      return this.object.isAssoc()
+    },
+
     objectRenderer () {
       return this.renderers[this.object.typeUri] || 'dm5-object'
     }
@@ -41,7 +48,8 @@ export default {
   },
 
   components: {
-    'dm5-object': require('./dm5-object')
+    'dm5-object': require('./dm5-object'),
+    'dm5-assoc':  require('./dm5-assoc')
   }
 }
 </script>
