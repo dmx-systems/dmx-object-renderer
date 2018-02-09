@@ -14,21 +14,23 @@ export default {
     // console.log('dm5-object-renderer destroyed')
   },
 
-  inject: ['context'],
-
   mixins: [
     require('./mixins/object').default,
     require('./mixins/mode-prop').default
   ],
 
+  props: {
+    renderers: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
+  },
+
   computed: {
-
-    objectRenderers () {
-      return this.context.objectRenderers
-    },
-
     objectRenderer () {
-      return this.objectRenderers[this.object.typeUri] || 'dm5-object'
+      return this.renderers[this.object.typeUri] || 'dm5-object'
     }
   },
 
