@@ -13,10 +13,32 @@ export default {
   created () {
     // console.log('dm5-object-renderer created', this.object.id)
     self = this
+    this.initWritable()
   },
 
   destroyed () {
     // console.log('dm5-object-renderer destroyed')
+  },
+
+  provide: {
+
+    context: {
+
+      /**
+       * true if *this* object is writable
+       */
+      writable: false,
+
+      /**
+       * trueish if inline edit is active in this object or in *any* child topic (recursively)
+       */
+      inlineId: undefined,
+      setInlineId (id) {
+        // console.log('setInlineId', this, self)
+        this.inlineId = id
+        self.$emit('inline', id)
+      }
+    }
   },
 
   mixins: [
@@ -44,14 +66,12 @@ export default {
     }
   },
 
-  provide: {
-    context: {
-      inlineId: undefined,
-      setInlineId (id) {
-        // console.log('setInlineId', this, self)
-        this.inlineId = id
-        self.$emit('inline', id)
-      }
+  methods: {
+    initWritable () {
+      this.object.isWritable().then(writable => {
+        console.log('initWritable', this.object.id, writable)
+        this.$options.provide.context.writable = writable
+      })
     }
   },
 

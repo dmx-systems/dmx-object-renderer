@@ -38,11 +38,11 @@ export default {
     // console.log('dm5-object created', this.object.id)
   },
 
-  mounted () {
-    // console.log('dm5-object mounted', this.object.id)
+  destroyed () {
+    // console.log('dm5-object destroyed', this.object.id)
   },
 
-  inject: ['context'],
+  inject: ['context'],        // provided by dm5-object-renderer
 
   mixins: [
     require('./mixins/object').default,
@@ -86,7 +86,7 @@ export default {
     },
 
     writable () {
-      return true   // TODO ### this.context.writable
+      return this.context.writable
     },
 
     assocDefs () {
