@@ -44,7 +44,7 @@ export default {
 
   components: {
     'dm5-assoc-role': require('./dm5-assoc-role'),
-    'dm5-object': require('dm5-object-renderer/src/components/dm5-object')
+    'dm5-object':     require('./dm5-object')
   }
 }
 </script>

@@ -6,10 +6,13 @@
 </template>
 
 <script>
+let self
+
 export default {
 
   created () {
     // console.log('dm5-object-renderer created', this.object.id)
+    self = this
   },
 
   destroyed () {
@@ -43,7 +46,12 @@ export default {
 
   provide: {
     context: {
-      inlineId: undefined
+      inlineId: undefined,
+      setInlineId (id) {
+        // console.log('setInlineId', this, self)
+        this.inlineId = id
+        self.$emit('inline', id)
+      }
     }
   },
 

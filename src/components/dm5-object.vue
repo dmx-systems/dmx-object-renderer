@@ -81,6 +81,7 @@ export default {
     },
 
     inlineEdit () {
+      // console.log('inlineEdit', this.context.inlineId, this._uid)
       return this.context.inlineId === this._uid  // FIXME: _uid is Vue internal
     },
 
@@ -103,7 +104,7 @@ export default {
         // inline editing is only supported for simple objects
         if (this.isSimple) {
           console.log('editInline', this.object.typeUri, this.object.value)
-          this.context.inlineId = this._uid     // FIXME: _uid is Vue internal
+          this.context.setInlineId(this._uid)   // FIXME: _uid is Vue internal
         } else {
           console.log('non-simple', this.object.typeUri, this.object.value)
         }
@@ -112,7 +113,7 @@ export default {
 
     submitInline () {
       this.$store.dispatch('submitInline')
-      this.context.inlineId = undefined
+      this.context.setInlineId(undefined)
     },
 
     // add value
