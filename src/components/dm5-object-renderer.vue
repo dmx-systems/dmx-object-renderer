@@ -11,15 +11,18 @@ let self
 export default {
 
   created () {
-    // console.log('dm5-object-renderer created', this.object.id)
-    self = this
+    console.log('dm5-object-renderer created', this.object.id, this.writable)
     this.initWritable()
+    self = this
   },
 
   destroyed () {
     // console.log('dm5-object-renderer destroyed')
   },
 
+  // Note: at the time the provided object is evaluated the component instance does not yet exist. So we can't refer
+  // to something like "data" or "props". We can't refer to "self" either as the created() hook is not yet executed.
+  // So we can only have literal values here and update them later on.
   provide: {
 
     context: {
@@ -33,6 +36,7 @@ export default {
        * trueish if inline edit is active in this object or in *any* child topic (recursively)
        */
       inlineId: undefined,
+
       setInlineId (id) {
         // console.log('setInlineId', this, self)
         this.inlineId = id
@@ -43,6 +47,7 @@ export default {
 
   mixins: [
     require('./mixins/object').default,
+    require('./mixins/writable').default,
     require('./mixins/mode-prop').default
   ],
 
@@ -66,12 +71,16 @@ export default {
     }
   },
 
+  watch: {
+    writable () {
+      console.log('watch writable', this.object.id, this.writable)
+      this.initWritable()
+    }
+  },
+
   methods: {
     initWritable () {
-      this.object.isWritable().then(writable => {
-        console.log('initWritable', this.object.id, writable)
-        this.$options.provide.context.writable = writable
-      })
+      this.$options.provide.context.writable = this.writable
     }
   },
 
