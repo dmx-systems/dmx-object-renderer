@@ -24,11 +24,12 @@ export default {
     require('./mixins/info-mode').default
   ],
 
-  data () {
+  // TODO: optional async rendering
+  /* data () {
     return {
       player: undefined
     }
-  },
+  }, */
 
   props: {
     // the assoc role to render
@@ -39,12 +40,18 @@ export default {
   },
 
   computed: {
+
+    player () {
+      return this.role.player
+    },
+
     roleTypes () {
       return this.$store.state.typeCache.roleTypes
     }
   },
 
-  // for component instantiation
+  // TODO: optional async rendering
+  /* for component instantiation
   created () {
     this.fetchPlayer()
   },
@@ -62,7 +69,7 @@ export default {
         this.player = player
       })
     }
-  }
+  } */
 }
 </script>
 

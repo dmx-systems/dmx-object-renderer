@@ -77,7 +77,7 @@ export default {
 
   watch: {
     writable () {
-      console.log('watch writable', this.object.id, this.writable)
+      // console.log('watch writable', this.object.id, this.writable)
       this.initWritable()
     }
   },

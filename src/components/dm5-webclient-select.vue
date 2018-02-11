@@ -11,9 +11,6 @@ import dm5 from 'dm5'
 
 export default {
 
-  // Note: simple components support inline editing.
-  // They get the "mode" property from parent component (not from store).
-  // That's why simple components mix in "mode-prop" (not "mode").
   mixins: [
     require('./mixins/object').default,       // object to render
     require('./mixins/assoc-def').default,    // assoc def leading to object
