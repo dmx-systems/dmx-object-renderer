@@ -24,7 +24,7 @@ export default {
     require('./mixins/object').default,       // child topic to render
     require('./mixins/level').default,
     require('./mixins/assoc-def').default,    // assoc def leading to child topic
-    require('./mixins/mode-prop').default,
+    require('./mixins/mode').default,
     require('./mixins/info-mode').default
   ],
 

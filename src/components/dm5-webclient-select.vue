@@ -17,7 +17,7 @@ export default {
   mixins: [
     require('./mixins/object').default,       // object to render
     require('./mixins/assoc-def').default,    // assoc def leading to object
-    require('./mixins/mode-prop').default,
+    require('./mixins/mode').default,
     require('./mixins/info-mode').default
   ],
 

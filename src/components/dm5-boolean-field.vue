@@ -10,7 +10,7 @@ export default {
   // That's why simple components mix in "mode-prop" (not "mode").
   mixins: [
     require('./mixins/object').default,
-    require('./mixins/mode-prop').default,
+    require('./mixins/mode').default,
     require('./mixins/info-mode').default
   ]
 }

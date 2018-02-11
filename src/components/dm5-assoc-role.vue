@@ -20,7 +20,7 @@ import dm5 from 'dm5'
 export default {
 
   mixins: [
-    require('./mixins/mode-prop').default,
+    require('./mixins/mode').default,
     require('./mixins/info-mode').default
   ],
 

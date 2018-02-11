@@ -19,12 +19,17 @@ export default {
     // console.log('dm5-object-renderer destroyed', this.object.id)
   },
 
-  // Note: at the time the provided object is evaluated the component instance does not yet exist. So we can't refer
+  // Note 1: at the time the provided object is evaluated the component instance does not yet exist. So we can't refer
   // to something like "data" or "props". We can't refer to "self" either as the created() hook is not yet executed.
   // So we can only have literal values here and update them later on.
+  // Note 2: we must wrap the properties in an object. Otherwise a) value changes (through parent component) would not
+  // be reactive, and b) value changes by a child component would cause Vue to report an "Avoid mutating an injected
+  // value directly" error.
   provide: {
 
     context: {
+
+      // TODO: add "mode"? Would free us from passing it through the entire hierarchy. Would require another watcher.
 
       /**
        * true if *this* object is writable
@@ -47,7 +52,7 @@ export default {
   mixins: [
     require('./mixins/object').default,
     require('./mixins/writable').default,
-    require('./mixins/mode-prop').default
+    require('./mixins/mode').default
   ],
 
   props: {
