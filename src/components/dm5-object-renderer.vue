@@ -1,7 +1,6 @@
 <template>
-  <!-- TODO: move CSS class to root element -->
-  <dm5-assoc v-if="isAssoc" :assoc="object" :mode="mode"></dm5-assoc>
-  <component v-else class="dm5-object-renderer" :is="objectRenderer" :object="object" :mode="mode" :level="0">
+  <dm5-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :mode="mode"></dm5-assoc>
+  <component class="dm5-object-renderer" v-else :is="objectRenderer" :object="object" :mode="mode" :level="0">
   </component>
 </template>
 
@@ -11,13 +10,13 @@ let self
 export default {
 
   created () {
-    console.log('dm5-object-renderer created', this.object.id, this.writable)
+    // console.log('dm5-object-renderer created', this.object.id, this.writable)
     this.initWritable()
     self = this
   },
 
   destroyed () {
-    // console.log('dm5-object-renderer destroyed')
+    // console.log('dm5-object-renderer destroyed', this.object.id)
   },
 
   // Note: at the time the provided object is evaluated the component instance does not yet exist. So we can't refer
@@ -92,6 +91,7 @@ export default {
 </script>
 
 <style>
+/* TODO: move this rule to dm5-object, add additional rules to dm5-assoc and dm5-assoc-role */
 .dm5-object-renderer .field {
   margin-top: 1.2em;
 }
