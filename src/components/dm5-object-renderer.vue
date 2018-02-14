@@ -52,7 +52,7 @@ export default {
   mixins: [
     require('./mixins/object').default,
     require('./mixins/writable').default,
-    require('./mixins/mode').default
+    require('./mixins/mode-default').default
   ],
 
   props: {
