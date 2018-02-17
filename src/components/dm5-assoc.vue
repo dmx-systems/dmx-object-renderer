@@ -10,7 +10,7 @@
       </el-select>
     </div>
     <!-- Generic Object -->
-    <dm5-object :object="assoc" :mode="mode" :level="0"></dm5-object>
+    <dm5-object :object="assoc" :level="0" :context="context"></dm5-object>
     <!-- Roles -->
     <dm5-assoc-role :role="assoc.role1" :mode="mode"></dm5-assoc-role>
     <dm5-assoc-role :role="assoc.role2" :mode="mode"></dm5-assoc-role>
@@ -23,8 +23,8 @@ import dm5 from 'dm5'
 export default {
 
   mixins: [
-    require('./mixins/mode').default,
-    require('./mixins/info-mode').default
+    require('./mixins/info-mode').default,
+    require('./mixins/context').default
   ],
 
   props: {
@@ -36,6 +36,11 @@ export default {
   },
 
   computed: {
+
+    mode () {
+      return this.context.mode
+    },
+
     // TODO: reusability => inject context instead accessing store
     assocTypes () {
       return this.$store.state.typeCache.assocTypes

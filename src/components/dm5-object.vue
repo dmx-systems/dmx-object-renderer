@@ -12,14 +12,14 @@
     <template v-else v-for="assocDef in assocDefs">
       <!-- one -->
       <template v-if="isOne(assocDef)">
-        <dm5-child-topic v-if="childs(assocDef)" :object="childs(assocDef)" :mode="mode" :level="level+1"
-          :assoc-def="assocDef" :key="assocDef.assocDefUri">
+        <dm5-child-topic v-if="childs(assocDef)" :object="childs(assocDef)" :level="level+1"
+          :assoc-def="assocDef" :context="context" :key="assocDef.assocDefUri">
         </dm5-child-topic>
       </template>
       <!-- many -->
       <template v-else>
-        <dm5-child-topic v-for="(child, i) in childs(assocDef)" class="multi" :object="child" :mode="mode"
-          :level="level+1" :assoc-def="assocDef" :key="assocDef.assocDefUri + '-' + i">
+        <dm5-child-topic v-for="(child, i) in childs(assocDef)" class="multi" :object="child" :level="level+1"
+          :assoc-def="assocDef" :context="context" :key="assocDef.assocDefUri + '-' + i">
         </dm5-child-topic>
         <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(assocDef)"
           @click="addChild(assocDef)">
@@ -42,13 +42,11 @@ export default {
     // console.log('dm5-object destroyed', this.object.id)
   },
 
-  inject: ['context'],        // provided by dm5-object-renderer
-
   mixins: [
     require('./mixins/object').default,
     require('./mixins/level').default,
-    require('./mixins/mode').default,
-    require('./mixins/info-mode').default
+    require('./mixins/info-mode').default,
+    require('./mixins/context').default
   ],
 
   props: {
@@ -74,6 +72,10 @@ export default {
       const widget = this.assocDef && this.assocDef._getViewConfig('dm4.webclient.widget')
       // Note: since Vue 2.5.10 dot is no longer a valid character in a component name
       return widget && widget.uri.replace(/\./g, '-') || `dm5-${this.type.dataTypeUri.substr('dm4.core.'.length)}-field`
+    },
+
+    mode () {
+      return this.context.mode
     },
 
     localMode () {
@@ -103,7 +105,7 @@ export default {
       if (this.infoMode && this.writable) {
         // inline editing is only supported for simple objects
         if (this.isSimple) {
-          console.log('editInline', this.object.typeUri, this.object.value)
+          // console.log('editInline', this.object.typeUri, this.object.value)
           this.context.setInlineId(this._uid)   // FIXME: _uid is Vue internal
         } else {
           console.log('non-simple', this.object.typeUri, this.object.value)
