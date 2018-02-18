@@ -1,5 +1,6 @@
 <template>
-  <dm5-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :context="context"></dm5-assoc>
+  <dm5-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :context="context" @updated="updated">
+  </dm5-assoc>
   <component class="dm5-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :context="context">
   </component>
 </template>
@@ -24,18 +25,14 @@ export default {
   props: {
     renderers: {
       type: Object,
-      default () {
-        return {}
-      }
+      default: () => ({})
     }
   },
 
-  data () {
-    return {
-      // trueish if inline edit is active in this object or in *any* child topic (recursively)
-      inlineId: undefined
-    }
-  },
+  data: () => ({
+    // trueish if inline edit is active in this object or in *any* child topic (recursively)
+    inlineId: undefined
+  }),
 
   computed: {
 
@@ -61,10 +58,15 @@ export default {
   },
 
   methods: {
+
     setInlineId (id) {
       // console.log('setInlineId', id)
       this.inlineId = id
       this.$emit('inline', id)
+    },
+
+    updated () {
+      this.$emit('updated')
     }
   },
 

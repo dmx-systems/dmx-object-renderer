@@ -12,8 +12,8 @@
     <!-- Generic Object -->
     <dm5-object :object="assoc" :level="0" :context="context"></dm5-object>
     <!-- Roles -->
-    <dm5-assoc-role :role="assoc.role1" :mode="mode"></dm5-assoc-role>
-    <dm5-assoc-role :role="assoc.role2" :mode="mode"></dm5-assoc-role>
+    <dm5-assoc-role :role="assoc.role1" :mode="mode" @updated="updated"></dm5-assoc-role>
+    <dm5-assoc-role :role="assoc.role2" :mode="mode" @updated="updated"></dm5-assoc-role>
   </div>
 </template>
 
@@ -41,9 +41,15 @@ export default {
       return this.context.mode
     },
 
-    // TODO: reusability => inject context instead accessing store
+    // TODO: reusability => don't rely on app store
     assocTypes () {
       return this.$store.state.typeCache.assocTypes
+    }
+  },
+
+  methods: {
+    updated () {
+      this.$emit('updated')
     }
   },
 
