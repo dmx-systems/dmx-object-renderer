@@ -12,6 +12,11 @@ export default {
     // console.log('dm5-object-renderer created', this.object.id, this.writable)
   },
 
+  updated () {
+    // console.log('dm5-object-renderer updated', this.object.id)
+    this.$emit('updated')
+  },
+
   destroyed () {
     // console.log('dm5-object-renderer destroyed', this.object.id)
   },
@@ -66,6 +71,7 @@ export default {
     },
 
     updated () {
+      // console.log('updated()')
       this.$emit('updated')
     }
   },
