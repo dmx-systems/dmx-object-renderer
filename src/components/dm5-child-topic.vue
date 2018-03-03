@@ -17,7 +17,7 @@ export default {
 
   beforeCreate () {
     // Note: postponed loading resolves cyclic dependency between <dm5-object> and <dm5-child-topic>
-    this.$options.components['dm5-object'] = require('./dm5-object')
+    this.$options.components['dm5-object'] = require('./dm5-object').default
   },
 
   mixins: [

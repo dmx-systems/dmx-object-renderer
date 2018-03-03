@@ -66,7 +66,7 @@ export default {
   },
 
   components: {
-    'quill': require('vue-quill-minimum')
+    'quill': require('vue-quill-minimum').default
   }
 }
 </script>

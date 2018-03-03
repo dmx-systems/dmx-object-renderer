@@ -141,14 +141,14 @@ export default {
   },
 
   components: {
-    'dm5-child-topic':      require('./dm5-child-topic'),
+    'dm5-child-topic':      require('./dm5-child-topic').default,
     // simple default components
-    'dm5-text-field':       require('./dm5-text-field'),
-    'dm5-number-field':     require('./dm5-number-field'),
-    'dm5-boolean-field':    require('./dm5-boolean-field'),
-    'dm5-html-field':       require('./dm5-html-field'),
+    'dm5-text-field':       require('./dm5-text-field').default,
+    'dm5-number-field':     require('./dm5-number-field').default,
+    'dm5-boolean-field':    require('./dm5-boolean-field').default,
+    'dm5-html-field':       require('./dm5-html-field').default,
     // simple widgets
-    'dm4-webclient-select': require('./dm5-webclient-select')   // TODO: change URI prefixes in migrations to "dm5"
+    'dm4-webclient-select': require('./dm5-webclient-select').default   // TODO: change URI prefixes in migrations to "dm5"
   }
 }
 </script>

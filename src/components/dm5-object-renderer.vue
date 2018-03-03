@@ -77,8 +77,8 @@ export default {
   },
 
   components: {
-    'dm5-object': require('./dm5-object'),
-    'dm5-assoc':  require('./dm5-assoc')
+    'dm5-object': require('./dm5-object').default,
+    'dm5-assoc':  require('./dm5-assoc').default
   }
 }
 </script>
