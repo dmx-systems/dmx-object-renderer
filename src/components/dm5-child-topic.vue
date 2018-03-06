@@ -105,8 +105,12 @@ export default {
 
 /* Reveal Button */
 
+.dm5-child-topic.info.level-1 {
+  border: 1px solid transparent;
+}
+
 .dm5-child-topic.info.level-1:hover {
-  box-shadow: var(--shadow-hover) var(--highlight-color);
+  border-color: var(--highlight-color);
 }
 
 /* Remove Button */
