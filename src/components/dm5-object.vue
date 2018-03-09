@@ -114,7 +114,6 @@ export default {
     },
 
     submitInline () {
-      this.$store.dispatch('submitInline')
       this.context.setInlineId(undefined)
     },
 
