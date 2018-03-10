@@ -7,6 +7,7 @@ class TopicLinkManager {
     buttonIcon()
 
     function buttonHandler (value) {
+      // TODO: decouple from host application
       // Note: "this" refers to the Toolbar instance
       // console.log('buttonHandler', value)
       dispatch('openSearchWidget', {

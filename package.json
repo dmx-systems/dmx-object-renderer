@@ -1,6 +1,6 @@
 {
   "name": "dm5-object-renderer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The DeepaMehta 5 object renderer as a composable GUI component",
   "author": "Jörg Richter",
   "license": "MIT",
