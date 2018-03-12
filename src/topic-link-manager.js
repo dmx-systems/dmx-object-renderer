@@ -36,7 +36,8 @@ class TopicLinkManager {
     })
 
     function linkHandler (e) {
-      e.preventDefault()    // prevent browser's default link handling
+      e.preventDefault()    // suppress browser's default link click behavior
+      e.stopPropagation()   // prevent activating inline edit
       const topicId = Number(e.target.dataset.topicId)
       console.log('in-app link clicked!', topicId)
       linkClicked(topicId)
