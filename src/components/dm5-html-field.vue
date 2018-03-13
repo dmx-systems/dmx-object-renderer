@@ -72,7 +72,7 @@ export default {
   },
 
   components: {
-    'quill': require('vue-quill-minimum').default
+    'quill': () => import(/* webpackChunkName: "vue-quill" */ 'vue-quill-minimum')
   }
 }
 
@@ -123,14 +123,14 @@ function topicLinkFormat (Quill) {
 }
 
 .ql-container {
-  font-family: var(--main-font-family);
-  font-size:   var(--main-font-size);
+  font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
+  font-size:   var(--main-font-size) !important;      /* Quill default is 13px */
 }
 
 .ql-editor {
-  line-height: var(--line-height);
-  padding-left: 8px !important;
-  padding-right: 8px !important;
+  line-height: var(--line-height) !important;         /* Quill default is 1.42 */
+  padding-left: 8px !important;                       /* Quill default is 15px */
+  padding-right: 8px !important;                      /* Quill default is 15px */
   background-color: white;
 }
 
@@ -139,7 +139,7 @@ function topicLinkFormat (Quill) {
 }
 
 .ql-toolbar.ql-snow {
-  padding: 4px 0 !important;
+  padding: 4px 0 !important;                          /* Quill default is 8px */
 }
 
 .ql-snow.ql-toolbar button:hover,
@@ -154,7 +154,7 @@ function topicLinkFormat (Quill) {
 .ql-snow .ql-toolbar .ql-picker-item:hover,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-  color: var(--highlight-color);
+  color: var(--highlight-color) !important;           /* Quill default is #06c */
 }
 
 .ql-snow.ql-toolbar button:hover .ql-fill,
@@ -181,7 +181,7 @@ function topicLinkFormat (Quill) {
 .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
-  fill: var(--highlight-color);
+  fill: var(--highlight-color) !important;            /* Quill default is #06c */
 }
 
 .ql-snow.ql-toolbar button:hover .ql-stroke,
@@ -208,6 +208,6 @@ function topicLinkFormat (Quill) {
 .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
-  stroke: var(--highlight-color);
+  stroke: var(--highlight-color) !important;          /* Quill default is #06c */
 }
 </style>
