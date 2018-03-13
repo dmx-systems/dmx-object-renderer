@@ -3,7 +3,8 @@
   <div v-else>
     <!-- Without this wrapper <div> the Quill toolbar remains visible when switching to info mode.   -->
     <!-- This is because the Quill toolbar becomes a *sibling* (not a child) of the <quill> element. -->
-    <quill v-model="object.value" :options="quillOptions" @quillReady="quillReady"></quill>
+    <quill v-model="object.value" :options="quillOptions" @quill-imported="registerExtension" @quill-ready="quillReady">
+    </quill>
   </div>
 </template>
 
@@ -52,7 +53,12 @@ export default {
 
   methods: {
 
+    registerExtension (Quill) {
+      Quill.register(topicLinkFormat(Quill))
+    },
+
     quillReady (quill) {
+      this.$store.dispatch('setQuill', quill)
       new TopicLinkManager(quill, this.$store.dispatch)
     },
 
@@ -68,6 +74,38 @@ export default {
   components: {
     'quill': require('vue-quill-minimum').default
   }
+}
+
+function topicLinkFormat (Quill) {
+
+  class TopicLink extends Quill.import('formats/link') {    // Note: 'formats/link' extends 'blots/inline'
+
+    // Creates a DOM node corresponding to the given (model) values
+    static create (value) {
+      // console.log('TopicLink create()', value)
+      const node = super.create()
+      node.removeAttribute('target')    // target attribute was added by Link class
+      node.setAttribute('href', '')     // href attribute required to render in link style
+      node.dataset.topicId = value.topicId
+      node.dataset.linkId  = value.linkId
+      return node
+    }
+
+    // Returns the (model) value represented by the given DOM node
+    static formats (node) {
+      // console.log('TopicLink formats()', node)
+      return {
+        topicId: node.dataset.topicId,  // FIXME: convert to Number?
+        linkId:  node.dataset.linkId    // FIXME: convert to Number?
+      }
+    }
+  }
+
+  TopicLink.blotName = 'topic-link'     // Used in "toolbar" config, quill.format() and module.addHandler() calls.
+                                        // Will be prefixed by "ql-" to form the CSS class name for the toolbar button.
+  // TopicLink.tagName = 'A'            // not needed as it is derived
+  TopicLink.className = 'topic-link'    // CSS class to be added to the <a> element
+  return TopicLink
 }
 </script>
 

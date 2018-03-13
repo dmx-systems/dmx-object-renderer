@@ -4,11 +4,12 @@
   "description": "The DeepaMehta 5 object renderer as a composable GUI component",
   "author": "Jörg Richter",
   "license": "MIT",
+  "main": "src/components/dm5-object-renderer.vue",
   "repository": {
     "type": "git",
     "url": "https://github.com/jri/dm5-object-renderer.git"
   },
   "dependencies": {
-    "vue-quill-minimum": "^1.1.0"
+    "vue-quill-minimum": "https://github.com/jri/vue-quill-minimum.git"
   }
 }
