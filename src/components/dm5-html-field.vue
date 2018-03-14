@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import TopicLinkManager from '../topic-link-manager'
-
 export default {
 
   created () {
@@ -43,19 +41,33 @@ export default {
 
   methods: {
 
+    // TODO: move the entire "topic link" aspect to the host app
+
+    // TODO: let the host app register extensions
     registerExtension (Quill) {
       Quill.register(topicLinkFormat(Quill))
     },
 
+    // TODO: let the host app setup the format buttons
     quillReady (quill) {
-      this.$store.dispatch('setQuill', quill)
-      new TopicLinkManager(quill, this.$store.dispatch)
+      // FIXME: handle multiple Quill instances
+      const button = document.querySelector('button.ql-topic-link')
+      button.textContent = 'T'    // TODO: use real (SVG) icon
+      button.setAttribute('title', 'Embed a topic link')
     },
 
+    // TODO: let the host app setup the link handlers
     addLinkHandlers () {
       if (this.infoMode) {
-        TopicLinkManager.addLinkHandlers(this.$refs.html, topicId => {
-          this.$store.dispatch('revealTopicById', topicId)
+        // FIXME: event handlers are registered twice, through updated()
+        this.$refs.html.querySelectorAll('a.topic-link').forEach(link => {
+          link.addEventListener('click', e => {
+            const topicId = Number(e.target.dataset.topicId)
+            console.log('topic link clicked', topicId)
+            this.$store.dispatch('revealTopicById', topicId)
+            e.preventDefault()    // suppress browser's default link click behavior
+            e.stopPropagation()   // prevent activating inline edit
+          })
         })
       }
     }
