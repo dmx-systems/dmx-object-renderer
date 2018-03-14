@@ -30,14 +30,19 @@ export default {
   props: {
     renderers: {
       type: Object,
-      default: () => ({})
-    }
+      default () {
+        return {}
+      }
+    },
+    quillConfig: Object
   },
 
-  data: () => ({
-    // trueish if inline edit is active in this object or in *any* child topic (recursively)
-    inlineId: undefined
-  }),
+  data () {
+    return {
+      // trueish if inline edit is active in this object or in *any* child topic (recursively)
+      inlineId: undefined
+    }
+  },
 
   computed: {
 
@@ -57,7 +62,8 @@ export default {
         mode:        this.mode,
         writable:    this.writable,
         inlineId:    this.inlineId,
-        setInlineId: this.setInlineId
+        setInlineId: this.setInlineId,
+        quillConfig: this.quillConfig
       }
     }
   },

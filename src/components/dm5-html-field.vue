@@ -13,29 +13,6 @@ import TopicLinkManager from '../topic-link-manager'
 
 export default {
 
-  mixins: [
-    require('./mixins/object').default,
-    require('./mixins/mode').default,
-    require('./mixins/info-mode').default
-  ],
-
-  data () {
-    return {
-      quillOptions: {
-        modules: {
-          toolbar: [
-            ['bold', 'italic', 'code'],
-            ['blockquote', 'code-block'],
-            [{'list': 'ordered'}, {'list': 'bullet'}],
-            [{'header': [1, 2, 3, false]}],
-            ['topic-link', 'link', 'image', 'video']    // TODO: let TopicLinkManager add topic-link button dynamically?
-          ]
-        },
-        theme: 'snow'
-      }
-    }
-  },
-
   created () {
     // console.log('dm5-html-field created()', this.mode)
   },
@@ -49,6 +26,19 @@ export default {
   updated () {
     // console.log('dm5-html-field updated()', this.mode)
     this.addLinkHandlers()
+  },
+
+  mixins: [
+    require('./mixins/object').default,
+    require('./mixins/mode').default,
+    require('./mixins/info-mode').default,
+    require('./mixins/context').default
+  ],
+
+  computed: {
+    quillOptions () {
+      return this.context.quillConfig.options
+    }
   },
 
   methods: {
@@ -72,7 +62,7 @@ export default {
   },
 
   components: {
-    'quill': () => import(/* webpackChunkName: "vue-quill" */ 'vue-quill-minimum')
+    quill: () => import(/* webpackChunkName: "quill" */ 'vue-quill-minimum')
   }
 }
 

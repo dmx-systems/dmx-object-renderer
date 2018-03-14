@@ -4,7 +4,8 @@
     <div v-if="isSimple" class="field">
       <div class="field-label">{{simpleLabel}}</div>
       <div class="field-content">
-        <component :is="simpleComp" :object="object" :mode="localMode" :assoc-def="assocDef"></component>
+        <component :is="simpleComp" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context">
+        </component>
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
     </div>
