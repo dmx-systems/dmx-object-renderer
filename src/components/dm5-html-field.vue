@@ -1,5 +1,5 @@
 <template>
-  <div class="dm5-html-field" v-if="infoMode" v-html="object.value" ref="html"></div>
+  <div class="dm5-html-field" v-if="infoMode" v-html="object.value" ref="info"></div>
   <div v-else>
     <!-- Without this wrapper <div> the Quill toolbar remains visible when switching to info mode.   -->
     <!-- This is because the Quill toolbar becomes a *sibling* (not a child) of the <quill> element. -->
@@ -19,12 +19,12 @@ export default {
   mounted () {
     // console.log('dm5-html-field mounted()', this.mode, this.$refs.html)
     // Note: if a topic is edited for the first time the dm5-html-field component is mounted in "form" mode
-    this.infoDOMReady()
+    this.domReady()
   },
 
   updated () {
     // console.log('dm5-html-field updated()', this.mode)
-    this.infoDOMReady()
+    this.domReady()
   },
 
   mixins: [
@@ -58,9 +58,9 @@ export default {
       })
     },
 
-    infoDOMReady () {
+    domReady () {
       if (this.infoMode) {
-        this.forEachExtension(ext => ext.infoDOMReady(this.$refs.html))
+        this.forEachExtension(ext => ext.infoDOMReady(this.$refs.info))
       }
     },
 
