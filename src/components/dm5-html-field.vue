@@ -70,7 +70,7 @@ export default {
   },
 
   components: {
-    quill: () => import(/* webpackChunkName: "quill" */ 'vue-quill-minimum')
+    quill: () => import('vue-quill-minimum' /* webpackChunkName: "quill" */)
   }
 }
 </script>
@@ -93,19 +93,22 @@ export default {
   font-size:   var(--main-font-size) !important;      /* Quill default is 13px */
 }
 
+.ql-container.ql-bubble {
+  border: 1px solid var(--border-color)
+}
+
+.ql-container.ql-bubble .ql-tooltip {
+  z-index: 1;       /* make sure the toolbar is on-top of adjacent detail panel fields */
+}
+
 .ql-editor {
   line-height: var(--line-height) !important;         /* Quill default is 1.42 */
-  padding-left: 8px !important;                       /* Quill default is 15px */
-  padding-right: 8px !important;                      /* Quill default is 15px */
+  padding: 6px 8px !important;                        /* Quill default is 12px 15px */
   background-color: white;
 }
 
 .ql-editor p + p {
   margin-top: var(--paragraph-spacing);
-}
-
-.ql-toolbar.ql-snow {
-  padding: 4px 0 !important;                          /* Quill default is 8px */
 }
 
 .ql-snow.ql-toolbar button:hover,
