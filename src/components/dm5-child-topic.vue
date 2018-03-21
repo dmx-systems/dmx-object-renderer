@@ -71,10 +71,7 @@ export default {
 
     reveal () {
       // TODO: decouple from host application
-      this.$store.dispatch('revealRelatedTopic', {
-        relTopic: this.object,
-        pos: {x: 100, y: 100}   // TODO
-      })
+      this.$store.dispatch('revealRelatedTopic', this.object)
     },
 
     remove () {
