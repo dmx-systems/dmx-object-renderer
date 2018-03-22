@@ -62,20 +62,20 @@ export default {
         mode:        this.mode,
         writable:    this.writable,
         inlineId:    this.inlineId,
-        setInlineId: this.setInlineId,
-        quillConfig: this.quillConfig
+        quillConfig: this.quillConfig,
+        setInlineId: id => {
+          // console.log('setInlineId', id)
+          this.inlineId = id
+          this.$emit('inline', id)
+        },
+        revealChild: relTopic => {
+          this.$emit('child-topic-reveal', relTopic)
+        }
       }
     }
   },
 
   methods: {
-
-    setInlineId (id) {
-      // console.log('setInlineId', id)
-      this.inlineId = id
-      this.$emit('inline', id)
-    },
-
     updated () {
       // console.log('updated()')
       this.$emit('updated')

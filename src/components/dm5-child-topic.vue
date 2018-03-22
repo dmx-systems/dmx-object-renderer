@@ -70,8 +70,7 @@ export default {
   methods: {
 
     reveal () {
-      // TODO: decouple from host application
-      this.$store.dispatch('revealRelatedTopic', this.object)
+      this.context.revealChild(this.object)
     },
 
     remove () {
