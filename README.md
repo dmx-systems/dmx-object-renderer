@@ -2,6 +2,14 @@
 
 ## Version History
 
+**0.4** -- Mar 25, 2018
+
+* Fix: clicking a topic-link does not activate inline edit
+* Improved composability:
+    * New `quill-config` property allows parent component to customize the Quill editor in both ways, setting options, and providing extensions (e.g. formats)
+    * Emit `child-topic-reveal` to signalize "user clicked 'Reveal' button"
+* Code splitting: the Quill editor is loaded on-demand
+
 **0.3** -- Mar 10, 2018
 
 * Improved composability: don't dispatch into host application
@@ -13,7 +21,7 @@
 * Improved composability:
     * Component relies on explicit props instead of context injection
     * Props have reasonable defaults
-    * Emits `inline` and `updated` events
+    * Emit `inline` and `updated` events
 
 **0.1** -- Feb 3, 2018
 
@@ -22,4 +30,4 @@
 
 ------------
 Jörg Richter  
-Mar 10, 2018
+Mar 25, 2018
