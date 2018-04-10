@@ -2,6 +2,10 @@
 
 ## Version History
 
+**0.5** -- Apr 10, 2018
+
+* Show spinner when quill chunk loads
+
 **0.4** -- Mar 25, 2018
 
 * Fix: clicking a topic-link does not activate inline edit
@@ -30,4 +34,4 @@
 
 ------------
 Jörg Richter  
-Mar 25, 2018
+Apr 10, 2018
