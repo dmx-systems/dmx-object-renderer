@@ -93,7 +93,7 @@ export default {
   right: 0;
   visibility: hidden;
   font-size: var(--label-font-size) !important;
-  padding: 0;
+  padding: 0 !important;
 }
 
 .dm5-child-topic:hover .hover-button {
