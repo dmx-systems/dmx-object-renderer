@@ -70,9 +70,9 @@ export default {
     },
 
     simpleComp () {
-      const widget = this.assocDef && this.assocDef._getViewConfig('dm4.webclient.widget')
+      const widget = this.assocDef && this.assocDef._getViewConfig('dmx.webclient.widget')
       // Note: since Vue 2.5.10 dot is no longer a valid character in a component name
-      return widget && widget.uri.replace(/\./g, '-') || `dm5-${this.type.dataTypeUri.substr('dm4.core.'.length)}-field`
+      return widget && widget.uri.replace(/\./g, '-') || `dm5-${this.type.dataTypeUri.substr('dmx.core.'.length)}-field`
     },
 
     mode () {

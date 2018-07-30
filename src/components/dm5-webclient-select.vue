@@ -37,11 +37,11 @@ export default {
   computed: {
 
     clearable () {
-      return this.assocDef.getViewConfig('dm4.webclient.clearable')
+      return this.assocDef.getViewConfig('dmx.webclient.clearable')
     },
 
     customizable () {
-      return this.assocDef.getViewConfig('dm4.webclient.customizable')
+      return this.assocDef.getViewConfig('dmx.webclient.customizable')
     }
   },
 
