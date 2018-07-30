@@ -141,14 +141,14 @@ export default {
   },
 
   components: {
-    'dm5-child-topic':      require('./dm5-child-topic').default,
+    'dm5-child-topic':      require('./dm5-child-topic').default,       // TODO: change prefix to "dmx"
     // simple default components
-    'dm5-text-field':       require('./dm5-text-field').default,
-    'dm5-number-field':     require('./dm5-number-field').default,
-    'dm5-boolean-field':    require('./dm5-boolean-field').default,
-    'dm5-html-field':       require('./dm5-html-field').default,
+    'dm5-text-field':       require('./dm5-text-field').default,        // TODO: change prefix to "dmx"
+    'dm5-number-field':     require('./dm5-number-field').default,      // TODO: change prefix to "dmx"
+    'dm5-boolean-field':    require('./dm5-boolean-field').default,     // TODO: change prefix to "dmx"
+    'dm5-html-field':       require('./dm5-html-field').default,        // TODO: change prefix to "dmx"
     // simple widgets
-    'dm4-webclient-select': require('./dm5-webclient-select').default   // TODO: change URI prefixes in migrations to "dm5"
+    'dmx-webclient-select': require('./dm5-webclient-select').default
   }
 }
 </script>
