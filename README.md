@@ -2,6 +2,12 @@
 
 ## Version History
 
+**0.6** -- Jul 31, 2018
+
+* CSS fix: margin of Reveal/Remove buttons
+* Change type URI prefixes `dm4` -> `dmx`
+* Add GitLab CI/CD
+
 **0.5** -- Apr 10, 2018
 
 * Show spinner when quill chunk loads
@@ -34,4 +40,4 @@
 
 ------------
 Jörg Richter  
-Apr 10, 2018
+Jul 31, 2018
