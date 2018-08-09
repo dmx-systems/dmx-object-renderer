@@ -3,7 +3,7 @@
     <!-- simple -->
     <div v-if="isSimple" class="field">
       <div class="field-label">{{simpleLabel}}</div>
-      <div class="field-content">
+      <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
         <component :is="simpleComp" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context">
         </component>
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
@@ -73,6 +73,10 @@ export default {
       const widget = this.assocDef && this.assocDef._getViewConfig('dmx.webclient.widget')
       // Note: since Vue 2.5.10 dot is no longer a valid character in a component name
       return widget && widget.uri.replace(/\./g, '-') || `dm5-${this.type.dataTypeUri.substr('dmx.core.'.length)}-field`
+    },
+
+    isHtmlField () {
+      return this.simpleComp === 'dm5-html-field'
     },
 
     mode () {
@@ -160,13 +164,17 @@ export default {
   background-color: white;
 }
 
-.dm5-object .field .field-content {
+.dm5-object .field .field-content.no-html {
   display: flex;
   align-items: center;
 }
 
-.dm5-object .field .field-content .save-button {
-  margin-left: 1em;
+.dm5-object .field .field-content.no-html .save-button {
+  margin-left: 0.4em;
+}
+
+.dm5-object .field .field-content.html .save-button {
+  margin-top: 0.4em;
 }
 
 .dm5-object .add-button {

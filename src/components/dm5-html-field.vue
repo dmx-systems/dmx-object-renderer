@@ -80,7 +80,6 @@ export default {
 
 <style>
 .dm5-html-field {
-  flex-grow: 1;     /* expand Quill editor; TODO: apply only in "edit" mode? */
   line-height: var(--line-height);
 }
 
@@ -94,7 +93,7 @@ export default {
 
 .ql-container {
   font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
-  font-size:   var(--main-font-size) !important;      /* Quill default is 13px */
+  font-size:   var(--main-font-size)   !important;    /* Quill default is 13px */
 }
 
 .ql-container.ql-bubble {
