@@ -1,6 +1,6 @@
 <template>
   <div class="dm5-html-field" v-if="infoMode" v-html="object.value" ref="info"></div>
-  <div v-else>
+  <div class="dm5-html-field" v-else>
     <!-- Without this wrapper <div> the Quill toolbar remains visible when switching to info mode.   -->
     <!-- This is because the Quill toolbar becomes a *sibling* (not a child) of the <quill> element. -->
     <quill v-model="object.value" :options="quillOptions" @quill-imported="registerExtensions"
@@ -80,6 +80,7 @@ export default {
 
 <style>
 .dm5-html-field {
+  flex-grow: 1;     /* expand Quill editor; TODO: apply only in "edit" mode? */
   line-height: var(--line-height);
 }
 
@@ -105,13 +106,9 @@ export default {
 }
 
 .ql-editor {
-  line-height: var(--line-height) !important;         /* Quill default is 1.42 */
+  line-height: inherit !important;                    /* Quill default is 1.42; inherit from dm5-html-field */
   padding: 6px 8px !important;                        /* Quill default is 12px 15px */
   background-color: white;
-}
-
-.ql-editor p + p {
-  margin-top: var(--paragraph-spacing);
 }
 
 .ql-snow.ql-toolbar button:hover,
