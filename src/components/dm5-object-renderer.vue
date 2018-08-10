@@ -91,6 +91,7 @@ export default {
 
 <style>
 /* TODO: move this rule to dm5-object, add additional rules to dm5-assoc and dm5-assoc-role */
+/* Note: the "field" class is also used in Webclient component dm5-type-renderer */
 .dm5-object-renderer .field {
   margin-top: 1.2em;
 }
