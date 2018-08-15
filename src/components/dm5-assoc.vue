@@ -41,9 +41,11 @@ export default {
       return this.context.mode
     },
 
-    // TODO: reusability => don't rely on app store
     assocTypes () {
-      return this.$store.state.typeCache.assocTypes
+      // TODO: decoupling. Don't access host application state.
+      return Object.values(this.$store.state.typeCache.assocTypes).sort(
+        (at1, at2) => at1.value.localeCompare(at2.value)
+      )
     }
   },
 

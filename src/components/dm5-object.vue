@@ -36,7 +36,7 @@ import dm5 from 'dm5'
 export default {
 
   created () {
-    // console.log('dm5-object created', this.object.id)
+    // console.log('dm5-object created', this.object)
   },
 
   destroyed () {
