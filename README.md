@@ -2,6 +2,12 @@
 
 ## Version History
 
+**0.7** -- Aug 18, 2018
+
+* Sort assoc type menu
+* Fix width of HTML editor fields
+* Fix HTML editor save button layout
+
 **0.6** -- Jul 31, 2018
 
 * CSS fix: margin of Reveal/Remove buttons
@@ -40,4 +46,4 @@
 
 ------------
 Jörg Richter  
-Jul 31, 2018
+Aug 18, 2018
