@@ -20,7 +20,7 @@
       <!-- many -->
       <template v-else>
         <dm5-child-topic v-for="(child, i) in childs(assocDef)" class="multi" :object="child" :level="level+1"
-          :assoc-def="assocDef" :context="context" :key="assocDef.assocDefUri + '-' + i">
+          :assoc-def="assocDef" :context="context" :key="`${assocDef.assocDefUri}-${i}-${child.id}`">
         </dm5-child-topic>
         <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(assocDef)"
           @click="addChild(assocDef)">
