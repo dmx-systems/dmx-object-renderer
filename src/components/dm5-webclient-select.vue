@@ -24,10 +24,11 @@ export default {
       // Buffered object value to be displayed in info mode.
       // With inline editing the object is sent to the server in info mode.
       // The update request must contain the refs, but the refs must not be displayed.
-      // The original object value is overridden with a ref (see updateValue()).
+      // The original object value is overridden with a ref (see syncObjectValue()).
       displayValue: this.object.value,
       // Select model
-      // Apparently in <el-select> an empty string represents "no selection"
+      // ID of option topic, or text entered (if <el-select> is customizable).
+      // Apparently in <el-select> an empty string represents "no selection".
       selection: this.object.id === -1 ? '' : this.object.id,
       // Option topics (object, mapped by topic ID)
       options: undefined
@@ -45,70 +46,83 @@ export default {
     }
   },
 
-  // In form mode the option topics must be present.
-  // As a optimization measure they are retrieved *only* in form mode.
+  // In form mode a) the option topics must be loaded, and b) the object value must be synced.
   // 2 cases:
-  // 1) The component is created in info mode if an object is available.
-  //    When switched to form mode (global edit or inline edit) the mode watcher fires.
-  // 2) The component is created only in form mode (global edit) if *no* object is available yet.
-  //    The mode watcher does *not* fire.
-  // We call loadOptions() in both places, the created() hook and the mode watcher.
+  //   1) This component is created in info mode. When switched to form mode (global edit or inline edit)
+  //      the mode watcher fires.
+  //   2) This component is created in form mode (global edit).
+  //      The mode watcher does *not* fire.
+  // So we must call loadOptions() and syncObjectValue() in both places, the created() hook and the mode watcher.
   created () {
     // console.log('created', this._uid, this.mode, this.selection, typeof this.selection)
-    this.loadOptions()
-    this.updateValue()
+    if (this.formMode) {
+      this.loadOptions()
+      this.syncObjectValue()
+    }
   },
 
   watch: {
 
     mode () {
       // console.log('mode', this._uid, this.mode, this.selection, typeof this.selection)
-      this.loadOptions()
+      if (this.formMode) {
+        this.loadOptions()
+        this.syncObjectValue()
+      }
     },
 
     selection () {
       // console.log('selection', this._uid, this.mode, this.selection, typeof this.selection)
-      this.updateValue()
-      this.updateDisplayValue()
+      this.syncObjectValue()
+      this.syncDisplayValue()
     }
   },
 
   methods: {
 
     loadOptions () {
-      if (this.formMode && !this.options) {
+      if (!this.options) {
         dm5.restClient.getTopicsByType(this.object.typeUri).then(topics => {
           this.options = dm5.utils.mapById(topics)
         })
       }
     },
 
-    updateValue () {
-      // sanity check
-      if (!['number', 'string'].includes(typeof this.selection)) {
-        throw Error(`Unexpected selection: ${this.selection} ${typeof this.selection}`)
-      }
-      // Note: a custom value entered in a allow-create <el-select> is a string
-      if (typeof this.selection == 'number') {
+    /**
+     * Syncs object value to selection.
+     */
+    syncObjectValue () {
+      this.checkSelection()
+      if (typeof this.selection === 'number') {
+        // existing option selected
         this.object.value = `ref_id:${this.selection}`
       } else {
+        // custom value entered (selection type is string)
         this.object.value = this.selection
-        // Note: newly entered custom values get no URI. An existing URI must be reset.
+        // Note: custom values get no URI. An existing URI must be reset.
         // Otherwise an URI clash might occur at server side while creating the custom topic.
         this.object.uri = ''
       }
     },
 
-    updateDisplayValue () {
-      // sanity check
-      if (!['number', 'string'].includes(typeof this.selection)) {
-        throw Error(`Unexpected selection: ${this.selection} ${typeof this.selection}`)
-      }
-      // Note: a custom value entered in a allow-create <el-select> is a string
-      if (typeof this.selection == 'number') {
+    /**
+     * Syncs display value to selection.
+     */
+    syncDisplayValue () {
+      this.checkSelection()
+      if (typeof this.selection === 'number') {
+        // existing option selected
         this.displayValue = this.options[this.selection].value
       } else {
+        // custom value entered (selection type is string)
         this.displayValue = this.selection
+      }
+    },
+
+    // sanity check
+    checkSelection () {
+      if (!['number', 'string'].includes(typeof this.selection)) {
+        throw Error(`Unexpected selection: ${this.selection} ${typeof this.selection}`)
       }
     }
   }
