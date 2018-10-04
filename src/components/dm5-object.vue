@@ -1,5 +1,6 @@
 <template>
   <div :class="['dm5-object', localMode, {writable}]" @click.stop="editInline">
+    <h3 v-if="isToplevel && !noHeading">{{object.value}}</h3>
     <!-- simple -->
     <div v-if="isSimple" class="field">
       <div class="field-label">{{simpleLabel}}</div>
@@ -51,10 +52,15 @@ export default {
   ],
 
   props: {
-    assocDef: dm5.AssocDef    // undefined for top-level object
+    assocDef: dm5.AssocDef,     // undefined for top-level object
+    noHeading: Boolean
   },
 
   computed: {
+
+    isToplevel () {
+      return this.level === 0
+    },
 
     type () {
       return this.object.getType()
