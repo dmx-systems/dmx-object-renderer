@@ -2,6 +2,13 @@
 
 ## Version History
 
+**0.8** -- Oct 6, 2018
+
+* Component `dm5-object` renders object title, suppressable by `noHeading` prop
+* Fixes:
+    * Display of multi-valued objects after update
+    * Render real value instead of `ref_id:...`
+
 **0.7** -- Aug 18, 2018
 
 * Sort assoc type menu
@@ -46,4 +53,4 @@
 
 ------------
 Jörg Richter  
-Aug 18, 2018
+Oct 6, 2018
