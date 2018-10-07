@@ -4,7 +4,7 @@
 
 **0.8** -- Oct 6, 2018
 
-* Component `dm5-object` renders object title, suppressable by `noHeading` prop
+* Component `dm5-object` renders object title, omittable by `noHeading` prop
 * Fixes:
     * Display of multi-valued objects after update
     * Render real value instead of `ref_id:...`
