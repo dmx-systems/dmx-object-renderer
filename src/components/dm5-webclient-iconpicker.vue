@@ -1,6 +1,13 @@
 <template>
-  <div class="dm5-webclient-iconpicker" v-if="infoMode">{{object.value}}</div>
-  <div class="dm5-webclient-iconpicker" v-else>{{object.value}}</div>
+  <div class="dm5-webclient-iconpicker">
+    <div v-if="infoMode" class="icon">{{object.value}}</div>
+    <div v-else>
+      <el-button @click="open" class="icon">{{object.value}}</el-button>
+      <el-dialog :visible="visible" :modal="false" @close="close">
+        <fa-search @icon-select="select"></fa-search>
+      </el-dialog>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,21 +21,37 @@ export default {
 
   data () {
     return {
+      visible: false      // dialog visibility
     }
   },
 
-  computed: {
+  methods: {
+
+    open () {
+      this.visible = true
+    },
+
+    close () {
+      this.visible = false
+    },
+
+    select (icon) {
+      console.log('select', icon.id, icon.unicode)
+      this.object.value = String.fromCharCode(parseInt(icon.unicode, 16))
+      this.close()
+    }
   },
 
-  methods: {
+  components: {
+    'fa-search': require('vue-font-awesome-search').default
   }
 }
 </script>
 
 <style>
-.dm5-webclient-iconpicker {
+.dm5-webclient-iconpicker .icon {
   font-family: FontAwesome;
-  font-size: 24px;
+  font-size: 24px !important;
   color: var(--color-topic-icon);
 }
 </style>
