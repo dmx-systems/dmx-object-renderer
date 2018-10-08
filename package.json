@@ -10,6 +10,7 @@
     "url": "https://github.com/jri/dm5-object-renderer.git"
   },
   "dependencies": {
-    "vue-quill-minimum": "https://github.com/jri/vue-quill-minimum.git"
+    "vue-quill-minimum":       "https://github.com/jri/vue-quill-minimum.git",
+    "vue-font-awesome-search": "https://github.com/jri/vue-font-awesome-search.git"
   }
 }
