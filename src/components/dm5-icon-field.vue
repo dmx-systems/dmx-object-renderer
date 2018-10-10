@@ -1,5 +1,5 @@
 <template>
-  <div class="dm5-webclient-iconpicker">
+  <div class="dm5-icon-field">
     <div v-if="infoMode" class="icon">{{object.value}}</div>
     <div v-else>
       <el-button @click="open" class="icon">{{object.value}}</el-button>
@@ -36,7 +36,7 @@ export default {
     },
 
     select (icon) {
-      console.log('select', icon.id, icon.unicode)
+      console.log('select icon', icon.id, icon.unicode)
       this.object.value = String.fromCharCode(parseInt(icon.unicode, 16))
       this.close()
     }
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style>
-.dm5-webclient-iconpicker .icon {
+.dm5-icon-field .icon {
   font-family: FontAwesome;
   font-size: 24px !important;
   color: var(--color-topic-icon);
