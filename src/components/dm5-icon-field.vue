@@ -1,8 +1,8 @@
 <template>
   <div class="dm5-icon-field">
-    <div v-if="infoMode" class="icon">{{object.value}}</div>
+    <div v-if="infoMode" class="fa icon">{{object.value}}</div>
     <div v-else>
-      <el-button @click="open" class="icon">{{object.value}}</el-button>
+      <el-button @click="open" class="fa icon">{{object.value}}</el-button>
       <el-dialog :visible.sync="visible" :modal="false" :append-to-body="true">
         <fa-search @icon-select="select"></fa-search>
       </el-dialog>
@@ -53,7 +53,6 @@ export default {
 
 <style>
 .dm5-icon-field .icon {
-  font-family: FontAwesome;
   font-size: 24px !important;
   color: var(--color-topic-icon);
 }
