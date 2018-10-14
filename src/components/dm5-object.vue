@@ -162,18 +162,16 @@ export default {
   },
 
   components: {
-    'dm5-child-topic':            require('./dm5-child-topic').default,       // TODO: change prefix to "dmx"
+    'dm5-child-topic':      require('./dm5-child-topic').default,       // TODO: change prefix to "dmx"
     // simple default widgets
     // (component name is computed from data type URI)
-    'dm5-text-field':             require('./dm5-text-field').default,        // TODO: change prefix to "dmx"
-    'dm5-number-field':           require('./dm5-number-field').default,      // TODO: change prefix to "dmx"
-    'dm5-boolean-field':          require('./dm5-boolean-field').default,     // TODO: change prefix to "dmx"
-    'dm5-html-field':             require('./dm5-html-field').default,        // TODO: change prefix to "dmx"
+    'dm5-text-field':       require('./dm5-text-field').default,        // TODO: change prefix to "dmx"
+    'dm5-number-field':     require('./dm5-number-field').default,      // TODO: change prefix to "dmx"
+    'dm5-boolean-field':    require('./dm5-boolean-field').default,     // TODO: change prefix to "dmx"
+    'dm5-html-field':       require('./dm5-html-field').default,        // TODO: change prefix to "dmx"
     // simple custom widgets
     // (component name is computed from view config Widget topic URI)
-    'dmx-webclient-select':       require('./dm5-select-field').default,
-    'dmx-webclient-icon_picker':  require('./dm5-icon-field').default,
-    'dmx-webclient-color_picker': require('./dm5-color-field').default
+    'dmx-webclient-select': require('./dm5-select-field').default
   }
 }
 </script>
