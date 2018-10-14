@@ -51,7 +51,7 @@ export default {
     },
 
     objectRenderer () {
-      return this.renderers[this.object.typeUri] || 'dm5-object'
+      return this.renderers.page && this.renderers.page[this.object.typeUri] || 'dm5-object'
     },
 
     /**
@@ -62,6 +62,7 @@ export default {
         mode:        this.mode,
         writable:    this.writable,
         inlineId:    this.inlineId,
+        renderers:   this.renderers,
         quillConfig: this.quillConfig,
         setInlineId: id => {
           // console.log('setInlineId', id)

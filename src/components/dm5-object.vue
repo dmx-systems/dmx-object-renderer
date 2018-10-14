@@ -5,7 +5,7 @@
     <div v-if="isSimple" class="field">
       <div class="field-label">{{simpleLabel}}</div>
       <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
-        <component :is="simpleComp" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context">
+        <component :is="simpleRenderer" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context">
         </component>
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
@@ -75,14 +75,25 @@ export default {
       return customAssocType && customAssocType.isSimple() ? customAssocType.value : this.type.value
     },
 
-    simpleComp () {
+    simpleRenderer () {
+      // 1) custom renderer
+      const detailRenderers = this.context.renderers.detail
+      const renderer = detailRenderers && detailRenderers[this.object.typeUri]
+      if (renderer) {
+        return renderer
+      }
+      // 2) custom widget
       const widget = this.assocDef && this.assocDef._getViewConfig('dmx.webclient.widget')
-      // Note: since Vue 2.5.10 dot is no longer a valid character in a component name
-      return widget && widget.uri.replace(/\./g, '-') || `dm5-${this.type.dataTypeUri.substr('dmx.core.'.length)}-field`
+      if (widget) {
+        // Note: since Vue 2.5.10 dot is no longer a valid character in a component name
+        return widget.uri.replace(/\./g, '-')
+      }
+      // 3) standard renderer
+      return `dm5-${this.type.dataTypeUri.substr('dmx.core.'.length)}-field`
     },
 
     isHtmlField () {
-      return this.simpleComp === 'dm5-html-field'
+      return this.simpleRenderer === 'dm5-html-field'
     },
 
     mode () {
