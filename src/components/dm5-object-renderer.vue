@@ -51,11 +51,11 @@ export default {
     },
 
     objectRenderer () {
-      return this.renderers.page && this.renderers.page[this.object.typeUri] || 'dm5-object'
+      return this.renderers.page && this.renderers.page[this.object.typeUri] || 'dm5-object-value'
     },
 
     /**
-     * The context passed through the dm5-object hierarchy.
+     * The context passed through the dm5-object-value hierarchy.
      */
     context () {
       return {
@@ -84,14 +84,14 @@ export default {
   },
 
   components: {
-    'dm5-object': require('./dm5-object').default,
-    'dm5-assoc':  require('./dm5-assoc').default
+    'dm5-object-value': require('./dm5-object-value').default,
+    'dm5-assoc':        require('./dm5-assoc').default
   }
 }
 </script>
 
 <style>
-/* TODO: move this rule to dm5-object, add additional rules to dm5-assoc and dm5-assoc-role */
+/* TODO: move this rule to dm5-object-value, add additional rules to dm5-assoc and dm5-assoc-role */
 /* Note: the "field" class is also used in Webclient component dm5-type-renderer */
 .dm5-object-renderer .field {
   margin-top: 1.2em;

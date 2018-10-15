@@ -1,6 +1,5 @@
 <template>
-  <div :class="['dm5-object', localMode, {writable}]" @click.stop="editInline">
-    <h3 v-if="isToplevel && !noHeading">{{object.value}}</h3>
+  <div :class="['dm5-object-value', localMode, {writable}]" @click.stop="editInline">
     <!-- simple -->
     <div v-if="isSimple" class="field">
       <div class="field-label">{{fieldLabel}}</div>
@@ -11,7 +10,10 @@
       </div>
     </div>
     <!-- composite -->
-    <component v-else :is="compositeRenderer" :object="object" :level="level" :context="context"></component>
+    <template v-else>
+      <h3 v-if="isToplevel && !noHeading">{{object.value}}</h3>
+      <component :is="compositeRenderer" :object="object" :level="level" :context="context"></component>
+    </template>
   </div>
 </template>
 
@@ -21,11 +23,11 @@ import dm5 from 'dm5'
 export default {
 
   created () {
-    // console.log('dm5-object created', this.object)
+    // console.log('dm5-object-value created', this.object)
   },
 
   destroyed () {
-    // console.log('dm5-object destroyed', this.object.id)
+    // console.log('dm5-object-value destroyed', this.object.id)
   },
 
   mixins: [
@@ -146,22 +148,22 @@ export default {
 </script>
 
 <style>
-/* To be hoverable the *direct* parent dm5-object must be in info mode.      */
+/* To be hoverable the *direct* parent dm5-object-value must be in info mode.      */
 /* Otherwise an object already in inline edit mode would still be hoverable. */
-.dm5-object.info.writable > .field:hover {
+.dm5-object-value.info.writable > .field:hover {
   background-color: white;
 }
 
-.dm5-object .field .field-content.no-html {
+.dm5-object-value .field .field-content.no-html {
   display: flex;
   align-items: center;
 }
 
-.dm5-object .field .field-content.no-html .save-button {
+.dm5-object-value .field .field-content.no-html .save-button {
   margin-left: 0.4em;
 }
 
-.dm5-object .field .field-content.html .save-button {
+.dm5-object-value .field .field-content.html .save-button {
   margin-top: 0.4em;
 }
 </style>

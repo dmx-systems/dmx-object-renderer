@@ -1,8 +1,9 @@
 <template>
   <div v-if="!deleted" :class="['dm5-child-topic', mode, levelClass]">
-    <dm5-object v-if="showRelatingAssoc" :object="object.assoc" :level="level" :assoc-def="assocDef" :context="context">
-    </dm5-object>
-    <dm5-object :object="object" :level="level" :assoc-def="assocDef" :context="context"></dm5-object>
+    <dm5-object-value v-if="showRelatingAssoc" :object="object.assoc" :level="level" :assoc-def="assocDef"
+      :context="context">
+    </dm5-object-value>
+    <dm5-object-value :object="object" :level="level" :assoc-def="assocDef" :context="context"></dm5-object-value>
     <!-- Reveal Button -->
     <el-button class="hover-button" v-if="showRevealButton" type="text" @click="reveal">Reveal</el-button>
     <!-- Remove Button -->
@@ -16,8 +17,8 @@ import dm5 from 'dm5'
 export default {
 
   beforeCreate () {
-    // Note: postponed loading resolves cyclic dependency between <dm5-object> and <dm5-child-topic>
-    this.$options.components['dm5-object'] = require('./dm5-object').default
+    // Note: postponed loading resolves cyclic dependency between <dm5-object-value> and <dm5-child-topic>
+    this.$options.components['dm5-object-value'] = require('./dm5-object-value').default
   },
 
   mixins: [

@@ -10,7 +10,7 @@
       </el-select>
     </div>
     <!-- Generic Object -->
-    <dm5-object :object="assoc" :level="0" :context="context" noHeading></dm5-object>
+    <dm5-object-value :object="assoc" :level="0" :context="context" noHeading></dm5-object-value>
     <!-- Roles -->
     <dm5-assoc-role :role="assoc.role1" :mode="mode" @updated="updated"></dm5-assoc-role>
     <dm5-assoc-role :role="assoc.role2" :mode="mode" @updated="updated"></dm5-assoc-role>
@@ -56,8 +56,8 @@ export default {
   },
 
   components: {
-    'dm5-assoc-role': require('./dm5-assoc-role').default,
-    'dm5-object':     require('./dm5-object').default
+    'dm5-assoc-role':   require('./dm5-assoc-role').default,
+    'dm5-object-value': require('./dm5-object-value').default
   }
 }
 </script>
