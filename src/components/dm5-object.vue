@@ -11,23 +11,7 @@
       </div>
     </div>
     <!-- composite -->
-    <template v-else v-for="assocDef in assocDefs">
-      <!-- one -->
-      <template v-if="isOne(assocDef)">
-        <dm5-child-topic v-if="childs(assocDef)" :object="childs(assocDef)" :level="level+1"
-          :assoc-def="assocDef" :context="context" :key="assocDef.assocDefUri">
-        </dm5-child-topic>
-      </template>
-      <!-- many -->
-      <template v-else>
-        <dm5-child-topic v-for="(child, i) in childs(assocDef)" class="multi" :object="child" :level="level+1"
-          :assoc-def="assocDef" :context="context" :key="`${assocDef.assocDefUri}-${i}-${child.id}`">
-        </dm5-child-topic>
-        <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(assocDef)"
-          @click="addChild(assocDef)">
-        </el-button>
-      </template>
-    </template>
+    <dm5-child-topics v-else :object="object" :level="level" :context="context"></dm5-child-topics>
   </div>
 </template>
 
@@ -111,16 +95,10 @@ export default {
 
     writable () {
       return this.context.writable
-    },
-
-    assocDefs () {
-      return this.type.assocDefs
     }
   },
 
   methods: {
-
-    // inline editing
 
     editInline () {
       // inline editing can only be started in info mode
@@ -137,32 +115,11 @@ export default {
 
     submitInline () {
       this.context.setInlineId(undefined)
-    },
-
-    // add value
-
-    addButtonTitle (assocDef) {
-      const type = assocDef.getCustomAssocType()
-      return `Add ${type ? type.value : assocDef.getChildType().value}`
-    },
-
-    addChild (assocDef) {
-      this.childs(assocDef).push(assocDef.emptyChildInstance())
-    },
-
-    //
-
-    isOne (assocDef) {
-      return assocDef.isOne()
-    },
-
-    childs (assocDef) {
-      return this.object.childs[assocDef.assocDefUri]
     }
   },
 
   components: {
-    'dm5-child-topic':      require('./dm5-child-topic').default,       // TODO: change prefix to "dmx"
+    'dm5-child-topics':     require('./dm5-child-topics').default,      // TODO: change prefix to "dmx"
     // simple default widgets
     // (component name is computed from data type URI)
     'dm5-text-field':       require('./dm5-text-field').default,        // TODO: change prefix to "dmx"
@@ -194,12 +151,5 @@ export default {
 
 .dm5-object .field .field-content.html .save-button {
   margin-top: 0.4em;
-}
-
-.dm5-object .add-button {
-  font-size: var(--label-font-size) !important;
-  padding: 3px;
-  position: absolute;
-  right: 0;
 }
 </style>
