@@ -1,16 +1,14 @@
 <template>
   <div class="dm5-assoc-role">
     <!-- Player -->
-    <div class="field" v-if="player">{{player.typeName}}: "{{player.value}}"</div>
+    <div v-if="player">{{player.typeName}}: "{{player.value}}"</div>
     <!-- Role Type -->
-    <div class="field">
-      <div class="field-label">Role Type</div>
-      <div v-if="infoMode">{{role.typeName}}</div>
-      <el-select v-else v-model="role.roleTypeUri">
-        <el-option v-for="roleType in roleTypes" :label="roleType.value" :value="roleType.uri" :key="roleType.uri">
-        </el-option>
-      </el-select>
-    </div>
+    <div class="field-label">Role Type</div>
+    <div v-if="infoMode">{{role.typeName}}</div>
+    <el-select v-else v-model="role.roleTypeUri">
+      <el-option v-for="roleType in roleTypes" :label="roleType.value" :value="roleType.uri" :key="roleType.uri">
+      </el-option>
+    </el-select>
   </div>
 </template>
 
@@ -73,5 +71,9 @@ export default {
 <style>
 .dm5-assoc-role {
   background-color: var(--background-color-darker);
+}
+
+.dm5-assoc-role .field-label {
+  margin-top: var(--field-spacing);
 }
 </style>

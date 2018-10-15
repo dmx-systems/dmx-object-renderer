@@ -74,7 +74,12 @@ export default {
 </script>
 
 <style>
-.dm5-child-topics .add-button {
+.dm5-child-topics > .dm5-child-topic + .dm5-child-topic,
+.dm5-child-topics > .add-button      + .dm5-child-topic {
+  margin-top: var(--field-spacing);
+}
+
+.dm5-child-topics > .add-button {
   font-size: var(--label-font-size) !important;
   padding: 3px;
   position: absolute;

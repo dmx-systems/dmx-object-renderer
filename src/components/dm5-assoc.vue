@@ -1,15 +1,13 @@
 <template>
   <div class="dm5-assoc">
     <!-- Association Type -->
-    <div class="field">
-      <div class="field-label">Association Type</div>
-      <div v-if="infoMode">{{assoc.typeName}}</div>
-      <el-select v-else v-model="assoc.typeUri">
-        <el-option v-for="assocType in assocTypes" :label="assocType.value" :value="assocType.uri" :key="assocType.uri">
-        </el-option>
-      </el-select>
-    </div>
-    <!-- Generic Object -->
+    <div class="field-label">Association Type</div>
+    <div v-if="infoMode">{{assoc.typeName}}</div>
+    <el-select v-else v-model="assoc.typeUri">
+      <el-option v-for="assocType in assocTypes" :label="assocType.value" :value="assocType.uri" :key="assocType.uri">
+      </el-option>
+    </el-select>
+    <!-- Generic Value -->
     <dm5-object-value :object="assoc" :level="0" :context="context" noHeading></dm5-object-value>
     <!-- Roles -->
     <dm5-assoc-role :role="assoc.role1" :mode="mode" @updated="updated"></dm5-assoc-role>
@@ -63,4 +61,8 @@ export default {
 </script>
 
 <style>
+.dm5-assoc > .dm5-object-value,
+.dm5-assoc .dm5-assoc-role {
+  margin-top: var(--field-spacing);
+}
 </style>

@@ -86,9 +86,13 @@ export default {
   position: relative;
 }
 
+.dm5-child-topic > .dm5-object-value + .dm5-object-value {
+  margin-top: var(--field-spacing);
+}
+
 /* Hover Button */
 
-.dm5-child-topic .hover-button {
+.dm5-child-topic > .hover-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -97,7 +101,7 @@ export default {
   padding: 0 !important;
 }
 
-.dm5-child-topic:hover .hover-button {
+.dm5-child-topic:hover > .hover-button {
   visibility: visible;
 }
 
@@ -117,7 +121,7 @@ export default {
   box-shadow: var(--shadow-hover) var(--color-danger);
 }
 
-.dm5-child-topic .hover-button.remove {
+.dm5-child-topic > .hover-button.remove {
   color: var(--color-danger);
 }
 </style>
