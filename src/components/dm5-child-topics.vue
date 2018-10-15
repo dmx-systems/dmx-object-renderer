@@ -34,12 +34,8 @@ export default {
 
   computed: {
 
-    type () {
-      return this.object.getType()
-    },
-
     assocDefs () {
-      return this.type.assocDefs
+      return this.object.getType().assocDefs
     },
 
     mode () {

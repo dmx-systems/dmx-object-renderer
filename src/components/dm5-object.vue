@@ -3,7 +3,7 @@
     <h3 v-if="isToplevel && !noHeading">{{object.value}}</h3>
     <!-- simple -->
     <div v-if="isSimple" class="field">
-      <div class="field-label">{{simpleLabel}}</div>
+      <div class="field-label">{{fieldLabel}}</div>
       <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
         <component :is="simpleRenderer" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context">
         </component>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- composite -->
-    <dm5-child-topics v-else :object="object" :level="level" :context="context"></dm5-child-topics>
+    <component v-else :is="compositeRenderer" :object="object" :level="level" :context="context"></component>
   </div>
 </template>
 
@@ -54,17 +54,15 @@ export default {
       return this.type.isSimple()
     },
 
-    simpleLabel () {
+    fieldLabel () {
       const customAssocType = this.assocDef && this.assocDef.getCustomAssocType()
       return customAssocType && customAssocType.isSimple() ? customAssocType.value : this.type.value
     },
 
     simpleRenderer () {
       // 1) custom renderer
-      const detailRenderers = this.context.renderers.detail
-      const renderer = detailRenderers && detailRenderers[this.object.typeUri]
-      if (renderer) {
-        return renderer
+      if (this.detailRenderer) {
+        return this.detailRenderer
       }
       // 2) custom widget
       const widget = this.assocDef && this.assocDef._getViewConfig('dmx.webclient.widget')
@@ -74,6 +72,20 @@ export default {
       }
       // 3) standard renderer
       return `dm5-${this.type.dataTypeUri.substr('dmx.core.'.length)}-field`
+    },
+
+    compositeRenderer () {
+      // 1) custom renderer
+      if (this.detailRenderer) {
+        return this.detailRenderer
+      }
+      // 2) standard renderer
+      return 'dm5-child-topics'
+    },
+
+    detailRenderer () {
+      const detailRenderers = this.context.renderers.detail
+      return detailRenderers && detailRenderers[this.object.typeUri]
     },
 
     isHtmlField () {
