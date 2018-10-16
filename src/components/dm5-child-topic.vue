@@ -43,12 +43,7 @@ export default {
           throw Error(`Type mismatch`)
         }
         //
-        return this.assocDef.getInstanceLevelAssocType().isComposite() &&
-          (this.object.assoc.value !== '' || this.formMode)
-        // Note: for empty valued relating assocs no dm5-object-value element must be rendered. It would render no
-        // content though but would create unwanted vertical space.
-        // The empty value check can't test for childs existence (!dm5.utils.isEmpty(this.object.assoc.childs)) as
-        // empty valued childs added by "filling" stay in the object after editing.
+        return this.assocDef.getInstanceLevelAssocType().isComposite()
       }
     },
 

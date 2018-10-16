@@ -1,5 +1,5 @@
 <template>
-  <div :class="['dm5-object-value', localMode, {writable}]" @click.stop="editInline">
+  <div :class="['dm5-object-value', localMode, {writable}]" v-if="show" @click.stop="editInline">
     <!-- simple -->
     <div v-if="isSimple" class="field">
       <div class="field-label">{{fieldLabel}}</div>
@@ -43,6 +43,19 @@ export default {
   },
 
   computed: {
+
+    show () {
+      // For empty valued assocs no dm5-object-value element must be rendered. 2 reasons:
+      // 1) In the assoc details (when an assoc is selected) a label without value would be rendered.
+      // 2) In a composite value rendering an empty valued relating assoc would create unwanted vertical space.
+      //
+      // The empty value check can't test for childs existence (dm5.utils.isEmpty(this.object.assoc.childs)) as
+      // empty valued childs added by "filling" stay in the object after editing.
+      //
+      // Note: topics always have non-empty values, but not so for assocs.
+      //
+      return this.object.value !== '' || this.formMode
+    },
 
     isToplevel () {
       return this.level === 0
