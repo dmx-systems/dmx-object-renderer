@@ -51,7 +51,8 @@ export default {
     },
 
     objectRenderer () {
-      return this.renderers.page && this.renderers.page[this.object.typeUri] || 'dm5-value-renderer'
+      const objectRenderers = this.renderers.object
+      return objectRenderers && objectRenderers[this.object.typeUri] || 'dm5-value-renderer'
     },
 
     /**

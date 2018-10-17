@@ -76,8 +76,8 @@ export default {
 
     simpleRenderer () {
       // 1) custom renderer
-      if (this.detailRenderer) {
-        return this.detailRenderer
+      if (this.valueRenderer) {
+        return this.valueRenderer
       }
       // 2) custom widget
       const widget = this.assocDef && this.assocDef._getViewConfig('dmx.webclient.widget')
@@ -91,16 +91,16 @@ export default {
 
     compositeRenderer () {
       // 1) custom renderer
-      if (this.detailRenderer) {
-        return this.detailRenderer
+      if (this.valueRenderer) {
+        return this.valueRenderer
       }
       // 2) standard renderer
       return 'dm5-child-topics'
     },
 
-    detailRenderer () {
-      const detailRenderers = this.context.renderers.detail
-      return detailRenderers && detailRenderers[this.object.typeUri]
+    valueRenderer () {
+      const valueRenderers = this.context.renderers.value
+      return valueRenderers && valueRenderers[this.object.typeUri]
     },
 
     isHtmlField () {
