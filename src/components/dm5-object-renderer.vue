@@ -51,11 +51,11 @@ export default {
     },
 
     objectRenderer () {
-      return this.renderers.page && this.renderers.page[this.object.typeUri] || 'dm5-object-value'
+      return this.renderers.page && this.renderers.page[this.object.typeUri] || 'dm5-value-renderer'
     },
 
     /**
-     * The context passed through the dm5-object-value hierarchy.
+     * The context passed through the dm5-value-renderer hierarchy.
      */
     context () {
       return {
@@ -84,8 +84,8 @@ export default {
   },
 
   components: {
-    'dm5-object-value': require('./dm5-object-value').default,
-    'dm5-assoc':        require('./dm5-assoc').default
+    'dm5-value-renderer': require('./dm5-value-renderer').default,
+    'dm5-assoc':          require('./dm5-assoc').default
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['dm5-object-value', localMode, {writable}]" v-if="show" @click.stop="editInline">
+  <div :class="['dm5-value-renderer', localMode, {writable}]" v-if="show" @click.stop="editInline">
     <!-- simple -->
     <div v-if="isSimple" class="field">
       <div class="field-label">{{fieldLabel}}</div>
@@ -23,11 +23,11 @@ import dm5 from 'dm5'
 export default {
 
   created () {
-    // console.log('dm5-object-value created', this.object)
+    // console.log('dm5-value-renderer created', this.object)
   },
 
   destroyed () {
-    // console.log('dm5-object-value destroyed', this.object.id)
+    // console.log('dm5-value-renderer destroyed', this.object.id)
   },
 
   mixins: [
@@ -45,14 +45,14 @@ export default {
   computed: {
 
     show () {
-      // For empty valued assocs no dm5-object-value element must be rendered. 2 reasons:
+      // For empty valued assocs no dm5-value-renderer element must be rendered. 2 reasons:
       // 1) In the assoc details (when an assoc is selected) a label without value would be rendered.
       // 2) In a composite value rendering an empty valued relating assoc would create unwanted vertical space.
       //
-      // The empty value check can't test for childs existence (dm5.utils.isEmpty(this.object.assoc.childs)) as
+      // The empty value check can't test for childs existence (!dm5.utils.isEmpty(this.object.assoc.childs)) as
       // empty valued childs added by "filling" stay in the object after editing.
       //
-      // Note: topics always have non-empty values, but not so for assocs.
+      // Note: topics always have non-empty values, but assocs *can* have empty values.
       //
       return this.object.value !== '' || this.formMode
     },
@@ -161,22 +161,22 @@ export default {
 </script>
 
 <style>
-/* To be hoverable the *direct* parent dm5-object-value must be in info mode.      */
+/* To be hoverable the *direct* parent dm5-value-renderer must be in info mode.      */
 /* Otherwise an object already in inline edit mode would still be hoverable. */
-.dm5-object-value.info.writable > .field:hover {
+.dm5-value-renderer.info.writable > .field:hover {
   background-color: white;
 }
 
-.dm5-object-value .field .field-content.no-html {
+.dm5-value-renderer .field .field-content.no-html {
   display: flex;
   align-items: center;
 }
 
-.dm5-object-value .field .field-content.no-html .save-button {
+.dm5-value-renderer .field .field-content.no-html .save-button {
   margin-left: 0.4em;
 }
 
-.dm5-object-value .field .field-content.html .save-button {
+.dm5-value-renderer .field .field-content.html .save-button {
   margin-top: 0.4em;
 }
 </style>

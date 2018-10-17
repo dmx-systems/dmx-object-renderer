@@ -8,7 +8,7 @@
       </el-option>
     </el-select>
     <!-- Generic Value -->
-    <dm5-object-value :object="assoc" :level="0" :context="context" noHeading></dm5-object-value>
+    <dm5-value-renderer :object="assoc" :level="0" :context="context" noHeading></dm5-value-renderer>
     <!-- Roles -->
     <dm5-assoc-role :role="assoc.role1" :mode="mode" @updated="updated"></dm5-assoc-role>
     <dm5-assoc-role :role="assoc.role2" :mode="mode" @updated="updated"></dm5-assoc-role>
@@ -54,14 +54,14 @@ export default {
   },
 
   components: {
-    'dm5-assoc-role':   require('./dm5-assoc-role').default,
-    'dm5-object-value': require('./dm5-object-value').default
+    'dm5-assoc-role':     require('./dm5-assoc-role').default,
+    'dm5-value-renderer': require('./dm5-value-renderer').default
   }
 }
 </script>
 
 <style>
-.dm5-assoc > .dm5-object-value,
+.dm5-assoc > .dm5-value-renderer,
 .dm5-assoc .dm5-assoc-role {
   margin-top: var(--field-spacing);
 }
