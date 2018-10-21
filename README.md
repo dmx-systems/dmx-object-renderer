@@ -2,6 +2,14 @@
 
 ## Version History
 
+**0.9** -- Oct 21, 2018
+
+* Feature: configurable value renderers. The `renderers` component prop contains both, `object` and `value` renderers.
+* Layout/CSS fixes:
+    * Simple topics are rendered without heading
+    * Don't show label if assoc value is empty
+    * Revised vertical spacing between data fields
+
 **0.8** -- Oct 6, 2018
 
 * Component `dm5-object` renders object title, omittable by `noHeading` prop
@@ -53,4 +61,4 @@
 
 ------------
 Jörg Richter  
-Oct 6, 2018
+Oct 21, 2018
