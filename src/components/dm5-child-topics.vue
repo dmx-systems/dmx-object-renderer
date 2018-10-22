@@ -34,8 +34,13 @@ export default {
 
   computed: {
 
+    type () {
+      return this.object.getType()
+    },
+
     assocDefs () {
-      return this.object.getType().assocDefs
+      // Reduced detail rendering: at deeper levels for identity types only their identity attributes are rendered
+      return this.level === 0 || !this.type.isIdentity() ? this.type.assocDefs : this.type.getIdentityAssocDefs()
     },
 
     mode () {
@@ -44,6 +49,14 @@ export default {
   },
 
   methods: {
+
+    isOne (assocDef) {
+      return assocDef.isOne()
+    },
+
+    childs (assocDef) {
+      return this.object.childs[assocDef.assocDefUri]
+    },
 
     // add value
 
@@ -54,16 +67,6 @@ export default {
 
     addChild (assocDef) {
       this.childs(assocDef).push(assocDef.emptyChildInstance())
-    },
-
-    //
-
-    isOne (assocDef) {
-      return assocDef.isOne()
-    },
-
-    childs (assocDef) {
-      return this.object.childs[assocDef.assocDefUri]
     }
   },
 
