@@ -147,7 +147,9 @@ export default {
 
     enter () {
       // console.log('enter', this.inlineEdit)
-      this.inlineEdit ? this.submitInline() : this.submit()
+      if (!this.isHtmlField) {
+        this.inlineEdit ? this.submitInline() : this.submit()
+      }
     },
 
     submitInline () {
