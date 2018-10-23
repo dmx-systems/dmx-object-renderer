@@ -54,7 +54,7 @@ export default {
       //
       // Note: topics always have non-empty values, but assocs *can* have empty values.
       //
-      return this.object.value !== '' || this.formMode
+      return this.object.value !== '' || this.formMode || this.localFormMode
     },
 
     isToplevel () {
@@ -113,6 +113,10 @@ export default {
 
     localMode () {
       return this.inlineEdit ? 'form' : this.mode
+    },
+
+    localFormMode () {
+      return this.localMode === 'form'
     },
 
     inlineEdit () {
