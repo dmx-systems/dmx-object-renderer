@@ -1,14 +1,37 @@
 <template>
   <div v-if="infoMode">{{object.value}}</div>
-  <el-input v-else v-model="object.value"></el-input>
+  <el-autocomplete v-else v-model="object.value" :fetch-suggestions="fetchSuggestions" :trigger-on-focus="false">
+  </el-autocomplete>
 </template>
 
 <script>
+import dm5 from 'dm5'
+
 export default {
+
   mixins: [
     require('./mixins/object').default,
     require('./mixins/mode').default,
     require('./mixins/info-mode').default
-  ]
+  ],
+
+  computed: {
+
+    typeUri () {
+      return this.object.typeUri
+    },
+
+    searchQuery () {
+      return this.object.value + '*'    // TODO: copy in dm5-search-widget
+    }
+  },
+
+  methods: {
+    fetchSuggestions (_, cb) {
+      dm5.restClient.searchTopics(this.searchQuery, this.typeUri).then(topics => {
+        cb(topics)
+      })
+    }
+  }
 }
 </script>
