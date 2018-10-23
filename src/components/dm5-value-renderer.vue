@@ -4,7 +4,8 @@
     <div v-if="isSimple" class="field">
       <div class="field-label">{{fieldLabel}}</div>
       <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
-        <component :is="simpleRenderer" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context">
+        <component :is="simpleRenderer" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context"
+          @keyup.native.enter="enter">
         </component>
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
@@ -144,8 +145,17 @@ export default {
       }
     },
 
+    enter () {
+      // console.log('enter', this.inlineEdit)
+      this.inlineEdit ? this.submitInline() : this.submit()
+    },
+
     submitInline () {
-      this.context.setInlineId(undefined)
+      this.context.setInlineId()
+    },
+
+    submit () {
+      this.context.submit()
     }
   },
 

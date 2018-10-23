@@ -70,6 +70,9 @@ export default {
           this.inlineId = id
           this.$emit('inline', id)
         },
+        submit: () => {
+          this.$emit('submit')
+        },
         revealChild: relTopic => {
           this.$emit('child-topic-reveal', relTopic)
         }
