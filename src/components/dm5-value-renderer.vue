@@ -13,7 +13,8 @@
     <!-- composite -->
     <template v-else>
       <h3 v-if="isToplevel && !noHeading">{{object.value}}</h3>
-      <component :is="compositeRenderer" :object="object" :level="level" :context="context"></component>
+      <component :is="compositeRenderer" :object="object" :level="level" :assoc-def="assocDef" :context="context">
+      </component>
     </template>
   </div>
 </template>

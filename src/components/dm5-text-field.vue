@@ -16,19 +16,16 @@ export default {
   ],
 
   computed: {
-
-    typeUri () {
-      return this.object.typeUri
-    },
-
     searchQuery () {
       return this.object.value + '*'    // TODO: copy in dm5-search-widget
     }
   },
 
   methods: {
-    fetchSuggestions (_, cb) {
-      dm5.restClient.searchTopics(this.searchQuery, this.typeUri).then(topics => {
+    fetchSuggestions (value, cb) {
+      // console.log('fetchSuggestions', value)
+      // Note: for an empty value fetchSuggestions() is not invoked
+      dm5.restClient.searchTopics(this.searchQuery, this.object.typeUri).then(topics => {
         cb(topics)
       })
     }
