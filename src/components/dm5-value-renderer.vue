@@ -28,6 +28,11 @@ export default {
     // console.log('dm5-value-renderer created', this.object)
   },
 
+  updated () {
+    // console.log('dm5-value-renderer updated', this.object.id)
+    this.context.updated()
+  },
+
   destroyed () {
     // console.log('dm5-value-renderer destroyed', this.object.id)
   },

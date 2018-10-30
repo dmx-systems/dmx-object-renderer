@@ -1,6 +1,5 @@
 <template>
-  <dm5-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :context="context" @updated="updated">
-  </dm5-assoc>
+  <dm5-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :context="context"></dm5-assoc>
   <component class="dm5-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :context="context">
   </component>
 </template>
@@ -10,11 +9,6 @@ export default {
 
   created () {
     // console.log('dm5-object-renderer created', this.object.id, this.writable)
-  },
-
-  updated () {
-    // console.log('dm5-object-renderer updated', this.object.id)
-    this.$emit('updated')
   },
 
   destroyed () {
@@ -75,15 +69,12 @@ export default {
         },
         revealChild: relTopic => {
           this.$emit('child-topic-reveal', relTopic)
+        },
+        updated: () => {
+          console.log('context updated', this.object.id)
+          this.$emit('updated')
         }
       }
-    }
-  },
-
-  methods: {
-    updated () {
-      // console.log('updated()')
-      this.$emit('updated')
     }
   },
 

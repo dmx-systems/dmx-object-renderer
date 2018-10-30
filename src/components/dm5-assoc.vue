@@ -10,8 +10,8 @@
     <!-- Generic Value -->
     <dm5-value-renderer :object="assoc" :level="0" :context="context" noHeading></dm5-value-renderer>
     <!-- Roles -->
-    <dm5-assoc-role :role="assoc.role1" :mode="mode" @updated="updated"></dm5-assoc-role>
-    <dm5-assoc-role :role="assoc.role2" :mode="mode" @updated="updated"></dm5-assoc-role>
+    <dm5-assoc-role :role="assoc.role1" :mode="mode" :context="context"></dm5-assoc-role>
+    <dm5-assoc-role :role="assoc.role2" :mode="mode" :context="context"></dm5-assoc-role>
   </div>
 </template>
 
@@ -44,12 +44,6 @@ export default {
       return Object.values(this.$store.state.typeCache.assocTypes).sort(
         (at1, at2) => at1.value.localeCompare(at2.value)
       )
-    }
-  },
-
-  methods: {
-    updated () {
-      this.$emit('updated')
     }
   },
 

@@ -19,7 +19,8 @@ export default {
 
   mixins: [
     require('./mixins/mode').default,
-    require('./mixins/info-mode').default
+    require('./mixins/info-mode').default,
+    require('./mixins/context').default
   ],
 
   props: {
@@ -32,7 +33,7 @@ export default {
 
   data () {
     return {
-      player: undefined
+      player: undefined     // fetched asynchronously
     }
   },
 
@@ -48,7 +49,8 @@ export default {
   },
 
   updated () {
-    this.$emit('updated')
+    // console.log('dm5-assoc-role updated')
+    this.context.updated()
   },
 
   // for component reuse
