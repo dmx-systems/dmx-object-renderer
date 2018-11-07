@@ -16,7 +16,7 @@ export default {
   },
 
   mixins: [
-    require('./mixins/object').default,
+    require('./mixins/object').default,   // TODO: make "object" an optional prop to better support async fetching
     require('./mixins/writable').default,
     require('./mixins/mode-default').default
   ],
@@ -71,7 +71,7 @@ export default {
           this.$emit('child-topic-reveal', relTopic)
         },
         updated: () => {
-          console.log('context updated', this.object.id)
+          // console.log('context updated', this.object.id)
           this.$emit('updated')
         }
       }

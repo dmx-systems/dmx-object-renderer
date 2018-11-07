@@ -20,6 +20,10 @@ import dm5 from 'dm5'
 
 export default {
 
+  created () {
+    // console.log('dm5-assoc created', this.assoc)
+  },
+
   mixins: [
     require('./mixins/info-mode').default,
     require('./mixins/context').default

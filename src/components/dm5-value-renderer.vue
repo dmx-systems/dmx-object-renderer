@@ -152,7 +152,9 @@ export default {
     },
 
     enter () {
-      // console.log('enter', this.inlineEdit)
+      // ### TODO: submit only on "enter", not on "select"
+      // const item = document.querySelectorAll('ul.el-autocomplete-suggestion__list > li')  // > li.highlighted
+      // console.log('enter', item)
       if (!this.isHtmlField) {
         this.inlineEdit ? this.submitInline() : this.submit()
       }

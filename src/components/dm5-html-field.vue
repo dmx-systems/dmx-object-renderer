@@ -37,11 +37,11 @@ export default {
   computed: {
 
     quillOptions () {
-      return this.context.quillConfig.options
+      return this.context.quillConfig.options       // TODO: make "quillConfig" optional
     },
 
     quillExtensions () {
-      return this.context.quillConfig.extensions
+      return this.context.quillConfig.extensions    // TODO: make "quillConfig" optional
     }
   },
 

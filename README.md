@@ -2,9 +2,18 @@
 
 ## Version History
 
+**0.10** -- Nov 7, 2018
+
+* Feature: auto completion for all single line text fields
+* Improvements:
+    * Reduced detail rendering for nested identities
+    * New event `submit` fired on Enter key
+    * Pass `assoc-def` also to *composite* value renderers
+* Fix: adapt Cytoscape node size on detail DOM change
+
 **0.9** -- Oct 21, 2018
 
-* Feature: configurable value renderers. The `renderers` component prop contains both, `object` and `value` renderers.
+* Feature: configurable value renderers. The `renderers` component prop contains both, `object` renderers and `value` renderers.
 * Layout/CSS fixes:
     * Simple topics are rendered without heading
     * Don't show label if assoc value is empty
@@ -61,4 +70,4 @@
 
 ------------
 Jörg Richter  
-Oct 21, 2018
+Nov 7, 2018
