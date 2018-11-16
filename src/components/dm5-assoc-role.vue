@@ -24,11 +24,11 @@ export default {
   ],
 
   props: {
-    // the assoc role to render
-    role: {
+    role: {                 // the assoc role to render
       type: dm5.AssocRole,
       required: true
-    }
+    },
+    types: Object           // Optional: "assocTypes" and "roleTypes" (arrays)
   },
 
   data () {
@@ -39,7 +39,7 @@ export default {
 
   computed: {
     roleTypes () {
-      return this.$store.state.typeCache.roleTypes
+      return this.types.roleTypes
     }
   },
 

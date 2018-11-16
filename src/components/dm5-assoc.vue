@@ -7,11 +7,11 @@
       <el-option v-for="assocType in assocTypes" :label="assocType.value" :value="assocType.uri" :key="assocType.uri">
       </el-option>
     </el-select>
-    <!-- Generic Value -->
-    <dm5-value-renderer :object="assoc" :level="0" :context="context" noHeading></dm5-value-renderer>
+    <!-- Association Value -->
+    <dm5-value-renderer :object="assoc" :level="0" :context="context" no-heading></dm5-value-renderer>
     <!-- Roles -->
-    <dm5-assoc-role :role="assoc.role1" :mode="mode" :context="context"></dm5-assoc-role>
-    <dm5-assoc-role :role="assoc.role2" :mode="mode" :context="context"></dm5-assoc-role>
+    <dm5-assoc-role :role="assoc.role1" :mode="mode" :types="types" :context="context"></dm5-assoc-role>
+    <dm5-assoc-role :role="assoc.role2" :mode="mode" :types="types" :context="context"></dm5-assoc-role>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ import dm5 from 'dm5'
 export default {
 
   created () {
-    // console.log('dm5-assoc created', this.assoc)
+    // console.log('dm5-assoc created', this.types)
   },
 
   mixins: [
@@ -30,11 +30,11 @@ export default {
   ],
 
   props: {
-    // the Assoc to render
-    assoc: {
+    assoc: {              // the assoc to render
       type: dm5.Assoc,
       required: true
-    }
+    },
+    types: Object         // Optional: "assocTypes" and "roleTypes" (arrays)
   },
 
   computed: {
@@ -44,8 +44,7 @@ export default {
     },
 
     assocTypes () {
-      // TODO: decoupling. Don't access host application state.
-      return Object.values(this.$store.state.typeCache.assocTypes).sort(
+      return Object.values(this.types.assocTypes).sort(
         (at1, at2) => at1.value.localeCompare(at2.value)
       )
     }
