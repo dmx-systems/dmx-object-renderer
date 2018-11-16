@@ -39,8 +39,13 @@ export default {
     },
 
     assocDefs () {
-      // Reduced detail rendering: at deeper levels for identity types only their identity attributes are rendered
-      return this.level === 0 || !this.type.isIdentity() ? this.type.assocDefs : this.type.getIdentityAssocDefs()
+      if (this.level === 0 || this.object.isAssoc() || this.type.isValue()) {
+        // Normal rendering
+        return this.type.assocDefs
+      } else {
+        // Reduced details: at deeper levels for identity types only their identity attributes are rendered
+        return this.type.assocDefs.filter(assocDef => assocDef.isIdentityAttr)
+      }
     },
 
     mode () {

@@ -22,13 +22,21 @@ export default {
   },
 
   methods: {
+
     fetchSuggestions (value, cb) {
       // console.log('fetchSuggestions', value)
       // Note: for an empty value fetchSuggestions() is not invoked
+      // Note: fetchSuggestions() is already debounced by Element UI
       dm5.restClient.searchTopics(this.searchQuery, this.object.typeUri).then(topics => {
         cb(topics)
       })
     }
+
+    /* enter (e) {
+      // ### TODO: submit only on "enter", not on "select"
+      const item = document.querySelector('ul.el-autocomplete-suggestion__list > li')  // > li.highlighted
+      console.log('enter', e, item)
+    } */
   }
 }
 </script>
