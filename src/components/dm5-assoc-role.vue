@@ -39,7 +39,9 @@ export default {
 
   computed: {
     roleTypes () {
-      return this.types.roleTypes
+      return Object.values(this.types.roleTypes).sort(
+        (rt1, rt2) => rt1.value.localeCompare(rt2.value)
+      )
     }
   },
 

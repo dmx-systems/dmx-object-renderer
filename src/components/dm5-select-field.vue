@@ -2,7 +2,7 @@
   <div v-if="infoMode">{{displayValue}}</div>
   <el-select v-else v-model="selection" :clearable="clearable" :filterable="customizable" :allow-create="customizable"
       placeholder="">
-    <el-option v-for="topic in options" :label="topic.value" :value="topic.id" :key="topic.id"></el-option>
+    <el-option v-for="topic in sortedOptions" :label="topic.value" :value="topic.id" :key="topic.id"></el-option>
   </el-select>
 </template>
 
@@ -30,12 +30,18 @@ export default {
       // ID of option topic, or text entered (if <el-select> is customizable).
       // Apparently in <el-select> an empty string represents "no selection".
       selection: this.object.id === -1 ? '' : this.object.id,
-      // Option topics (object, mapped by topic ID)
+      // Option topics (object, mapped by topic ID), fetched asynchronously
       options: undefined
     }
   },
 
   computed: {
+
+    sortedOptions () {
+      return this.options && Object.values(this.options).sort(
+        (t1, t2) => t1.value.localeCompare(t2.value)    // FIXME: number/boolean fields?
+      )
+    },
 
     clearable () {
       return this.assocDef.getViewConfig('dmx.webclient.clearable')
