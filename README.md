@@ -2,6 +2,13 @@
 
 ## Version History
 
+**0.11** -- Nov 24, 2018
+
+* Improvements:
+    * Composability: new component property `types` (component does not access app state anymore)
+    * Sort custom assoc type menu and role type menu
+    * Revised reduced details rendering logic
+
 **0.10** -- Nov 7, 2018
 
 * Feature: auto completion for all single line text fields
@@ -70,4 +77,4 @@
 
 ------------
 Jörg Richter  
-Nov 7, 2018
+Nov 24, 2018
