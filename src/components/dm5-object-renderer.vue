@@ -8,7 +8,7 @@
 export default {
 
   created () {
-    // console.log('dm5-object-renderer created', this.object.id, this.writable)
+    // console.log('dm5-object-renderer created', this.object, this.writable)
   },
 
   destroyed () {

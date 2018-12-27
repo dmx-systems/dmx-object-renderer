@@ -185,8 +185,8 @@ export default {
 </script>
 
 <style>
-/* To be hoverable the *direct* parent dm5-value-renderer must be in info mode.      */
-/* Otherwise an object already in inline edit mode would still be hoverable. */
+/* To be hoverable the *direct* parent dm5-value-renderer must be in info mode. */
+/* Otherwise an object already in inline edit mode would still be hoverable.    */
 .dm5-value-renderer.info.writable > .field:hover {
   background-color: white;
 }

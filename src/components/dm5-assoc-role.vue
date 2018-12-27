@@ -25,7 +25,7 @@ export default {
 
   props: {
     role: {                 // the assoc role to render
-      type: dm5.AssocRole,
+      type: dm5.Player,
       required: true
     },
     types: Object           // Optional: "assocTypes" and "roleTypes" (arrays)
