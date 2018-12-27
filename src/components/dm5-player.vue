@@ -1,11 +1,11 @@
 <template>
-  <div class="dm5-assoc-role">
+  <div class="dm5-player">
     <!-- Player -->
-    <div v-if="player">{{player.typeName}}: "{{player.value}}"</div>
+    <div v-if="playerObject">{{playerObject.typeName}}: "{{playerObject.value}}"</div>
     <!-- Role Type -->
     <div class="field-label">Role Type</div>
-    <div v-if="infoMode">{{role.roleTypeName}}</div>
-    <el-select v-else v-model="role.roleTypeUri">
+    <div v-if="infoMode">{{player.roleTypeName}}</div>
+    <el-select v-else v-model="player.roleTypeUri">
       <el-option v-for="roleType in roleTypes" :label="roleType.value" :value="roleType.uri" :key="roleType.uri">
       </el-option>
     </el-select>
@@ -24,16 +24,16 @@ export default {
   ],
 
   props: {
-    role: {                 // the assoc role to render
+    player: {                   // the player to render
       type: dm5.Player,
       required: true
     },
-    types: Object           // Optional: "assocTypes" and "roleTypes" (arrays)
+    types: Object               // Optional: "assocTypes" and "roleTypes" (arrays)
   },
 
   data () {
     return {
-      player: undefined     // fetched asynchronously
+      playerObject: undefined   // fetched asynchronously
     }
   },
 
@@ -51,21 +51,21 @@ export default {
   },
 
   updated () {
-    // console.log('dm5-assoc-role updated')
+    // console.log('dm5-player updated')
     this.context.updated()
   },
 
   // for component reuse
   watch: {
-    role () {
+    player () {
       this.fetchPlayer()
     }
   },
 
   methods: {
     fetchPlayer () {
-      this.role.fetch().then(player => {
-        this.player = player
+      this.player.fetch().then(playerObject => {
+        this.playerObject = playerObject
       })
     }
   }
@@ -73,11 +73,11 @@ export default {
 </script>
 
 <style>
-.dm5-assoc-role {
+.dm5-player {
   background-color: var(--background-color-darker);
 }
 
-.dm5-assoc-role .field-label {
+.dm5-player .field-label {
   margin-top: var(--field-spacing);
 }
 </style>

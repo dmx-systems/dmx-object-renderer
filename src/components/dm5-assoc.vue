@@ -10,8 +10,8 @@
     <!-- Association Value -->
     <dm5-value-renderer :object="assoc" :level="0" :context="context" no-heading></dm5-value-renderer>
     <!-- Roles -->
-    <dm5-assoc-role :role="assoc.role1" :mode="mode" :types="types" :context="context"></dm5-assoc-role>
-    <dm5-assoc-role :role="assoc.role2" :mode="mode" :types="types" :context="context"></dm5-assoc-role>
+    <dm5-player :player="assoc.role1" :mode="mode" :types="types" :context="context"></dm5-player>
+    <dm5-player :player="assoc.role2" :mode="mode" :types="types" :context="context"></dm5-player>
   </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
   },
 
   components: {
-    'dm5-assoc-role':     require('./dm5-assoc-role').default,
+    'dm5-player':         require('./dm5-player').default,
     'dm5-value-renderer': require('./dm5-value-renderer').default
   }
 }
@@ -59,7 +59,7 @@ export default {
 
 <style>
 .dm5-assoc > .dm5-value-renderer,
-.dm5-assoc .dm5-assoc-role {
+.dm5-assoc .dm5-player {
   margin-top: var(--field-spacing);
 }
 </style>
