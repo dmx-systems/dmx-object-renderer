@@ -4,7 +4,7 @@
     <div v-if="player">{{player.typeName}}: "{{player.value}}"</div>
     <!-- Role Type -->
     <div class="field-label">Role Type</div>
-    <div v-if="infoMode">{{role.typeName}}</div>
+    <div v-if="infoMode">{{role.roleTypeName}}</div>
     <el-select v-else v-model="role.roleTypeUri">
       <el-option v-for="roleType in roleTypes" :label="roleType.value" :value="roleType.uri" :key="roleType.uri">
       </el-option>
@@ -64,7 +64,7 @@ export default {
 
   methods: {
     fetchPlayer () {
-      this.role.getPlayer().then(player => {
+      this.role.fetch().then(player => {
         this.player = player
       })
     }
