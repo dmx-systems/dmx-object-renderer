@@ -2,6 +2,10 @@
 
 ## Version History
 
+**0.12** -- Jan 5, 2019
+
+* Adapt to `dm5` library
+
 **0.11** -- Nov 24, 2018
 
 * Improvements:
@@ -77,4 +81,4 @@
 
 ------------
 Jörg Richter  
-Nov 24, 2018
+Jan 5, 2019
