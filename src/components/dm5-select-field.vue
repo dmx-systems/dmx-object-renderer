@@ -128,7 +128,7 @@ export default {
     // sanity check
     checkSelection () {
       if (!['number', 'string'].includes(typeof this.selection)) {
-        throw Error(`Unexpected selection: ${this.selection} ${typeof this.selection}`)
+        throw Error(`unexpected selection: ${this.selection} ${typeof this.selection}`)
       }
     }
   }

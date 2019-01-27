@@ -101,7 +101,8 @@ export default {
 }
 
 .ql-container.ql-bubble .ql-tooltip {
-  z-index: 1;       /* make sure the toolbar is on-top of adjacent detail panel fields */
+  width: 250px;     /* fixed toolbar width */
+  z-index: 2;       /* stack toolbar above adjacent detail panel fields and el-checkboxes (z-index 1) */
 }
 
 .ql-editor {

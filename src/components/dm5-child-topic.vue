@@ -40,7 +40,7 @@ export default {
       if (this.object.assoc) {
         // sanity check
         if (this.object.assoc.typeUri !== this.assocDef.instanceLevelAssocTypeUri) {
-          throw Error(`Type mismatch`)
+          throw Error(`type mismatch`)
         }
         //
         return this.assocDef.getInstanceLevelAssocType().isComposite()
