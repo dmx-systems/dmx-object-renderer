@@ -94,20 +94,21 @@ export default {
 .ql-container {
   font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
   font-size:   var(--main-font-size)   !important;    /* Quill default is 13px */
-}
-
-.ql-container.ql-bubble {
   border: 1px solid var(--border-color)
 }
 
-.ql-container.ql-bubble .ql-tooltip {
-  width: 250px;     /* fixed toolbar width */
-  z-index: 2;       /* stack toolbar above adjacent detail panel fields and el-checkboxes (z-index 1) */
-}
-
-.ql-editor {
+.ql-container .ql-editor {
   line-height: inherit !important;                    /* Quill default is 1.42; inherit from dm5-html-field */
   padding: 6px 8px !important;                        /* Quill default is 12px 15px */
   background-color: white;
+}
+
+.ql-container .ql-tooltip {
+  width: 250px;         /* fixed toolbar width */
+  z-index: 2;           /* stack toolbar above adjacent detail panel fields and el-checkboxes (z-index 1) */
+}
+
+.ql-container .ql-tooltip .ql-toolbar .ql-formats:nth-child(4) {
+  margin-left: 12px;    /* margin for 2nd toolbar row */
 }
 </style>
