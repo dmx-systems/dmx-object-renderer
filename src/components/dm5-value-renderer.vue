@@ -1,5 +1,5 @@
 <template>
-  <div :class="['dm5-value-renderer', localMode, {writable}]" v-if="show" @click.stop="editInline">
+  <div :class="['dm5-value-renderer', localMode, {editable}]" v-if="show" @click.stop="editInline">
     <!-- simple -->
     <div v-if="isSimple" class="field">
       <div class="field-label">{{fieldLabel}}</div>
@@ -131,8 +131,8 @@ export default {
       return this.context.inlineId === this._uid  // FIXME: _uid is Vue internal
     },
 
-    writable () {
-      return this.context.writable
+    editable () {
+      return this.context.editable
     }
   },
 
@@ -140,7 +140,7 @@ export default {
 
     editInline () {
       // inline editing can only be started in info mode
-      if (this.infoMode && this.writable) {
+      if (this.infoMode && this.editable) {
         // inline editing is only supported for simple objects
         if (this.isSimple) {
           // console.log('editInline', this.object.typeUri, this.object.value)
@@ -187,7 +187,7 @@ export default {
 <style>
 /* To be hoverable the *direct* parent dm5-value-renderer must be in info mode. */
 /* Otherwise an object already in inline edit mode would still be hoverable.    */
-.dm5-value-renderer.info.writable > .field:hover {
+.dm5-value-renderer.info.editable > .field:hover {
   background-color: white;
 }
 

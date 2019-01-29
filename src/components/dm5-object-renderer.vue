@@ -56,7 +56,7 @@ export default {
     context () {
       return {
         mode:        this.mode,
-        writable:    this.writable,
+        editable:    this.writable && !this.editDisabled,
         inlineId:    this.inlineId,
         renderers:   this.renderers,
         quillConfig: this.quillConfig,
@@ -76,6 +76,12 @@ export default {
           this.$emit('updated')
         }
       }
+    },
+
+    // copy in dm5-info-tab.vue (as buttonDisabled())
+    editDisabled () {
+      // only identity topics are enabled; assocs and types are always enabled
+      return this.object.isTopic() && !this.object.isType() && !this.object.getType().isIdentity()
     }
   },
 
