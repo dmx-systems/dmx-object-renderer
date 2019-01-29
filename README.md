@@ -2,6 +2,12 @@
 
 ## Version History
 
+**0.13** -- Jan 29, 2019
+
+* Editor toolbar has fixed layout/size
+* Fix: disable inline editing for DMX value types
+* Change license to `GPL-3.0-or-later`
+
 **0.12** -- Jan 5, 2019
 
 * Adapt to `dm5` library
@@ -81,4 +87,4 @@
 
 ------------
 Jörg Richter  
-Jan 5, 2019
+Jan 29, 2019
