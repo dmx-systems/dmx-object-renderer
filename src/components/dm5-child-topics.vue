@@ -91,6 +91,6 @@ export default {
   font-size: var(--label-font-size) !important;
   padding: 3px;
   position: absolute;
-  right: 0;
+  right: var(--detail-panel-padding);
 }
 </style>
