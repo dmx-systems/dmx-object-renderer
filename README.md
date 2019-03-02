@@ -2,6 +2,10 @@
 
 ## Version History
 
+**0.14** -- Mar 2, 2019
+
+* Adjust style when displayed inside `dm5-detail-panel` component (fixed tabs)
+
 **0.13** -- Jan 29, 2019
 
 * Editor toolbar has fixed layout/size
@@ -87,4 +91,4 @@
 
 ------------
 Jörg Richter  
-Jan 29, 2019
+Mar 2, 2019

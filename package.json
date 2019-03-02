@@ -1,8 +1,8 @@
 {
   "name": "dm5-object-renderer",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "The DeepaMehta 5 object renderer as a composable GUI component",
-  "author": "Jörg Richter",
+  "author": "Jörg Richter <jri@dmx.berlin>",
   "license": "GPL-3.0-or-later",
   "main": "src/components/dm5-object-renderer.vue",
   "repository": {
