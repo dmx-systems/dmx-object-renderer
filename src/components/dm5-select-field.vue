@@ -28,8 +28,9 @@ export default {
       displayValue: this.object.value,
       // Select model
       // ID of option topic, or text entered (if <el-select> is customizable).
-      // Apparently in <el-select> an empty string represents "no selection".
-      selection: this.object.id === -1 ? '' : this.object.id,
+      // Note: since Element UI 2.7.1 a <el-select> represents "no selection" by null value (instead '').
+      // https://github.com/ElemeFE/element/issues/14322
+      selection: this.object.id === -1 ? null : this.object.id,
       // Option topics (object, mapped by topic ID), fetched asynchronously
       options: undefined
     }
@@ -100,11 +101,12 @@ export default {
     syncObjectValue () {
       this.checkSelection()
       if (typeof this.selection === 'number') {
-        // existing option selected
+        // Case 1: existing option selected
         this.object.value = `ref_id:${this.selection}`
       } else {
-        // custom value entered (selection type is string)
-        this.object.value = this.selection
+        // Case 2: custom value entered (selection is of type string) or cleared (selection is null)
+        // Note: a serialized object as sent to the server must not contain JSON null, but ''
+        this.object.value = this.selection || ''
         // Note: custom values get no URI. An existing URI must be reset.
         // Otherwise an URI clash might occur at server side while creating the custom topic.
         this.object.uri = ''
@@ -117,17 +119,19 @@ export default {
     syncDisplayValue () {
       this.checkSelection()
       if (typeof this.selection === 'number') {
-        // existing option selected
+        // Case 1: existing option selected
         this.displayValue = this.options[this.selection].value
       } else {
-        // custom value entered (selection type is string)
-        this.displayValue = this.selection
+        // Case 2: custom value entered (selection is of type string) or cleared (selection is null)
+        this.displayValue = this.selection || ''
       }
     },
 
     // sanity check
     checkSelection () {
-      if (!['number', 'string'].includes(typeof this.selection)) {
+      // Note: since Element UI 2.7.1 a cleared <el-select> has null value (instead '')
+      // https://github.com/ElemeFE/element/issues/14322
+      if (this.selection !== null && !['number', 'string'].includes(typeof this.selection)) {
         throw Error(`unexpected selection: ${this.selection} ${typeof this.selection}`)
       }
     }
