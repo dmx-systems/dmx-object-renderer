@@ -5,9 +5,13 @@
     </dm5-value-renderer>
     <dm5-value-renderer :object="object" :level="level" :assoc-def="assocDef" :context="context"></dm5-value-renderer>
     <!-- Reveal Button -->
-    <el-button class="hover-button" v-if="showRevealButton" type="text" @click="reveal">Reveal</el-button>
+    <el-button class="hover-button" v-if="showRevealButton" type="text" :title="revealTitle" @click="reveal">
+      Reveal
+    </el-button>
     <!-- Remove Button -->
-    <el-button class="hover-button remove" v-if="showRemoveButton" type="text" @click="remove">Remove</el-button>
+    <el-button class="hover-button remove" v-if="showRemoveButton" type="text" :title="removeTitle" @click="remove">
+      Remove
+    </el-button>
   </div>
 </template>
 
@@ -53,6 +57,19 @@ export default {
 
     showRemoveButton () {
       return this.formMode && this.assocDef.isMany()
+    },
+
+    revealTitle () {
+      return `Reveal ${this.typeName} Topic`
+    },
+
+    removeTitle () {
+      const type = this.assocDef.getCustomAssocType()
+      return `Remove ${type ? type.value : this.typeName}`
+    },
+
+    typeName () {
+      return this.object.typeName
     },
 
     levelClass () {
