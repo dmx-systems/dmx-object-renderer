@@ -1,7 +1,7 @@
 <template>
   <div :class="['dm5-value-renderer', localMode, {editable}]" v-if="show" @click.stop="editInline">
     <!-- simple -->
-    <div v-if="isSimple" class="field">
+    <div v-if="isSimple" class="field" :title="title">
       <div class="field-label">{{fieldLabel}}</div>
       <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
         <component :is="simpleRenderer" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context"
@@ -122,8 +122,21 @@ export default {
       return this.inlineEdit ? 'form' : this.mode
     },
 
+    localInfoMode () {
+      return this.localMode === 'info'
+    },
+
     localFormMode () {
       return this.localMode === 'form'
+    },
+
+    title () {
+      return this.inlineEnabled && "Click to Edit"
+    },
+
+    inlineEnabled () {
+      // inline editing can only be started in info mode
+      return this.localInfoMode && this.editable
     },
 
     inlineEdit () {
@@ -139,8 +152,7 @@ export default {
   methods: {
 
     editInline () {
-      // inline editing can only be started in info mode
-      if (this.infoMode && this.editable) {
+      if (this.inlineEnabled) {
         // inline editing is only supported for simple objects
         if (this.isSimple) {
           // console.log('editInline', this.object.typeUri, this.object.value)
