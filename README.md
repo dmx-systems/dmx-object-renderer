@@ -2,6 +2,12 @@
 
 ## Version History
 
+**0.15** -- Apr 22, 2019
+
+* Improvement: add tooltips to "Reveal" and "Remove" buttons and to inline edit opportunity
+* Fix: serialization of `Number` field values
+* Chore: adapt to Element UI 2.7.1 (a cleared `<el-select>` has `null` value, not `''`)
+
 **0.14** -- Mar 2, 2019
 
 * Adjust style when displayed inside `dm5-detail-panel` component (fixed tabs)
@@ -91,4 +97,4 @@
 
 ------------
 Jörg Richter  
-Mar 2, 2019
+Apr 22, 2019
