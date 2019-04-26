@@ -1,7 +1,7 @@
 <template>
   <div v-if="infoMode">{{displayValue}}</div>
   <el-select v-else v-model="selection" :clearable="clearable" :filterable="customizable" :allow-create="customizable"
-      placeholder="">
+      default-first-option placeholder="">
     <el-option v-for="topic in sortedOptions" :label="topic.value" :value="topic.id" :key="topic.id"></el-option>
   </el-select>
 </template>
