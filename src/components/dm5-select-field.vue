@@ -1,7 +1,7 @@
 <template>
   <div v-if="infoMode">{{displayValue}}</div>
-  <el-select v-else v-model="selection" :clearable="clearable" :filterable="customizable" :allow-create="customizable"
-      default-first-option placeholder="">
+  <el-select v-else v-model="selection" :clearable="clearable" :allow-create="customizable" :filterable="customizable"
+      placeholder="" default-first-option>
     <el-option v-for="topic in sortedOptions" :label="topic.value" :value="topic.id" :key="topic.id"></el-option>
   </el-select>
 </template>
@@ -40,7 +40,9 @@ export default {
 
     sortedOptions () {
       return this.options && Object.values(this.options).sort(
-        (t1, t2) => t1.value.localeCompare(t2.value)    // FIXME: number/boolean fields?
+        (t1, t2) => t1.value.localeCompare ?
+          t1.value.localeCompare(t2.value) :
+          t1.value < t2.value ? -1 : t1.value === t2.value ? 0 : 1
       )
     },
 
