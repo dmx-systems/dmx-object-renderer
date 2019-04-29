@@ -91,6 +91,10 @@ export default {
   margin-top: var(--paragraph-spacing);
 }
 
+.dm5-html-field img {
+  max-width: 100%;
+}
+
 .ql-container {
   font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
   font-size:   var(--main-font-size)   !important;    /* Quill default is 13px */
