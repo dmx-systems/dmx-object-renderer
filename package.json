@@ -10,6 +10,6 @@
     "url": "https://github.com/jri/dm5-object-renderer.git"
   },
   "dependencies": {
-    "vue-quill-minimum": "1.4.0"
+    "vue-quill-minimum": "https://github.com/jri/vue-quill-minimum.git"
   }
 }
