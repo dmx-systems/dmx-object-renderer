@@ -41,6 +41,18 @@ export default {
     }
   },
 
+  watch: {
+    // update Quill instance manually when user changes selection while in form mode
+    object () {
+      // Note: when switching from info mode to form mode the object watcher fires as "objectToEdit" changes
+      // (see dm5-info-tab.vue in dm5-detail-panel module). In this case the quill instance is not yet available,
+      // not even at next tick. Anyways no manual update is required in this case.
+      if (this.formMode && this.$refs.quill) {
+        this.$refs.quill.setHTML(this.object.value)
+      }
+    }
+  },
+
   methods: {
 
     registerExtensions (Quill) {
