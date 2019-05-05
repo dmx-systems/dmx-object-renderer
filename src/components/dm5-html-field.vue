@@ -16,6 +16,7 @@ export default {
     // console.log('dm5-html-field mounted()', this.mode, this.$refs.html)
     // Note: if a topic is edited for the first time the dm5-html-field component is mounted in "form" mode
     this.domReady()
+    this.trackImages()
   },
 
   updated () {
@@ -74,6 +75,19 @@ export default {
 
     forEachExtension (visitor) {
       this.quillExtensions && this.quillExtensions.forEach(ext => visitor(ext))
+    },
+
+    /**
+     * Emits `updated` event once loading of embedded image completes. Note: image rendering responds to load state,
+     * not to data change; so the updated() lifecycle method would not be suitable.
+     * Allows e.g. the dm5-detail component to resize in-map details (see dm5-cytoscape-renderer module).
+     */
+    trackImages () {
+      if (this.infoMode) {
+        this.$refs.info.querySelectorAll('img').forEach(img => {
+          img.addEventListener('load', this.context.updated)
+        })
+      }
     }
   },
 
