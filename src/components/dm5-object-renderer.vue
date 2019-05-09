@@ -65,7 +65,7 @@ export default {
           this.inlineId = id
           this.$emit('inline', id)
         },
-        submit: () => {
+        submit: () => {   // TODO: still needed?
           this.$emit('submit')
         },
         revealChild: relTopic => {
