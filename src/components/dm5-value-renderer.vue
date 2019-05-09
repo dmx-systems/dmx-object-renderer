@@ -12,7 +12,7 @@
     </div>
     <!-- composite -->
     <template v-else>
-      <h3 v-if="isToplevel && !noHeading">{{object.value}}</h3>
+      <div v-if="isToplevel && !noHeading" class="heading">{{object.value}}</div>
       <component :is="compositeRenderer" :object="object" :level="level" :assoc-def="assocDef" :context="context">
       </component>
     </template>
@@ -197,6 +197,12 @@ export default {
 </script>
 
 <style>
+.dm5-value-renderer .heading {
+  font-size: var(--heading-font-size);
+  font-weight: bold;
+  margin-bottom: var(--heading-spacing);
+}
+
 /* To be hoverable the *direct* parent dm5-value-renderer must be in info mode. */
 /* Otherwise an object already in inline edit mode would still be hoverable.    */
 .dm5-value-renderer.info.editable > .field:hover {
