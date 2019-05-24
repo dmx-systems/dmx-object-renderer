@@ -35,7 +35,7 @@ export default {
   computed: {
 
     type () {
-      return this.object.getType()
+      return this.object.type
     },
 
     assocDefs () {

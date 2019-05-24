@@ -69,7 +69,7 @@ export default {
     },
 
     type () {
-      return this.object.getType()
+      return this.object.type
     },
 
     isSimple () {

@@ -107,7 +107,7 @@ export default {
         this.object.value = `ref_id:${this.selection}`
       } else {
         // Case 2: custom value entered (selection is of type string) or cleared (selection is null)
-        // Note: a serialized object as sent to the server must not contain JSON null, but ''
+        // Note: a serialized object sent to the server must not contain JSON null, but ''
         this.object.value = this.selection || ''
         // Note: custom values get no URI. An existing URI must be reset.
         // Otherwise an URI clash might occur at server side while creating the custom topic.

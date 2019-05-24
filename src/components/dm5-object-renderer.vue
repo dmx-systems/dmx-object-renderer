@@ -81,7 +81,7 @@ export default {
     // copy in dm5-info-tab.vue (as buttonDisabled())
     editDisabled () {
       // only identity topics are enabled; assocs and types are always enabled
-      return this.object.isTopic() && !this.object.isType() && !this.object.getType().isIdentity()
+      return this.object.isTopic() && !this.object.isType() && !this.object.type.isIdentity()
     }
   },
 
