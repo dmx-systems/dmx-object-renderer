@@ -4,7 +4,9 @@
     <div class="field" v-if="playerObject">
       <div class="field-label">{{playerObject.typeName}}</div>
       <div class="object">
-        <div class="fa icon" :style="{color: playerObject.iconColor}">{{playerObject.icon}}</div>
+        <div class="fa icon" v-if="playerObject.isTopic()" :style="{color: playerObject.iconColor}">
+          {{playerObject.icon}}
+        </div>
         <div>{{playerObject.value}}</div>
       </div>
     </div>
