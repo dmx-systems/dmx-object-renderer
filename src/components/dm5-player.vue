@@ -1,14 +1,22 @@
 <template>
   <div class="dm5-player">
-    <!-- Player -->
-    <div v-if="playerObject">{{playerObject.typeName}}: "{{playerObject.value}}"</div>
+    <!-- Player Object -->
+    <div class="field" v-if="playerObject">
+      <div class="field-label">{{playerObject.typeName}}</div>
+      <div class="object">
+        <div class="fa icon" :style="{color: playerObject.iconColor}">{{playerObject.icon}}</div>
+        <div>{{playerObject.value}}</div>
+      </div>
+    </div>
     <!-- Role Type -->
-    <div class="field-label">Role Type</div>
-    <div v-if="infoMode">{{player.roleTypeName}}</div>
-    <el-select v-else v-model="player.roleTypeUri">
-      <el-option v-for="roleType in roleTypes" :label="roleType.value" :value="roleType.uri" :key="roleType.uri">
-      </el-option>
-    </el-select>
+    <div class="field">
+      <div class="field-label">Role Type</div>
+      <div v-if="infoMode">{{player.roleTypeName}}</div>
+      <el-select v-else v-model="player.roleTypeUri">
+        <el-option v-for="roleType in roleTypes" :label="roleType.value" :value="roleType.uri" :key="roleType.uri">
+        </el-option>
+      </el-select>
+    </div>
   </div>
 </template>
 
@@ -74,10 +82,21 @@ export default {
 
 <style>
 .dm5-player {
-  background-color: var(--background-color-darker);
+  background-color: white;
+  border: 1px solid var(--border-color);
+  padding: var(--object-item-padding);
 }
 
-.dm5-player .field-label {
+.dm5-player .object {
+  display: flex;
+  align-items: baseline;
+}
+
+.dm5-player .object .icon {
+  margin-right: var(--icon-spacing);
+}
+
+.dm5-player .field + .field {
   margin-top: var(--field-spacing);
 }
 </style>
