@@ -2,6 +2,18 @@
 
 ## Version History
 
+**0.16** -- May 27, 2019
+
+* Improvements:
+    * Improve assoc detail rendering (topic icons and assoc background color)
+    * Pressing Enter in a suggestion menu does not submit form
+    * New value entered in a Select is implicitly hovered and can be selected by Enter key
+* Fixes:
+    * Sorting number/boolean values in Select menus
+    * Images embedded in HTML fields have a max-width
+    * Update Quill instance on selection change while in form mode
+    * The`updated` event is also emitted when image loading completes
+
 **0.15** -- Apr 22, 2019
 
 * Improvement: add tooltips to "Reveal" and "Remove" buttons and to inline edit opportunity
@@ -97,4 +109,4 @@
 
 ------------
 Jörg Richter  
-Apr 22, 2019
+May 27, 2019
