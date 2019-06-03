@@ -41,10 +41,10 @@ export default {
     assocDefs () {
       if (this.level === 0 || this.object.isAssoc() || this.type.isValue()) {
         // Normal rendering
-        return this.type.assocDefs
+        return this.type.compDefs
       } else {
         // Reduced details: at deeper levels for identity types only their identity attributes are rendered
-        return this.type.assocDefs.filter(assocDef => assocDef.isIdentityAttr)
+        return this.type.compDefs.filter(assocDef => assocDef.isIdentityAttr)
       }
     },
 
