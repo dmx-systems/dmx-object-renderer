@@ -13,7 +13,7 @@ export default {
 
   mixins: [
     require('./mixins/object').default,       // object to render
-    require('./mixins/assoc-def').default,    // assoc def leading to object
+    require('./mixins/comp-def').default,     // assoc def leading to object
     require('./mixins/mode').default,
     require('./mixins/info-mode').default
   ],
@@ -47,11 +47,11 @@ export default {
     },
 
     clearable () {
-      return this.assocDef.getViewConfig('dmx.webclient.clearable')
+      return this.compDef.getViewConfig('dmx.webclient.clearable')
     },
 
     customizable () {
-      return this.assocDef.getViewConfig('dmx.webclient.customizable')
+      return this.compDef.getViewConfig('dmx.webclient.customizable')
     }
   },
 

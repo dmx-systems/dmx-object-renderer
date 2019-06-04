@@ -4,7 +4,7 @@
     <div v-if="isSimple" class="field" :title="title">
       <div class="field-label">{{fieldLabel}}</div>
       <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
-        <component :is="simpleRenderer" :object="object" :mode="localMode" :assoc-def="assocDef" :context="context"
+        <component :is="simpleRenderer" :object="object" :mode="localMode" :comp-def="compDef" :context="context"
           @keyup.native.enter="enter">
         </component>
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
@@ -13,7 +13,7 @@
     <!-- composite -->
     <template v-else>
       <div v-if="isToplevel && !noHeading" class="heading">{{object.value}}</div>
-      <component :is="compositeRenderer" :object="object" :level="level" :assoc-def="assocDef" :context="context">
+      <component :is="compositeRenderer" :object="object" :level="level" :comp-def="compDef" :context="context">
       </component>
     </template>
   </div>
@@ -45,7 +45,7 @@ export default {
   ],
 
   props: {
-    assocDef: dm5.AssocDef,     // undefined for top-level object
+    compDef: dm5.CompDef,     // undefined for top-level object
     noHeading: Boolean
   },
 
@@ -77,7 +77,7 @@ export default {
     },
 
     fieldLabel () {
-      const customAssocType = this.assocDef && this.assocDef.getCustomAssocType()
+      const customAssocType = this.compDef && this.compDef.getCustomAssocType()
       return customAssocType && customAssocType.isSimple() ? customAssocType.value : this.type.value
     },
 
@@ -87,7 +87,7 @@ export default {
         return this.valueRenderer
       }
       // 2) custom widget
-      const widget = this.assocDef && this.assocDef._getViewConfig('dmx.webclient.widget')
+      const widget = this.compDef && this.compDef._getViewConfig('dmx.webclient.widget')
       if (widget) {
         // Note: since Vue 2.5.10 dot is no longer a valid character in a component name
         return widget.uri.replace(/\./g, '-')

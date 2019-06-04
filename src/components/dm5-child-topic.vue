@@ -1,9 +1,9 @@
 <template>
   <div v-if="!deleted" :class="['dm5-child-topic', mode, levelClass]">
-    <dm5-value-renderer v-if="showRelatingAssoc" :object="object.assoc" :level="level" :assoc-def="assocDef"
+    <dm5-value-renderer v-if="showRelatingAssoc" :object="object.assoc" :level="level" :comp-def="compDef"
       :context="context">
     </dm5-value-renderer>
-    <dm5-value-renderer :object="object" :level="level" :assoc-def="assocDef" :context="context"></dm5-value-renderer>
+    <dm5-value-renderer :object="object" :level="level" :comp-def="compDef" :context="context"></dm5-value-renderer>
     <!-- Reveal Button -->
     <el-button class="hover-button" v-if="showRevealButton" type="text" :title="revealTitle" @click="reveal">
       Reveal
@@ -28,7 +28,7 @@ export default {
   mixins: [
     require('./mixins/object').default,       // child topic to render
     require('./mixins/level').default,
-    require('./mixins/assoc-def').default,    // assoc def leading to child topic
+    require('./mixins/comp-def').default,     // assoc def leading to child topic
     require('./mixins/info-mode').default,
     require('./mixins/context').default
   ],
@@ -43,11 +43,11 @@ export default {
       // object.assoc is undefined if object is a relating assoc itself
       if (this.object.assoc) {
         // sanity check
-        if (this.object.assoc.typeUri !== this.assocDef.instanceLevelAssocTypeUri) {
+        if (this.object.assoc.typeUri !== this.compDef.instanceLevelAssocTypeUri) {
           throw Error(`type mismatch`)
         }
         //
-        return this.assocDef.getInstanceLevelAssocType().isComposite()
+        return this.compDef.getInstanceLevelAssocType().isComposite()
       }
     },
 
@@ -56,7 +56,7 @@ export default {
     },
 
     showRemoveButton () {
-      return this.formMode && this.assocDef.isMany()
+      return this.formMode && this.compDef.isMany()
     },
 
     revealTitle () {
@@ -64,7 +64,7 @@ export default {
     },
 
     removeTitle () {
-      const type = this.assocDef.getCustomAssocType()
+      const type = this.compDef.getCustomAssocType()
       return `Remove ${type ? type.value : this.typeName}`
     },
 

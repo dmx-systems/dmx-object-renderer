@@ -1,19 +1,19 @@
 <template>
   <div class="dm5-child-topics">
-    <template v-for="assocDef in assocDefs">
+    <template v-for="compDef in compDefs">
       <!-- one -->
-      <template v-if="isOne(assocDef)">
-        <dm5-child-topic v-if="childs(assocDef)" :object="childs(assocDef)" :level="level+1"
-          :assoc-def="assocDef" :context="context" :key="assocDef.assocDefUri">
+      <template v-if="isOne(compDef)">
+        <dm5-child-topic v-if="childs(compDef)" :object="childs(compDef)" :level="level+1"
+          :comp-def="compDef" :context="context" :key="compDef.compDefUri">
         </dm5-child-topic>
       </template>
       <!-- many -->
       <template v-else>
-        <dm5-child-topic v-for="(child, i) in childs(assocDef)" class="multi" :object="child" :level="level+1"
-          :assoc-def="assocDef" :context="context" :key="`${assocDef.assocDefUri}-${i}-${child.id}`">
+        <dm5-child-topic v-for="(child, i) in childs(compDef)" class="multi" :object="child" :level="level+1"
+          :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`">
         </dm5-child-topic>
-        <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(assocDef)"
-          @click="addChild(assocDef)">
+        <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(compDef)"
+          @click="addChild(compDef)">
         </el-button>
       </template>
     </template>
@@ -38,13 +38,13 @@ export default {
       return this.object.type
     },
 
-    assocDefs () {
+    compDefs () {
       if (this.level === 0 || this.object.isAssoc() || this.type.isValue()) {
         // Normal rendering
         return this.type.compDefs
       } else {
         // Reduced details: at deeper levels for identity types only their identity attributes are rendered
-        return this.type.compDefs.filter(assocDef => assocDef.isIdentityAttr)
+        return this.type.compDefs.filter(compDef => compDef.isIdentityAttr)
       }
     },
 
@@ -55,23 +55,23 @@ export default {
 
   methods: {
 
-    isOne (assocDef) {
-      return assocDef.isOne()
+    isOne (compDef) {
+      return compDef.isOne()
     },
 
-    childs (assocDef) {
-      return this.object.childs[assocDef.assocDefUri]
+    childs (compDef) {
+      return this.object.childs[compDef.compDefUri]
     },
 
     // add value
 
-    addButtonTitle (assocDef) {
-      const type = assocDef.getCustomAssocType()
-      return `Add ${type ? type.value : assocDef.getChildType().value}`
+    addButtonTitle (compDef) {
+      const type = compDef.getCustomAssocType()
+      return `Add ${type ? type.value : compDef.getChildType().value}`
     },
 
-    addChild (assocDef) {
-      this.childs(assocDef).push(assocDef.emptyChildInstance())
+    addChild (compDef) {
+      this.childs(compDef).push(compDef.emptyChildInstance())
     }
   },
 
