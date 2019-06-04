@@ -13,7 +13,7 @@ export default {
 
   mixins: [
     require('./mixins/object').default,       // object to render
-    require('./mixins/comp-def').default,     // assoc def leading to object
+    require('./mixins/comp-def').default,     // comp def leading to object
     require('./mixins/mode').default,
     require('./mixins/info-mode').default
   ],
