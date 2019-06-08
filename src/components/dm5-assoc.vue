@@ -10,8 +10,8 @@
     <!-- Association Value -->
     <dm5-value-renderer :object="assoc" :level="0" :context="context" no-heading></dm5-value-renderer>
     <!-- Roles -->
-    <dm5-player :player="assoc.role1" :mode="mode" :types="types" :context="context"></dm5-player>
-    <dm5-player :player="assoc.role2" :mode="mode" :types="types" :context="context"></dm5-player>
+    <dm5-player :player="assoc.player1" :mode="mode" :types="types" :context="context"></dm5-player>
+    <dm5-player :player="assoc.player2" :mode="mode" :types="types" :context="context"></dm5-player>
   </div>
 </template>
 
