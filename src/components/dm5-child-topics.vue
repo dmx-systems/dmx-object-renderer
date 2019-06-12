@@ -3,13 +3,13 @@
     <template v-for="compDef in compDefs">
       <!-- one -->
       <template v-if="isOne(compDef)">
-        <dm5-child-topic v-if="childs(compDef)" :object="childs(compDef)" :level="level+1"
+        <dm5-child-topic v-if="children(compDef)" :object="children(compDef)" :level="level+1"
           :comp-def="compDef" :context="context" :key="compDef.compDefUri">
         </dm5-child-topic>
       </template>
       <!-- many -->
       <template v-else>
-        <dm5-child-topic v-for="(child, i) in childs(compDef)" class="multi" :object="child" :level="level+1"
+        <dm5-child-topic v-for="(child, i) in children(compDef)" class="multi" :object="child" :level="level+1"
           :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`">
         </dm5-child-topic>
         <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(compDef)"
@@ -59,8 +59,8 @@ export default {
       return compDef.isOne()
     },
 
-    childs (compDef) {
-      return this.object.childs[compDef.compDefUri]
+    children (compDef) {
+      return this.object.children[compDef.compDefUri]
     },
 
     // add value
@@ -71,7 +71,7 @@ export default {
     },
 
     addChild (compDef) {
-      this.childs(compDef).push(compDef.emptyChildInstance())
+      this.children(compDef).push(compDef.emptyChildInstance())
     }
   },
 

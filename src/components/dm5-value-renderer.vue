@@ -56,8 +56,8 @@ export default {
       // 1) In the assoc details (when an assoc is selected) a label without value would be rendered.
       // 2) In a composite value rendering an empty valued relating assoc would create unwanted vertical space.
       //
-      // The empty value check can't test for childs existence (!dm5.utils.isEmpty(this.object.assoc.childs)) as
-      // empty valued childs added by "filling" stay in the object after editing.
+      // The empty value check can't test for children existence (!dm5.utils.isEmpty(this.object.assoc.children))
+      // as empty valued children added by "filling" stay in the object after editing.
       //
       // Note: topics always have non-empty values, but assocs *can* have empty values.
       //
