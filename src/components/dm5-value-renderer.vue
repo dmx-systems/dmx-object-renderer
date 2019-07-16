@@ -1,7 +1,7 @@
 <template>
-  <div :class="['dm5-value-renderer', localMode, {editable}]" v-if="show" @click.stop="editInline">
+  <div :class="['dm5-value-renderer', localMode, {editable}]" v-if="show">
     <!-- simple -->
-    <div v-if="isSimple" class="field" :title="title">
+    <div v-if="isSimple" class="field">
       <div class="field-label">{{fieldLabel}}</div>
       <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
         <component :is="simpleRenderer" :object="object" :mode="localMode" :comp-def="compDef" :context="context"
@@ -9,6 +9,8 @@
         </component>
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
+      <!-- Edit Button -->
+      <el-button class="edit" v-if="inlineEnabled" type="text" @click="editInline">Edit</el-button>
     </div>
     <!-- composite -->
     <template v-else>
@@ -130,10 +132,6 @@ export default {
       return this.localMode === 'form'
     },
 
-    title () {
-      return this.inlineEnabled && "Click to Edit"
-    },
-
     inlineEnabled () {
       // inline editing can only be started in info mode
       return this.localInfoMode && this.editable
@@ -152,15 +150,7 @@ export default {
   methods: {
 
     editInline () {
-      if (this.inlineEnabled) {
-        // inline editing is only supported for simple objects
-        if (this.isSimple) {
-          // console.log('editInline', this.object.typeUri, this.object.value)
-          this.context.setInlineId(this._uid)   // FIXME: _uid is Vue internal
-        } else {
-          console.log('non-simple', this.object.typeUri, this.object.value)
-        }
-      }
+      this.context.setInlineId(this._uid)     // FIXME: _uid is Vue internal
     },
 
     enter () {
@@ -174,6 +164,7 @@ export default {
     }
   },
 
+  // Note: these components are registered by Webclient already but this is supposed to be a standalone component
   components: {
     'dm5-child-topics':     require('./dm5-child-topics').default,      // TODO: change prefix to "dmx"
     // simple default widgets
@@ -213,5 +204,21 @@ export default {
 
 .dm5-value-renderer .field .field-content.html .save-button {
   margin-top: 0.4em;
+}
+
+/* Edit Button */
+
+.dm5-value-renderer button.edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  visibility: hidden;
+  font-size: var(--label-font-size) !important;
+  color: var(--color-danger);
+  padding: 0 !important;
+}
+
+.dm5-value-renderer:hover > .field button.edit {
+  visibility: visible;
 }
 </style>
