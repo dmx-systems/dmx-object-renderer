@@ -164,7 +164,7 @@ export default {
     }
   },
 
-  // Note: these components are registered by Webclient already but this is supposed to be a standalone component
+  // Note: these components are registered by Webclient already but dm5-object-renderer is a standalone component
   components: {
     'dm5-child-topics':     require('./dm5-child-topics').default,      // TODO: change prefix to "dmx"
     // simple default widgets
@@ -218,7 +218,7 @@ export default {
   padding: 0 !important;
 }
 
-.dm5-value-renderer:hover > .field button.edit {
+.dm5-value-renderer > .field:hover button.edit {
   visibility: visible;
 }
 </style>

@@ -117,6 +117,15 @@ export default {
   max-width: 100%;
 }
 
+.dm5-html-field a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
+.dm5-html-field a:hover {
+  color: var(--highlight-color-2);
+}
+
 .ql-container {
   font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
   font-size:   var(--main-font-size)   !important;    /* Quill default is 13px */
