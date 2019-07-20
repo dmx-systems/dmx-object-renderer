@@ -181,6 +181,10 @@ export default {
 </script>
 
 <style>
+.dm5-value-renderer {
+  position: relative;     /* absolute positioned "+" buttons scroll along */
+}
+
 .dm5-value-renderer .heading {
   font-size: var(--heading-font-size);
   font-weight: bold;
@@ -210,7 +214,7 @@ export default {
 
 .dm5-value-renderer button.edit {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   right: -12px;
   visibility: hidden;
   padding: 0 !important;

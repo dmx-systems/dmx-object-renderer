@@ -91,9 +91,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.dm5-object-renderer {
-  position: relative;     /* absolute positioned "+" buttons scroll along */
-}
-</style>
