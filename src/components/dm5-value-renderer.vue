@@ -10,7 +10,7 @@
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
       <!-- Edit Button -->
-      <el-button class="edit" v-if="inlineEnabled" type="text" @click="editInline">Edit</el-button>
+      <el-button class="edit fa fa-pencil" v-if="inlineEnabled" type="text" @click="editInline"></el-button>
     </div>
     <!-- composite -->
     <template v-else>
@@ -210,11 +210,9 @@ export default {
 
 .dm5-value-renderer button.edit {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 0px;
+  right: -12px;
   visibility: hidden;
-  font-size: var(--label-font-size) !important;
-  color: var(--color-danger);
   padding: 0 !important;
 }
 

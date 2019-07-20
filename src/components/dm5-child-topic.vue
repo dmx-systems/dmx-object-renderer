@@ -5,12 +5,11 @@
     </dm5-value-renderer>
     <dm5-value-renderer :object="object" :level="level" :comp-def="compDef" :context="context"></dm5-value-renderer>
     <!-- Reveal Button -->
-    <el-button class="hover-button" v-if="showRevealButton" type="text" :title="revealTitle" @click="reveal">
-      Reveal
+    <el-button class="hover-button fa fa-eye" v-if="showRevealButton" type="text" :title="revealTitle" @click="reveal">
     </el-button>
     <!-- Remove Button -->
-    <el-button class="hover-button remove" v-if="showRemoveButton" type="text" :title="removeTitle" @click="remove">
-      Remove
+    <el-button class="hover-button remove fa fa-times" v-if="showRemoveButton" type="text" :title="removeTitle"
+      @click="remove">
     </el-button>
   </div>
 </template>
@@ -112,9 +111,8 @@ export default {
 .dm5-child-topic > .hover-button {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -12px;
   visibility: hidden;
-  font-size: var(--label-font-size) !important;
   padding: 0 !important;
 }
 
