@@ -5,10 +5,15 @@
     </dm5-value-renderer>
     <dm5-value-renderer :object="object" :level="level" :comp-def="compDef" :context="context"></dm5-value-renderer>
     <!-- Reveal Button -->
-    <el-button class="hover-button fa fa-eye" v-if="showRevealButton" type="text" :title="revealTitle" @click="reveal">
+    <el-button class="hover-button reveal fa fa-eye" v-if="showRevealButton" type="text" :title="revealTitle"
+      @click="reveal">
+    </el-button>
+    <!-- Add Button -->
+    <el-button class="hover-button add fa fa-plus" v-if="showAddRemoveButton" type="text" :title="addTitle"
+      @click="add">
     </el-button>
     <!-- Remove Button -->
-    <el-button class="hover-button remove fa fa-times" v-if="showRemoveButton" type="text" :title="removeTitle"
+    <el-button class="hover-button remove fa fa-times" v-if="showAddRemoveButton" type="text" :title="removeTitle"
       @click="remove">
     </el-button>
   </div>
@@ -54,12 +59,17 @@ export default {
       return this.infoMode && this.level === 1
     },
 
-    showRemoveButton () {
+    showAddRemoveButton () {
       return this.formMode && this.compDef.isMany()
     },
 
     revealTitle () {
       return `Reveal ${this.typeName} Topic`
+    },
+
+    addTitle () {
+      const type = this.compDef.getCustomAssocType()
+      return `Add ${type ? type.value : this.compDef.getChildType().value}`
     },
 
     removeTitle () {
@@ -88,6 +98,10 @@ export default {
 
     reveal () {
       this.context.revealChild(this.object)
+    },
+
+    add () {
+      this.$emit('child-topic-add', this.compDef)
     },
 
     remove () {
@@ -122,7 +136,7 @@ export default {
 
 /* Reveal Button */
 
-.dm5-child-topic.info.level-1 {
+.dm5-child-topic.level-1 {
   border: 1px solid transparent;
 }
 
@@ -130,10 +144,15 @@ export default {
   border-color: var(--highlight-color);
 }
 
-/* Remove Button */
+/* Add/Remove Button */
 
 .dm5-child-topic.form.multi:hover {
-  box-shadow: var(--shadow-hover) var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.dm5-child-topic > .hover-button.add {
+  top: unset;
+  bottom: 0;
 }
 
 .dm5-child-topic > .hover-button.remove {

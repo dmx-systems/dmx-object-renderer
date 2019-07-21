@@ -8,27 +8,20 @@
         </dm5-child-topic>
       </template>
       <!-- many -->
-      <template v-else>
-        <dm5-child-topic v-for="(child, i) in children(compDef)" class="multi" :object="child" :level="level+1"
-          :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`">
-        </dm5-child-topic>
-        <el-button v-if="formMode" class="add-button" icon="el-icon-plus" :title="addButtonTitle(compDef)"
-          @click="addChild(compDef)">
-        </el-button>
-      </template>
+      <dm5-child-topic v-else v-for="(child, i) in children(compDef)" class="multi" :object="child" :level="level+1"
+        :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`"
+        @child-topic-add="addChildTopic">
+      </dm5-child-topic>
     </template>
   </div>
 </template>
 
 <script>
-import dm5 from 'dm5'
-
 export default {
 
   mixins: [
     require('./mixins/object').default,
     require('./mixins/level').default,
-    require('./mixins/info-mode').default,
     require('./mixins/context').default
   ],
 
@@ -46,10 +39,6 @@ export default {
         // Reduced details: at deeper levels for identity types only their identity attributes are rendered
         return this.type.compDefs.filter(compDef => compDef.isIdentityAttr)
       }
-    },
-
-    mode () {
-      return this.context.mode
     }
   },
 
@@ -63,14 +52,7 @@ export default {
       return this.object.children[compDef.compDefUri]
     },
 
-    // add value
-
-    addButtonTitle (compDef) {
-      const type = compDef.getCustomAssocType()
-      return `Add ${type ? type.value : compDef.getChildType().value}`
-    },
-
-    addChild (compDef) {
+    addChildTopic (compDef) {
       this.children(compDef).push(compDef.emptyChildInstance())
     }
   },
@@ -82,15 +64,7 @@ export default {
 </script>
 
 <style>
-.dm5-child-topics > .dm5-child-topic + .dm5-child-topic,
-.dm5-child-topics > .add-button      + .dm5-child-topic {
+.dm5-child-topics > .dm5-child-topic + .dm5-child-topic {
   margin-top: var(--field-spacing);
-}
-
-.dm5-child-topics > .add-button {
-  font-size: var(--label-font-size) !important;
-  padding: 3px;
-  position: absolute;
-  right: var(--detail-panel-padding);
 }
 </style>
