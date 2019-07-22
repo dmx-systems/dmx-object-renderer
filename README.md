@@ -2,6 +2,19 @@
 
 ## Version History
 
+**0.17** -- Jul 22, 2019
+
+* Improvements:
+    * Replace "Reveal"/"Add"/"Remove" text buttons by icons; place icons outside content field
+    * Reposition "Add" button; show only on hover
+    * Explicit "Edit" button
+    * Adjust Quill link style to Element UI style
+* Fixes:
+    * Clicking an HTML link does not trigger inline edit
+* Chore:
+    * Adapt to `dm5` library ("compDef", "player", "children" renamings)
+    * Change license to `AGPL-3.0`
+
 **0.16** -- May 27, 2019
 
 * Improvements:
@@ -109,4 +122,4 @@
 
 ------------
 Jörg Richter  
-May 27, 2019
+Jul 22, 2019
