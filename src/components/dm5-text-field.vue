@@ -27,8 +27,8 @@ export default {
       // console.log('fetchSuggestions', value)
       // Note: for an empty value fetchSuggestions() is not invoked
       // Note: fetchSuggestions() is already debounced by Element UI
-      dm5.restClient.queryTopicsFulltext(this.searchQuery, this.object.typeUri).then(topics => {
-        cb(topics)
+      dm5.restClient.queryTopicsFulltext(this.searchQuery, this.object.typeUri).then(queryResult => {
+        cb(queryResult.topics)
       })
     }
 
