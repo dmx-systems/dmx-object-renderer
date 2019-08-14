@@ -17,7 +17,7 @@ export default {
 
   computed: {
     searchQuery () {
-      return this.object.value + '*'    // TODO: copy in dm5-search-widget
+      return this.object.value + '*'    // TODO: adapt to dm5-search-widget logic
     }
   },
 
@@ -40,3 +40,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.el-autocomplete {
+  width: 100%;
+}
+</style>
