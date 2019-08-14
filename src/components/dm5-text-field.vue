@@ -40,9 +40,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.el-autocomplete {
-  width: 100%;
-}
-</style>

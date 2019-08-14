@@ -197,6 +197,11 @@ export default {
   background-color: white;
 }
 
+.dm5-value-renderer .field .field-content .el-autocomplete,
+.dm5-value-renderer .field .field-content .el-select {
+  width: 100%;
+}
+
 .dm5-value-renderer .field .field-content.no-html {
   display: flex;
   align-items: center;
