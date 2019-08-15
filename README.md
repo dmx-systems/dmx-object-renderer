@@ -2,6 +2,12 @@
 
 ## Version History
 
+**0.18** -- Aug 15, 2019
+
+* Improvements:
+    * Revised query strategy for auto-complete fields
+    * Increase width of input and select fields
+
 **0.17** -- Jul 22, 2019
 
 * Improvements:
@@ -122,4 +128,4 @@
 
 ------------
 Jörg Richter  
-Jul 22, 2019
+Aug 15, 2019
