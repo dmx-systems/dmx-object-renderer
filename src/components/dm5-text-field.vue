@@ -17,7 +17,7 @@ export default {
 
   computed: {
     query () {
-      return dm5.utils.fulltextQuery(this.object.value)
+      return dm5.utils.fulltextQuery(this.object.value, true)     // allowSingleLetterSearch=true
     }
   },
 
