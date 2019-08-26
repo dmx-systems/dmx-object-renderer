@@ -2,6 +2,13 @@
 
 ## Version History
 
+**0.19** -- Aug 26, 2019
+
+* Improvements:
+    * Auto-complete fields allow single-letter search
+* Fixes:
+    * Show proper value for "Select" fields
+
 **0.18** -- Aug 15, 2019
 
 * Improvements:
@@ -128,4 +135,4 @@
 
 ------------
 Jörg Richter  
-Aug 15, 2019
+Aug 26, 2019
