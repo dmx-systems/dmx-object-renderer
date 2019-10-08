@@ -1,6 +1,7 @@
 <template>
   <dm5-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :types="types" :context="context"></dm5-assoc>
-  <component class="dm5-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :context="context">
+  <component class="dm5-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :path="[]"
+    :context="context">
   </component>
 </template>
 

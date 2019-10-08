@@ -1,9 +1,10 @@
 <template>
   <div v-if="!deleted" :class="['dm5-child-topic', mode, levelClass]">
-    <dm5-value-renderer v-if="showRelatingAssoc" :object="object.assoc" :level="level" :comp-def="compDef"
-      :context="context">
+    <dm5-value-renderer v-if="showRelatingAssoc" :object="object.assoc" :level="level" :path="newPath"
+      :comp-def="compDef" :context="context">
     </dm5-value-renderer>
-    <dm5-value-renderer :object="object" :level="level" :comp-def="compDef" :context="context"></dm5-value-renderer>
+    <dm5-value-renderer :object="object" :level="level" :path="newPath" :comp-def="compDef" :context="context">
+    </dm5-value-renderer>
     <!-- Reveal Button -->
     <el-button class="hover-button reveal fa fa-eye" v-if="showRevealButton" type="text" :title="revealTitle"
       @click="reveal">
@@ -32,6 +33,7 @@ export default {
   mixins: [
     require('./mixins/object').default,       // child topic to render
     require('./mixins/level').default,
+    require('./mixins/path').default,
     require('./mixins/comp-def').default,     // comp def leading to child topic
     require('./mixins/info-mode').default,
     require('./mixins/context').default
@@ -67,6 +69,7 @@ export default {
       return `Reveal ${this.typeName} Topic`
     },
 
+    // TODO: same as removeTitle()?
     addTitle () {
       const type = this.compDef.getCustomAssocType()
       return `Add ${type ? type.value : this.compDef.getChildType().value}`
@@ -75,6 +78,17 @@ export default {
     removeTitle () {
       const type = this.compDef.getCustomAssocType()
       return `Remove ${type ? type.value : this.typeName}`
+    },
+
+    newPath () {
+      const type = this.compDef.getCustomAssocType()
+      if (type /* && type.isSimple() */) {      // TODO: isSimple() is just heuristic
+        const path = this.path.slice()    // avoid side effect in other tree branches
+        path.push(type.value)
+        return path
+      } else {
+        return this.path
+      }
     },
 
     typeName () {

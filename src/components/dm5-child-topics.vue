@@ -3,13 +3,13 @@
     <template v-for="compDef in compDefs">
       <!-- one -->
       <template v-if="isOne(compDef)">
-        <dm5-child-topic v-if="children(compDef)" :object="children(compDef)" :level="level+1"
+        <dm5-child-topic v-if="children(compDef)" :object="children(compDef)" :level="level+1" :path="path"
           :comp-def="compDef" :context="context" :key="compDef.compDefUri">
         </dm5-child-topic>
       </template>
       <!-- many -->
       <dm5-child-topic v-else v-for="(child, i) in children(compDef)" class="multi" :object="child" :level="level+1"
-        :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`"
+        :path="path" :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`"
         @child-topic-add="addChildTopic">
       </dm5-child-topic>
     </template>
@@ -22,6 +22,7 @@ export default {
   mixins: [
     require('./mixins/object').default,
     require('./mixins/level').default,
+    require('./mixins/path').default,
     require('./mixins/context').default
   ],
 

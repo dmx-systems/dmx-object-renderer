@@ -15,7 +15,8 @@
     <!-- composite -->
     <template v-else>
       <div v-if="isToplevel && !noHeading" class="heading">{{object.value}}</div>
-      <component :is="compositeRenderer" :object="object" :level="level" :comp-def="compDef" :context="context">
+      <component :is="compositeRenderer" :object="object" :level="level" :path="path" :comp-def="compDef"
+        :context="context">
       </component>
     </template>
   </div>
@@ -42,6 +43,7 @@ export default {
   mixins: [
     require('./mixins/object').default,
     require('./mixins/level').default,
+    require('./mixins/path').default,
     require('./mixins/info-mode').default,
     require('./mixins/context').default
   ],
@@ -79,8 +81,15 @@ export default {
     },
 
     fieldLabel () {
-      const customAssocType = this.compDef && this.compDef.getCustomAssocType()
-      return customAssocType && customAssocType.isSimple() ? customAssocType.value : this.type.value
+      const type = this.compDef && this.compDef.getCustomAssocType()
+      let label = type && type.isSimple() ? type.value : this.type.value
+      if (this.path.length) {
+        const path = this.path.join(' / ')
+        // if (path !== label) {   // don't show redundant path info
+        label += ` (${path})`
+        // }
+      }
+      return label
     },
 
     simpleRenderer () {
