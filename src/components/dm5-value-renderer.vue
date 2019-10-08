@@ -84,10 +84,7 @@ export default {
       const type = this.compDef && this.compDef.getCustomAssocType()
       let label = type && type.isSimple() ? type.value : this.type.value
       if (this.path.length) {
-        const path = this.path.join(' / ')
-        // if (path !== label) {   // don't show redundant path info
-        label += ` (${path})`
-        // }
+        label += ` (${this.path.join(' / ')})`
       }
       return label
     },

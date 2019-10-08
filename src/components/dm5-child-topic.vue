@@ -47,14 +47,7 @@ export default {
 
     showRelatingAssoc () {
       // object.assoc is undefined if object is a relating assoc itself
-      if (this.object.assoc) {
-        // sanity check
-        if (this.object.assoc.typeUri !== this.compDef.instanceLevelAssocTypeUri) {
-          throw Error(`type mismatch`)
-        }
-        //
-        return this.compDef.getInstanceLevelAssocType().isComposite()
-      }
+      return this.object.assoc && this.compDef.getInstanceLevelAssocType().isComposite()
     },
 
     showRevealButton () {
@@ -81,8 +74,15 @@ export default {
     },
 
     newPath () {
+      // use custom assoc type name for extended field label rendering (see "fieldLabel" in dm5-value-renderer.vue)
+      // if all 3 applies:
+      // - there is a custom assoc type
+      // - the custom assoc type is simple; if composite the relating assoc rendering is embedded as well
+      //   (see "showRelatingAssoc" above) assuming its field labels provide sufficient context info already
+      // - this object is composite; if simple the custom assoc type name is used as field label already
+      //   (see "fieldLabel" in dm5-value-renderer.vue) and must not be rendered redundantly
       const type = this.compDef.getCustomAssocType()
-      if (type /* && type.isSimple() */) {      // TODO: isSimple() is just heuristic
+      if (type && type.isSimple() && this.object.type.isComposite()) {
         const path = this.path.slice()    // avoid side effect in other tree branches
         path.push(type.value)
         return path
