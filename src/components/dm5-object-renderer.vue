@@ -9,7 +9,8 @@
 export default {
 
   created () {
-    // console.log('dm5-object-renderer created', this.object, this.writable)
+    // console.log('dm5-object-renderer created', this.object, this.writable, this.mode)
+    this.focus()
   },
 
   destroyed () {
@@ -19,7 +20,8 @@ export default {
   mixins: [
     require('./mixins/object').default,   // TODO: make "object" an optional prop to better support async fetching
     require('./mixins/writable').default,
-    require('./mixins/mode-default').default
+    require('./mixins/mode-default').default,
+    require('./mixins/info-mode').default
   ],
 
   props: {
@@ -86,9 +88,35 @@ export default {
     }
   },
 
+  watch: {
+    object () {
+      // console.log('object watcher', this.mode)
+      this.focus()
+    }
+  },
+
+  methods: {
+    focus () {
+      if (!this.formMode) {
+        return
+      }
+      // Note: at dm5-object-renderer instantiation resp. at enter-form-mode the form components are not yet created
+      this.$nextTick(() => {
+        const leaf = findLeaf(this)
+        // console.log('focus', leaf.$el, leaf.focus)
+        leaf.focus()    // FIXME: has every form element a focus() method?
+      })
+    }
+  },
+
   components: {
     'dm5-value-renderer': require('./dm5-value-renderer').default,
     'dm5-assoc':          require('./dm5-assoc').default
   }
+}
+
+function findLeaf (vm) {
+  const child = vm.$children[0]
+  return child ? findLeaf(child) : vm
 }
 </script>
