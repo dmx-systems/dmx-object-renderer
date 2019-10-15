@@ -103,8 +103,13 @@ export default {
       // Note: at dm5-object-renderer instantiation resp. at enter-form-mode the form components are not yet created
       this.$nextTick(() => {
         const leaf = findLeaf(this)
-        // console.log('focus', leaf.$el, leaf.focus)
-        leaf.focus()    // FIXME: has every form element a focus() method?
+        // console.log('focus', leaf, leaf.$el, leaf.focus)
+        if (leaf.focus) {
+          leaf.focus()
+        } else {
+          // Note: Quill editor component is loaded asynchronously and might not yet ready
+          console.warn('No focusable form element found')
+        }
       })
     }
   },
@@ -116,6 +121,7 @@ export default {
 }
 
 function findLeaf (vm) {
+  // console.log('findLeaf', vm.$children, vm.$children.length)
   const child = vm.$children[0]
   return child ? findLeaf(child) : vm
 }
