@@ -14,7 +14,7 @@
     </div>
     <!-- composite -->
     <template v-else>
-      <div v-if="isToplevel && !noHeading" class="heading">{{object.value}}</div>
+      <div class="heading" v-if="showHeading">{{object.value}}</div>
       <component :is="compositeRenderer" :object="object" :level="level" :path="path" :comp-def="compDef"
         :context="context">
       </component>
@@ -44,7 +44,6 @@ export default {
     require('./mixins/object').default,
     require('./mixins/level').default,
     require('./mixins/path').default,
-    require('./mixins/info-mode').default,
     require('./mixins/context').default
   ],
 
@@ -56,16 +55,27 @@ export default {
   computed: {
 
     show () {
-      // For empty valued assocs no dm5-value-renderer element must be rendered. 2 reasons:
+      // For an empty valued assoc the dm5-value-renderer must not render anything. 2 reasons:
       // 1) In the assoc details (when an assoc is selected) a label without value would be rendered.
       // 2) In a composite value rendering an empty valued relating assoc would create unwanted vertical space.
+      //
+      // Note: a simple topic never has an empty value, a simple assoc however *can* have an empty value.
+      // A composite topic/assoc *can* have an empty value (= label) while non-empty child values are still present.
+      // Think e.g. of a Person topic with emptied name fields. It must be rendered, at least at top-level.
+      // FIXME: a non-top-level composite topic/assoc which has an empty value (= label) while non-empty child values
+      // are still present are *not* rendered, but possibly should.
       //
       // The empty value check can't test for children existence (!dm5.utils.isEmpty(this.object.assoc.children))
       // as empty valued children added by "filling" stay in the object after editing.
       //
-      // Note: topics always have non-empty values, but assocs *can* have empty values.
+      // Note: in form mode empty values must always be rendered to let the user input a value. Note also that
+      // "local form mode" is more specific than (global) "form mode" so the latter must not be checked.
       //
-      return this.object.value !== '' || this.formMode || this.localFormMode
+      return !this.isEmpty || this.isToplevel || this.localFormMode
+    },
+
+    showHeading () {
+      return !this.isEmpty && this.isToplevel && !this.noHeading
     },
 
     isToplevel () {
@@ -78,6 +88,10 @@ export default {
 
     isSimple () {
       return this.type.isSimple()
+    },
+
+    isEmpty () {
+      return this.object.value === ''
     },
 
     fieldLabel () {
