@@ -61,7 +61,7 @@ export default {
       //
       // Note: a simple topic never has an empty value, a simple assoc however *can* have an empty value.
       // A composite topic/assoc *can* have an empty value (= label) while non-empty child values are still present.
-      // Think e.g. of a Person topic with emptied name fields. It must be rendered, at least at top-level.
+      // Think e.g. of a Person topic with emptied name fields. It still must be rendered, at least at top-level.
       // FIXME: a non-top-level composite topic/assoc which has an empty value (= label) while non-empty child values
       // are still present are *not* rendered, but possibly should.
       //
@@ -71,7 +71,7 @@ export default {
       // Note: in form mode empty values must always be rendered to let the user input a value. Note also that
       // "local form mode" is more specific than (global) "form mode" so the latter must not be checked.
       //
-      return !this.isEmpty || this.isToplevel || this.localFormMode
+      return !this.isEmpty || this.isToplevel && this.object.isTopic() || this.localFormMode
     },
 
     showHeading () {
