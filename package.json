@@ -1,6 +1,6 @@
 {
   "name": "dm5-object-renderer",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "The DeepaMehta 5 object renderer as a composable GUI component",
   "author": "Jörg Richter <jri@dmx.berlin>",
   "license": "AGPL-3.0",
@@ -10,6 +10,6 @@
     "url": "https://github.com/jri/dm5-object-renderer.git"
   },
   "dependencies": {
-    "vue-quill-minimum": "https://github.com/jri/vue-quill-minimum.git"
+    "vue-quill-minimum": "1.7.0"
   }
 }

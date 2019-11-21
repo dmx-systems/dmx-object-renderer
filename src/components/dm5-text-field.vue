@@ -22,13 +22,12 @@ export default {
   },
 
   methods: {
-
     fetchSuggestions (value, cb) {
       // console.log('fetchSuggestions', value)
       // Note: for an empty value fetchSuggestions() is not invoked
       // Note: fetchSuggestions() is already debounced by Element UI
       // compare to dm5-search-widget.vue (module dm5-search-widget)
-      console.log('query', this.query)
+      // console.log('query', this.query)
       if (this.query) {
         dm5.restClient.queryTopicsFulltext(this.query, this.object.typeUri).then(result => {
           if (result.query === this.query) {

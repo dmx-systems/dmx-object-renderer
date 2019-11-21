@@ -2,6 +2,14 @@
 
 ## Version History
 
+**0.20** -- Nov 21, 2019
+
+* Improvements:
+    * Enrich field labels by custom assoc type names
+    * Auto-focus 1st input field when entering form
+* Fixes:
+    * Render composite details when topic label is empty
+
 **0.19** -- Aug 26, 2019
 
 * Improvements:
@@ -135,4 +143,4 @@
 
 ------------
 Jörg Richter  
-Aug 26, 2019
+Nov 21, 2019
