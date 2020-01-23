@@ -129,13 +129,28 @@ export default {
 .ql-container {
   font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
   font-size:   var(--main-font-size)   !important;    /* Quill default is 13px */
-  border: 1px solid var(--border-color)
+  border: 1px solid var(--border-color);
 }
 
 .ql-container .ql-editor {
   line-height: inherit !important;                    /* Quill default is 1.42; inherit from dm5-html-field */
   padding: 6px 8px !important;                        /* Quill default is 12px 15px */
   background-color: white;
+}
+
+.ql-container .ql-editor h1 {
+  margin-top: 0.67em;                                 /* Restore user agent style; Quill default is 0 */
+  margin-bottom: 0.67em;                              /* Restore user agent style; Quill default is 0 */
+}
+
+.ql-container .ql-editor h2 {
+  margin-top: 0.83em;                                 /* Restore user agent style; Quill default is 0 */
+  margin-bottom: 0.83em;                              /* Restore user agent style; Quill default is 0 */
+}
+
+.ql-container .ql-editor h3 {
+  margin-top: 1em;                                    /* Restore user agent style; Quill default is 0 */
+  margin-bottom: 1em;                                 /* Restore user agent style; Quill default is 0 */
 }
 
 .ql-container .ql-tooltip {
