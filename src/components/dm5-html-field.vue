@@ -153,6 +153,12 @@ export default {
   margin-bottom: 1em;                                 /* Restore user agent style; Quill default is 0 */
 }
 
+.ql-container .ql-editor ul,
+.ql-container .ql-editor ol {
+  margin-top: 1em;                                    /* Restore user agent style; Quill default is 0 */
+  margin-bottom: 1em;                                 /* Restore user agent style; Quill default is 0 */
+}
+
 .ql-container .ql-tooltip {
   width: 250px;         /* fixed toolbar width */
   z-index: 2;           /* stack toolbar above adjacent detail panel fields and el-checkboxes (z-index 1) */
