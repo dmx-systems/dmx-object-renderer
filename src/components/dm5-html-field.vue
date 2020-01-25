@@ -1,6 +1,6 @@
 <template>
-  <div class="dm5-html-field" v-if="infoMode" v-html="object.value" ref="info"></div>
-  <quill class="dm5-html-field" v-else v-model="object.value" :options="quillOptions" ref="quill"
+  <div :class="['dm5-html-field', mode]" v-if="infoMode" v-html="object.value" ref="info"></div>
+  <quill :class="['dm5-html-field', mode]" v-else v-model="object.value" :options="quillOptions" ref="quill"
     @quill-imported="registerExtensions" @quill-ready="quillReady">
   </quill>
 </template>
@@ -126,6 +126,30 @@ export default {
   color: var(--highlight-color-2);
 }
 
+.dm5-html-field.info li.ql-indent-1 {
+  margin-left: 3em;
+}
+
+.dm5-html-field.info li.ql-indent-2 {
+  margin-left: 6em;
+}
+
+.dm5-html-field.info li.ql-indent-3 {
+  margin-left: 9em;
+}
+
+.dm5-html-field.info li.ql-indent-4 {
+  margin-left: 12em;
+}
+
+.dm5-html-field.info li.ql-indent-5 {
+  margin-left: 15em;
+}
+
+.dm5-html-field.info li.ql-indent-6 {
+  margin-left: 18em;
+}
+
 .ql-container {
   font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
   font-size:   var(--main-font-size)   !important;    /* Quill default is 13px */
@@ -153,8 +177,8 @@ export default {
   margin-bottom: 1em;                                 /* Restore user agent style; Quill default is 0 */
 }
 
-.ql-container .ql-editor ul,
-.ql-container .ql-editor ol {
+.ql-container .ql-editor ol,
+.ql-container .ql-editor ul {
   margin-top: 1em;                                    /* Restore user agent style; Quill default is 0 */
   margin-bottom: 1em;                                 /* Restore user agent style; Quill default is 0 */
 }
