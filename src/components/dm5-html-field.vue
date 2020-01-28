@@ -126,29 +126,34 @@ export default {
   color: var(--highlight-color-2);
 }
 
-.dm5-html-field.info li.ql-indent-1 {
-  margin-left: 3em;
+/* Lists */
+
+.dm5-html-field.info ol > li {
+  list-style-type: none;
 }
 
-.dm5-html-field.info li.ql-indent-2 {
-  margin-left: 6em;
-}
+.dm5-html-field.info li.ql-indent-1 { margin-left:  3em; }
+.dm5-html-field.info li.ql-indent-2 { margin-left:  6em; }
+.dm5-html-field.info li.ql-indent-3 { margin-left:  9em; }
+.dm5-html-field.info li.ql-indent-4 { margin-left: 12em; }
+.dm5-html-field.info li.ql-indent-5 { margin-left: 15em; }
+.dm5-html-field.info li.ql-indent-6 { margin-left: 18em; }
 
-.dm5-html-field.info li.ql-indent-3 {
-  margin-left: 9em;
-}
+.dm5-html-field.info ol li             { counter-increment: list-0; counter-reset: list-1; }
+.dm5-html-field.info ol li.ql-indent-1 { counter-increment: list-1; counter-reset: list-2; }
+.dm5-html-field.info ol li.ql-indent-2 { counter-increment: list-2; counter-reset: list-3; }
+.dm5-html-field.info ol li.ql-indent-3 { counter-increment: list-3; counter-reset: list-4; }
+.dm5-html-field.info ol li.ql-indent-4 { counter-increment: list-4; counter-reset: list-5; }
+.dm5-html-field.info ol li.ql-indent-5 { counter-increment: list-5; counter-reset: list-6; }
 
-.dm5-html-field.info li.ql-indent-4 {
-  margin-left: 12em;
-}
+.dm5-html-field.info ol li:before             { content: counter(list-0, decimal)     '. '; }
+.dm5-html-field.info ol li.ql-indent-1:before { content: counter(list-1, lower-alpha) '. '; }
+.dm5-html-field.info ol li.ql-indent-2:before { content: counter(list-2, lower-roman) '. '; }
+.dm5-html-field.info ol li.ql-indent-3:before { content: counter(list-3, decimal)     '. '; }
+.dm5-html-field.info ol li.ql-indent-4:before { content: counter(list-4, lower-alpha) '. '; }
+.dm5-html-field.info ol li.ql-indent-5:before { content: counter(list-5, lower-roman) '. '; }
 
-.dm5-html-field.info li.ql-indent-5 {
-  margin-left: 15em;
-}
-
-.dm5-html-field.info li.ql-indent-6 {
-  margin-left: 18em;
-}
+/* Quill Overrides */
 
 .ql-container {
   font-family: var(--main-font-family) !important;    /* Quill default is "Helvetica, Arial, sans-serif" */
