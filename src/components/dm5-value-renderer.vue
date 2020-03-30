@@ -7,6 +7,7 @@
         <component :is="simpleRenderer" :object="object" :mode="localMode" :comp-def="compDef" :context="context"
           @keyup.native.enter="enter">
         </component>
+        <!-- Save Button -->
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
       <!-- Edit Button -->

@@ -2,6 +2,11 @@
 
 ## Version History
 
+**0.21** -- Mar 30, 2020
+
+* Fixes:
+    * HTML fields use same stylesheet for info mode and form mode
+
 **0.20** -- Nov 21, 2019
 
 * Improvements:
@@ -143,4 +148,4 @@
 
 ------------
 Jörg Richter  
-Nov 21, 2019
+Mar 30, 2020
