@@ -37,7 +37,7 @@ export default {
         // Normal rendering
         return this.type.compDefs
       } else {
-        // Reduced details: at deeper levels for identity types only their identity attributes are rendered
+        // Reduced details: at deeper levels for entity types only their identity attributes are rendered
         return this.type.compDefs.filter(compDef => compDef.isIdentityAttr)
       }
     }
