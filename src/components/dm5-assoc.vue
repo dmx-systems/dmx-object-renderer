@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import dm5 from 'dm5'
 
 export default {
@@ -81,8 +82,7 @@ export default {
 
     updatePlayer ({playerObject, pos}) {
       // console.log('### updatePlayer', pos, playerObject)
-      this.playerObjects[pos - 1] = playerObject
-      this.$forceUpdate()     // force recalculation of the per-assoc-type disabled flags
+      Vue.set(this.playerObjects, pos - 1, playerObject)
     }
   },
 
