@@ -32,10 +32,10 @@ export default {
         dm5.restClient.queryTopicsFulltext(this.query, this.object.typeUri).then(result => {
           if (result.query === this.query) {
             cb(result.topics)
-          } else {
+          } /* else {
             console.log(`Ignoring ${result.topics.length} result topics of query "${result.query}"` +
               ` (current query is "${this.query}")`)
-          }
+          } */
         }).catch(e => {
           console.warn(`Query "${this.query}" failed`)
           cb([])

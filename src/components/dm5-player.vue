@@ -38,6 +38,10 @@ export default {
       type: dm5.Player,
       required: true
     },
+    pos: {
+      type: Number,             // player position: 1 or 2
+      required: true
+    },
     types: Object               // Optional: "assocTypes" and "roleTypes" (arrays)
   },
 
@@ -76,6 +80,7 @@ export default {
     fetchPlayer () {
       this.player.fetch().then(playerObject => {
         this.playerObject = playerObject
+        this.$emit('player-update', {playerObject, pos: this.pos})
       })
     }
   }
