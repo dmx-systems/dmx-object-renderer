@@ -43,7 +43,9 @@ export default {
 
   data () {
     return {
-      playerObjects: []
+      playerObjects: [],
+      workspace: undefined,       // TODO: factor out
+      workspaceWritable: false    // TODO: factor out
     }
   },
 
@@ -62,13 +64,21 @@ export default {
 
   methods: {
 
-    // TODO: add extension point. Move logic to AccessControl module.
+    // TODO: factor out. Move logic to AccessControl module. Add object-renderer extension point.
     disabled (assocType) {
       if (assocType.uri === 'dmx.accesscontrol.membership') {
         const username = this.getPlayerByType('dmx.accesscontrol.username')
-        const workspace = this.getPlayerByType('dmx.workspaces.workspace')
-        // console.log('### disabled', !username || !workspace)
-        return !username || !workspace
+        this.workspace = this.getPlayerByType('dmx.workspaces.workspace')
+        // console.log('disabled (1)', !username || !this.workspace)
+        if (!username || !this.workspace) {
+          return true
+        }
+        this.workspace.isWritable().then(isWritable => {
+          // console.log('isWritable', isWritable)
+          this.workspaceWritable = isWritable
+        })
+        // console.log('disabled (2)', !this.workspaceWritable)
+        return !this.workspaceWritable
       }
       return false
     },
@@ -77,11 +87,11 @@ export default {
       // console.log('getPlayerByType', this.playerObjects[0], this.playerObjects[1])
       const m1 = this.playerObjects[0] && this.playerObjects[0].typeUri === typeUri
       const m2 = this.playerObjects[1] && this.playerObjects[1].typeUri === typeUri
-      return m1 && !m2 ? m1 : m2 && !m1 ? m2 : undefined
+      return m1 && !m2 ? this.playerObjects[0] : m2 && !m1 ? this.playerObjects[1] : undefined
     },
 
     updatePlayer ({playerObject, pos}) {
-      // console.log('### updatePlayer', pos, playerObject)
+      // console.log('updatePlayer', pos, playerObject)
       Vue.set(this.playerObjects, pos - 1, playerObject)
     }
   },
