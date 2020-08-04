@@ -1,6 +1,11 @@
-# DeepaMehta 5 Object Renderer
+# DMX 5 Object Renderer
 
 ## Version History
+
+**1.0** -- Aug 4, 2020
+
+* Fixes:
+    * An association's retype-into-Membership command is disabled if a) players are not Username/Workspace, or b) the Workspace player is not writable
 
 **0.21** -- Mar 30, 2020
 
@@ -148,4 +153,4 @@
 
 ------------
 Jörg Richter  
-Mar 30, 2020
+Aug 4, 2020
