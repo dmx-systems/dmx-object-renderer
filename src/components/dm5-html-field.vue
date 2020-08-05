@@ -80,7 +80,7 @@ export default {
     /**
      * Emits `updated` event once loading of embedded image completes. Note: image rendering responds to load state,
      * not to data change; so the updated() lifecycle method would not be suitable.
-     * Allows e.g. the dm5-detail component to resize in-map details (see dm5-cytoscape-renderer module).
+     * Allows e.g. the dm5-detail component to resize in-map details (see dmx-cytoscape-renderer module).
      */
     trackImages () {
       if (this.infoMode) {

@@ -6,6 +6,8 @@
 
 * Fixes:
     * An association's retype-into-Membership command is disabled if a) players are not Username/Workspace, or b) the Workspace player is not writable
+* Chore:
+    * Rename this package `dm5-object-renderer` -> `dmx-object-renderer`
 
 **0.21** -- Mar 30, 2020
 
