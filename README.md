@@ -2,6 +2,10 @@
 
 ## Version History
 
+**1.0.2** -- Aug 6, 2020
+
+* Fix imports
+
 **1.0.1** -- Aug 5, 2020
 
 * Fix imports
@@ -159,4 +163,4 @@
 
 ------------
 Jörg Richter  
-Aug 5, 2020
+Aug 6, 2020
