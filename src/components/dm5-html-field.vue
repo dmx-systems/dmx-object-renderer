@@ -62,14 +62,22 @@ export default {
 
     quillReady (quill) {
       this.forEachExtension(ext => {
-        quill.getModule('toolbar').addHandler(ext.name, ext.toolbarHandler)
-        ext.quillReady(quill)
+        if (ext.name && ext.toolbarHandler) {
+          quill.getModule('toolbar').addHandler(ext.name, ext.toolbarHandler)
+        }
+        if (ext.quillReady) {
+          ext.quillReady(quill)
+        }
       })
     },
 
     domReady () {
       if (this.infoMode) {
-        this.forEachExtension(ext => ext.infoDOMReady(this.$refs.info))
+        this.forEachExtension(ext => {
+          if (ext.infoDOMReady) {
+            ext.infoDOMReady(this.$refs.info)
+          }
+        })
       }
     },
 
