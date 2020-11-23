@@ -57,7 +57,7 @@ export default {
   methods: {
 
     registerExtensions (Quill) {
-      this.forEachExtension(ext => Quill.register(ext.extension(Quill)))
+      this.forEachExtension(ext => Quill.register(ext.extension(Quill), ext.overwrite))
     },
 
     quillReady (quill) {
