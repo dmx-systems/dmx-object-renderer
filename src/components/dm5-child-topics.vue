@@ -33,7 +33,7 @@ export default {
     },
 
     compDefs () {
-      if (this.level === 0 || this.object.isAssoc() || this.type.isValue) {
+      if (this.level === 0 || this.object.isAssoc || this.type.isValue) {
         // Normal rendering
         return this.type.compDefs
       } else {

@@ -72,7 +72,7 @@ export default {
       // Note: in form mode empty values must always be rendered to let the user input a value. Note also that
       // "local form mode" is more specific than (global) "form mode" so the latter must not be checked.
       //
-      return !this.isEmpty || this.isToplevel && this.object.isTopic() || this.localFormMode
+      return !this.isEmpty || this.isToplevel && this.object.isTopic || this.localFormMode
     },
 
     showHeading () {
