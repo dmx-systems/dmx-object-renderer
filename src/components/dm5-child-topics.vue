@@ -46,7 +46,7 @@ export default {
   methods: {
 
     isOne (compDef) {
-      return compDef.isOne()
+      return compDef.isOne
     },
 
     children (compDef) {

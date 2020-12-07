@@ -96,7 +96,7 @@ export default {
     },
 
     fieldLabel () {
-      const type = this.compDef && this.compDef.getCustomAssocType()
+      const type = this.compDef && this.compDef.customAssocType
       let label = type && type.isSimple() ? type.value : this.type.value
       if (this.path.length) {
         label += ` (${this.path.join(' / ')})`

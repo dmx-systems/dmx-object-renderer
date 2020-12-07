@@ -45,7 +45,7 @@ export default {
 
     showRelatingAssoc () {
       // object.assoc is undefined if object is a relating assoc itself
-      return this.object.assoc && this.compDef.getInstanceLevelAssocType().isComposite()
+      return this.object.assoc && this.compDef.instanceLevelAssocType.isComposite()
     },
 
     showRevealButton () {
@@ -53,7 +53,7 @@ export default {
     },
 
     showAddRemoveButton () {
-      return this.formMode && this.compDef.isMany()
+      return this.formMode && this.compDef.isMany
     },
 
     revealTitle () {
@@ -62,12 +62,12 @@ export default {
 
     // TODO: same as removeTitle()?
     addTitle () {
-      const type = this.compDef.getCustomAssocType()
-      return `Add ${type ? type.value : this.compDef.getChildType().value}`
+      const type = this.compDef.customAssocType
+      return `Add ${type ? type.value : this.compDef.childType.value}`
     },
 
     removeTitle () {
-      const type = this.compDef.getCustomAssocType()
+      const type = this.compDef.customAssocType
       return `Remove ${type ? type.value : this.typeName}`
     },
 
@@ -79,7 +79,7 @@ export default {
       //   (see "showRelatingAssoc" above) assuming its field labels provide sufficient context info already
       // - this object is composite; if simple the custom assoc type name is used as field label already
       //   (see "fieldLabel" in dm5-value-renderer.vue) and must not be rendered redundantly
-      const type = this.compDef.getCustomAssocType()
+      const type = this.compDef.customAssocType
       if (type && type.isSimple() && this.object.type.isComposite()) {
         const path = this.path.slice()    // avoid side effect in other tree branches
         path.push(type.value)
