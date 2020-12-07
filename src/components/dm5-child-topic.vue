@@ -45,7 +45,7 @@ export default {
 
     showRelatingAssoc () {
       // object.assoc is undefined if object is a relating assoc itself
-      return this.object.assoc && this.compDef.instanceLevelAssocType.isComposite()
+      return this.object.assoc && this.compDef.instanceLevelAssocType.isComposite
     },
 
     showRevealButton () {
@@ -80,7 +80,7 @@ export default {
       // - this object is composite; if simple the custom assoc type name is used as field label already
       //   (see "fieldLabel" in dm5-value-renderer.vue) and must not be rendered redundantly
       const type = this.compDef.customAssocType
-      if (type && type.isSimple() && this.object.type.isComposite()) {
+      if (type && type.isSimple && this.object.type.isComposite) {
         const path = this.path.slice()    // avoid side effect in other tree branches
         path.push(type.value)
         return path
