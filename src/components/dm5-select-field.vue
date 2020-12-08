@@ -73,7 +73,7 @@ export default {
 
     loadOptions () {
       if (this.formMode && !this.options) {
-        dm5.restClient.getTopicsByType(this.object.typeUri).then(topics => {
+        dm5.rpc.getTopicsByType(this.object.typeUri).then(topics => {
           this.options = dm5.utils.mapById(topics)
         })
       }

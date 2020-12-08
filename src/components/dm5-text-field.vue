@@ -29,7 +29,7 @@ export default {
       // compare to dm5-search-widget.vue (module dm5-search-widget)
       // console.log('query', this.query)
       if (this.query) {
-        dm5.restClient.queryTopicsFulltext(this.query, this.object.typeUri).then(result => {
+        dm5.rpc.queryTopicsFulltext(this.query, this.object.typeUri).then(result => {
           if (result.query === this.query) {
             cb(result.topics)
           } /* else {
