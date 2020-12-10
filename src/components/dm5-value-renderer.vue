@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import dm5 from 'dmx-api'
+import dmx from 'dmx-api'
 
 export default {
 
@@ -49,7 +49,7 @@ export default {
   ],
 
   props: {
-    compDef: dm5.CompDef,     // undefined for top-level object
+    compDef: dmx.CompDef,     // undefined for top-level object
     noHeading: Boolean
   },
 
@@ -66,7 +66,7 @@ export default {
       // FIXME: a non-top-level composite topic/assoc which has an empty value (= label) while non-empty child values
       // are still present are *not* rendered, but possibly should.
       //
-      // The empty value check can't test for children existence (!dm5.utils.isEmpty(this.object.assoc.children))
+      // The empty value check can't test for children existence (!dmx.utils.isEmpty(this.object.assoc.children))
       // as empty valued children added by "filling" stay in the object after editing.
       //
       // Note: in form mode empty values must always be rendered to let the user input a value. Note also that

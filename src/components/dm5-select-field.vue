@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import dm5 from 'dmx-api'
+import dmx from 'dmx-api'
 
 export default {
 
@@ -73,8 +73,8 @@ export default {
 
     loadOptions () {
       if (this.formMode && !this.options) {
-        dm5.rpc.getTopicsByType(this.object.typeUri).then(topics => {
-          this.options = dm5.utils.mapById(topics)
+        dmx.rpc.getTopicsByType(this.object.typeUri).then(topics => {
+          this.options = dmx.utils.mapById(topics)
         })
       }
     },

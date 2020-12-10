@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import dm5 from 'dmx-api'
+import dmx from 'dmx-api'
 
 export default {
 
@@ -35,7 +35,7 @@ export default {
 
   props: {
     player: {                   // the player to render
-      type: dm5.Player,
+      type: dmx.Player,
       required: true
     },
     pos: {

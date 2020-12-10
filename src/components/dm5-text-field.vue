@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import dm5 from 'dmx-api'
+import dmx from 'dmx-api'
 
 export default {
 
@@ -17,7 +17,7 @@ export default {
 
   computed: {
     query () {
-      return dm5.utils.fulltextQuery(this.object.value, true)     // allowSingleLetterSearch=true
+      return dmx.utils.fulltextQuery(this.object.value, true)     // allowSingleLetterSearch=true
     }
   },
 
@@ -29,7 +29,7 @@ export default {
       // compare to dm5-search-widget.vue (module dm5-search-widget)
       // console.log('query', this.query)
       if (this.query) {
-        dm5.rpc.queryTopicsFulltext(this.query, this.object.typeUri).then(result => {
+        dmx.rpc.queryTopicsFulltext(this.query, this.object.typeUri).then(result => {
           if (result.query === this.query) {
             cb(result.topics)
           } /* else {
