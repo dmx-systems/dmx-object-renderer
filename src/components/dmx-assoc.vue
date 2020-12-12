@@ -9,12 +9,12 @@
       </el-option>
     </el-select>
     <!-- Association Value -->
-    <dm5-value-renderer :object="assoc" :level="0" :path="[]" :context="context" no-heading></dm5-value-renderer>
+    <dmx-value-renderer :object="assoc" :level="0" :path="[]" :context="context" no-heading></dmx-value-renderer>
     <!-- Player -->
-    <dm5-player :player="assoc.player1" :pos="1" :mode="mode" :types="types" :context="context"
-      @player-update="updatePlayer"></dm5-player>
-    <dm5-player :player="assoc.player2" :pos="2" :mode="mode" :types="types" :context="context"
-      @player-update="updatePlayer"></dm5-player>
+    <dmx-player :player="assoc.player1" :pos="1" :mode="mode" :types="types" :context="context"
+      @player-update="updatePlayer"></dmx-player>
+    <dmx-player :player="assoc.player2" :pos="2" :mode="mode" :types="types" :context="context"
+      @player-update="updatePlayer"></dmx-player>
   </div>
 </template>
 
@@ -97,8 +97,8 @@ export default {
   },
 
   components: {
-    'dm5-player':         require('./dm5-player').default,
-    'dm5-value-renderer': require('./dm5-value-renderer').default
+    'dmx-player':         require('./dmx-player').default,
+    'dmx-value-renderer': require('./dmx-value-renderer').default
   }
 }
 </script>

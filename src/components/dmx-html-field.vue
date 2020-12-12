@@ -102,7 +102,7 @@ export default {
   components: {
     quill: () => ({
       component: import('vue-quill-minimum' /* webpackChunkName: "vue-quill-minimum" */),
-      loading: require('./dm5-spinner')
+      loading: require('./dmx-spinner')
     })
   }
 }

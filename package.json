@@ -4,7 +4,7 @@
   "description": "The DMX 5 object renderer as a composable GUI component",
   "author": "Jörg Richter <jri@dmx.berlin>",
   "license": "AGPL-3.0",
-  "main": "src/components/dm5-object-renderer.vue",
+  "main": "src/components/dmx-object-renderer.vue",
   "repository": {
     "type": "git",
     "url": "https://github.com/jri/dm5-object-renderer.git"

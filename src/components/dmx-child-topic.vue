@@ -1,10 +1,10 @@
 <template>
   <div v-if="!deleted" :class="['dm5-child-topic', mode, levelClass]">
-    <dm5-value-renderer v-if="showRelatingAssoc" :object="object.assoc" :level="level" :path="newPath"
+    <dmx-value-renderer v-if="showRelatingAssoc" :object="object.assoc" :level="level" :path="newPath"
       :comp-def="compDef" :context="context">
-    </dm5-value-renderer>
-    <dm5-value-renderer :object="object" :level="level" :path="newPath" :comp-def="compDef" :context="context">
-    </dm5-value-renderer>
+    </dmx-value-renderer>
+    <dmx-value-renderer :object="object" :level="level" :path="newPath" :comp-def="compDef" :context="context">
+    </dmx-value-renderer>
     <!-- Reveal Button -->
     <el-button class="hover-button reveal fa fa-eye" v-if="showRevealButton" type="text" :title="revealTitle"
       @click="reveal">
@@ -25,7 +25,7 @@ export default {
 
   beforeCreate () {
     // Note: postponed loading resolves cyclic dependency between <dm5-value-renderer> and <dm5-child-topic>
-    this.$options.components['dm5-value-renderer'] = require('./dm5-value-renderer').default
+    this.$options.components['dmx-value-renderer'] = require('./dmx-value-renderer').default
   },
 
   mixins: [

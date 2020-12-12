@@ -1,5 +1,5 @@
 <template>
-  <dm5-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :types="types" :context="context"></dm5-assoc>
+  <dmx-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :types="types" :context="context"></dmx-assoc>
   <component class="dm5-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :path="[]"
     :context="context">
   </component>
@@ -50,7 +50,7 @@ export default {
 
     objectRenderer () {
       const objectRenderers = this.renderers.object
-      return objectRenderers && objectRenderers[this.object.typeUri] || 'dm5-value-renderer'
+      return objectRenderers && objectRenderers[this.object.typeUri] || 'dmx-value-renderer'
     },
 
     /**
@@ -116,8 +116,8 @@ export default {
   },
 
   components: {
-    'dm5-value-renderer': require('./dm5-value-renderer').default,
-    'dm5-assoc':          require('./dm5-assoc').default
+    'dmx-value-renderer': require('./dmx-value-renderer').default,
+    'dmx-assoc':          require('./dmx-assoc').default
   }
 }
 

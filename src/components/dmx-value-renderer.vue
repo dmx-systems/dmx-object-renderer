@@ -116,7 +116,7 @@ export default {
         return widget.uri.replace(/\./g, '-')
       }
       // 3) standard renderer
-      return `dm5-${this.type.dataTypeUri.substr('dmx.core.'.length)}-field`
+      return `dmx-${this.type.dataTypeUri.substr('dmx.core.'.length)}-field`
     },
 
     compositeRenderer () {
@@ -125,7 +125,7 @@ export default {
         return this.valueRenderer
       }
       // 2) standard renderer
-      return 'dm5-child-topics'
+      return 'dmx-child-topics'
     },
 
     valueRenderer () {
@@ -134,7 +134,7 @@ export default {
     },
 
     isHtmlField () {
-      return this.simpleRenderer === 'dm5-html-field'
+      return this.simpleRenderer === 'dmx-html-field'
     },
 
     mode () {
@@ -187,16 +187,16 @@ export default {
 
   // Note: these components are registered by Webclient already but dm5-object-renderer is a standalone component
   components: {
-    'dm5-child-topics':     require('./dm5-child-topics').default,      // TODO: change prefix to "dmx"
+    'dmx-child-topics':     require('./dmx-child-topics').default,
     // simple default widgets
     // (component name is computed from data type URI)
-    'dm5-text-field':       require('./dm5-text-field').default,        // TODO: change prefix to "dmx"
-    'dm5-number-field':     require('./dm5-number-field').default,      // TODO: change prefix to "dmx"
-    'dm5-boolean-field':    require('./dm5-boolean-field').default,     // TODO: change prefix to "dmx"
-    'dm5-html-field':       require('./dm5-html-field').default,        // TODO: change prefix to "dmx"
+    'dmx-text-field':       require('./dmx-text-field').default,
+    'dmx-number-field':     require('./dmx-number-field').default,
+    'dmx-boolean-field':    require('./dmx-boolean-field').default,
+    'dmx-html-field':       require('./dmx-html-field').default,
     // simple custom widgets
     // (component name is computed from view config Widget topic URI)
-    'dmx-webclient-select': require('./dm5-select-field').default
+    'dmx-webclient-select': require('./dmx-select-field').default
   }
 }
 </script>
