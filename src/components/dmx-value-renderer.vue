@@ -29,16 +29,16 @@ import dmx from 'dmx-api'
 export default {
 
   created () {
-    // console.log('dm5-value-renderer created', this.object)
+    // console.log('dmx-value-renderer created', this.object)
   },
 
   updated () {
-    // console.log('dm5-value-renderer updated', this.object.id)
+    // console.log('dmx-value-renderer updated', this.object.id)
     this.context.updated()
   },
 
   destroyed () {
-    // console.log('dm5-value-renderer destroyed', this.object.id)
+    // console.log('dmx-value-renderer destroyed', this.object.id)
   },
 
   mixins: [
@@ -56,7 +56,7 @@ export default {
   computed: {
 
     show () {
-      // For an empty valued assoc the dm5-value-renderer must not render anything. 2 reasons:
+      // For an empty valued assoc the dmx-value-renderer must not render anything. 2 reasons:
       // 1) In the assoc details (when an assoc is selected) a label without value would be rendered.
       // 2) In a composite value rendering an empty valued relating assoc would create unwanted vertical space.
       //
@@ -185,7 +185,7 @@ export default {
     }
   },
 
-  // Note: these components are registered by Webclient already but dm5-object-renderer is a standalone component
+  // Note: these components are registered by Webclient already but dmx-object-renderer is a standalone component
   components: {
     'dmx-child-topics':     require('./dmx-child-topics').default,
     // simple default widgets
@@ -212,7 +212,7 @@ export default {
   margin-bottom: var(--heading-spacing);
 }
 
-/* To be hoverable the *direct* parent dm5-value-renderer must be in info mode. */
+/* To be hoverable the *direct* parent dmx-value-renderer must be in info mode. */
 /* Otherwise an object already in inline edit mode would still be hoverable.    */
 .dmx-value-renderer.info.editable > .field:hover {
   background-color: white;

@@ -26,7 +26,7 @@ export default {
       // console.log('fetchSuggestions', value)
       // Note: for an empty value fetchSuggestions() is not invoked
       // Note: fetchSuggestions() is already debounced by Element UI
-      // compare to dm5-search-widget.vue (module dm5-search-widget)
+      // compare to dmx-search-widget.vue (module dmx-search-widget)
       // console.log('query', this.query)
       if (this.query) {
         dmx.rpc.queryTopicsFulltext(this.query, this.object.typeUri).then(result => {

@@ -65,7 +65,7 @@ export default {
   },
 
   updated () {
-    // console.log('dm5-player updated')
+    // console.log('dmx-player updated')
     this.context.updated()
   },
 

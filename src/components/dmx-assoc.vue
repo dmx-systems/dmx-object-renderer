@@ -25,7 +25,7 @@ import dmx from 'dmx-api'
 export default {
 
   created () {
-    // console.log('dm5-assoc created', this.types)
+    // console.log('dmx-assoc created', this.types)
   },
 
   mixins: [

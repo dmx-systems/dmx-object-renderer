@@ -9,12 +9,12 @@
 export default {
 
   created () {
-    // console.log('dm5-object-renderer created', this.object, this.writable, this.mode)
+    // console.log('dmx-object-renderer created', this.object, this.writable, this.mode)
     this.focus()
   },
 
   destroyed () {
-    // console.log('dm5-object-renderer destroyed', this.object.id)
+    // console.log('dmx-object-renderer destroyed', this.object.id)
   },
 
   mixins: [
@@ -54,7 +54,7 @@ export default {
     },
 
     /**
-     * The context passed through the dm5-value-renderer hierarchy.
+     * The context passed through the dmx-value-renderer hierarchy.
      */
     context () {
       return {
@@ -81,7 +81,7 @@ export default {
       }
     },
 
-    // copy in dm5-info-tab.vue (as buttonDisabled())
+    // copy in dmx-info-tab.vue (as buttonDisabled())
     // copy in plugin.js of platform's topicmaps module (in isEditDisabled())
     editDisabled () {
       // only entity topics are enabled; assocs and types are always enabled
@@ -101,7 +101,7 @@ export default {
       if (!this.formMode) {
         return
       }
-      // Note: at dm5-object-renderer instantiation resp. at enter-form-mode the form components are not yet created
+      // Note: at dmx-object-renderer instantiation resp. at enter-form-mode the form components are not yet created
       this.$nextTick(() => {
         const leaf = findLeaf(this)
         // console.log('focus', leaf, leaf.$el, leaf.focus)

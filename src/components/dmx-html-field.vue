@@ -9,18 +9,18 @@
 export default {
 
   created () {
-    // console.log('dm5-html-field created()', this.mode)
+    // console.log('dmx-html-field created()', this.mode)
   },
 
   mounted () {
-    // console.log('dm5-html-field mounted()', this.mode, this.$refs.html)
-    // Note: if a topic is edited for the first time the dm5-html-field component is mounted in "form" mode
+    // console.log('dmx-html-field mounted()', this.mode, this.$refs.html)
+    // Note: if a topic is edited for the first time the dmx-html-field component is mounted in "form" mode
     this.domReady()
     this.trackImages()
   },
 
   updated () {
-    // console.log('dm5-html-field updated()', this.mode)
+    // console.log('dmx-html-field updated()', this.mode)
     this.domReady()
   },
 
@@ -46,7 +46,7 @@ export default {
     // update Quill instance manually when user changes selection while in form mode
     object () {
       // Note: when switching from info mode to form mode the object watcher fires as "objectToEdit" changes
-      // (see dm5-info-tab.vue in dm5-detail-panel module). In this case the quill instance is not yet available,
+      // (see dmx-info-tab.vue in dmx-detail-panel module). In this case the quill instance is not yet available,
       // not even at next tick. Anyways no manual update is required in this case.
       if (this.formMode && this.$refs.quill) {
         this.$refs.quill.setHTML(this.object.value)
@@ -88,7 +88,7 @@ export default {
     /**
      * Emits `updated` event once loading of embedded image completes. Note: image rendering responds to load state,
      * not to data change; so the updated() lifecycle method would not be suitable.
-     * Allows e.g. the dm5-detail component to resize in-map details (see dmx-cytoscape-renderer module).
+     * Allows e.g. the dmx-detail component to resize in-map details (see dmx-cytoscape-renderer module).
      */
     trackImages () {
       if (this.infoMode) {
@@ -184,7 +184,7 @@ export default {
 }
 
 .ql-container .ql-editor {
-  line-height: inherit !important;                    /* Quill default is 1.42; inherit from dm5-html-field */
+  line-height: inherit !important;                    /* Quill default is 1.42; inherit from dmx-html-field */
   padding: 6px 8px !important;                        /* Quill default is 12px 15px */
   background-color: white;
 }

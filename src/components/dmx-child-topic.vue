@@ -24,7 +24,7 @@
 export default {
 
   beforeCreate () {
-    // Note: postponed loading resolves cyclic dependency between <dm5-value-renderer> and <dm5-child-topic>
+    // Note: postponed loading resolves cyclic dependency between <dmx-value-renderer> and <dmx-child-topic>
     this.$options.components['dmx-value-renderer'] = require('./dmx-value-renderer').default
   },
 
@@ -72,13 +72,13 @@ export default {
     },
 
     newPath () {
-      // use custom assoc type name for extended field label rendering (see "fieldLabel" in dm5-value-renderer.vue)
+      // use custom assoc type name for extended field label rendering (see "fieldLabel" in dmx-value-renderer.vue)
       // if all 3 applies:
       // - there is a custom assoc type
       // - the custom assoc type is simple; if composite the relating assoc rendering is embedded as well
       //   (see "showRelatingAssoc" above) assuming its field labels provide sufficient context info already
       // - this object is composite; if simple the custom assoc type name is used as field label already
-      //   (see "fieldLabel" in dm5-value-renderer.vue) and must not be rendered redundantly
+      //   (see "fieldLabel" in dmx-value-renderer.vue) and must not be rendered redundantly
       const type = this.compDef.customAssocType
       if (type && type.isSimple && this.object.type.isComposite) {
         const path = this.path.slice()    // avoid side effect in other tree branches
