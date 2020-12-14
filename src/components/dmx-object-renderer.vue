@@ -1,6 +1,6 @@
 <template>
-  <dmx-assoc class="dm5-object-renderer" v-if="isAssoc" :assoc="object" :types="types" :context="context"></dmx-assoc>
-  <component class="dm5-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :path="[]"
+  <dmx-assoc class="dmx-object-renderer" v-if="isAssoc" :assoc="object" :types="types" :context="context"></dmx-assoc>
+  <component class="dmx-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :path="[]"
     :context="context">
   </component>
 </template>

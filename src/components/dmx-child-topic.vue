@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!deleted" :class="['dm5-child-topic', mode, levelClass]">
+  <div v-if="!deleted" :class="['dmx-child-topic', mode, levelClass]">
     <dmx-value-renderer v-if="showRelatingAssoc" :object="object.assoc" :level="level" :path="newPath"
       :comp-def="compDef" :context="context">
     </dmx-value-renderer>
@@ -124,17 +124,17 @@ export default {
 </script>
 
 <style>
-.dm5-child-topic {
+.dmx-child-topic {
   position: relative;
 }
 
-.dm5-child-topic > .dm5-value-renderer + .dm5-value-renderer {
+.dmx-child-topic > .dmx-value-renderer + .dmx-value-renderer {
   margin-top: var(--field-spacing);
 }
 
 /* Hover Button */
 
-.dm5-child-topic > .hover-button {
+.dmx-child-topic > .hover-button {
   position: absolute;
   top: 0;
   right: -12px;
@@ -142,32 +142,32 @@ export default {
   padding: 0 !important;
 }
 
-.dm5-child-topic:hover > .hover-button {
+.dmx-child-topic:hover > .hover-button {
   visibility: visible;
 }
 
 /* Reveal Button */
 
-.dm5-child-topic.level-1 {
+.dmx-child-topic.level-1 {
   border: 1px solid transparent;
 }
 
-.dm5-child-topic.info.level-1:hover {
+.dmx-child-topic.info.level-1:hover {
   border-color: var(--highlight-color);
 }
 
 /* Add/Remove Button */
 
-.dm5-child-topic.form.multi:hover {
+.dmx-child-topic.form.multi:hover {
   border-color: var(--color-danger);
 }
 
-.dm5-child-topic > .hover-button.add {
+.dmx-child-topic > .hover-button.add {
   top: unset;
   bottom: 0;
 }
 
-.dm5-child-topic > .hover-button.remove {
+.dmx-child-topic > .hover-button.remove {
   color: var(--color-danger);
 }
 </style>

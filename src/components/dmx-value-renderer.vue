@@ -1,5 +1,5 @@
 <template>
-  <div :class="['dm5-value-renderer', localMode, {editable}]" v-if="show">
+  <div :class="['dmx-value-renderer', localMode, {editable}]" v-if="show">
     <!-- simple -->
     <div v-if="isSimple" class="field">
       <div class="field-label">{{fieldLabel}}</div>
@@ -202,11 +202,11 @@ export default {
 </script>
 
 <style>
-.dm5-value-renderer {
+.dmx-value-renderer {
   position: relative;     /* absolute positioned "+" buttons scroll along */
 }
 
-.dm5-value-renderer .heading {
+.dmx-value-renderer .heading {
   font-size: var(--heading-font-size);
   font-weight: bold;
   margin-bottom: var(--heading-spacing);
@@ -214,31 +214,31 @@ export default {
 
 /* To be hoverable the *direct* parent dm5-value-renderer must be in info mode. */
 /* Otherwise an object already in inline edit mode would still be hoverable.    */
-.dm5-value-renderer.info.editable > .field:hover {
+.dmx-value-renderer.info.editable > .field:hover {
   background-color: white;
 }
 
-.dm5-value-renderer .field .field-content .el-autocomplete,
-.dm5-value-renderer .field .field-content .el-select {
+.dmx-value-renderer .field .field-content .el-autocomplete,
+.dmx-value-renderer .field .field-content .el-select {
   width: 100%;
 }
 
-.dm5-value-renderer .field .field-content.no-html {
+.dmx-value-renderer .field .field-content.no-html {
   display: flex;
   align-items: center;
 }
 
-.dm5-value-renderer .field .field-content.no-html .save-button {
+.dmx-value-renderer .field .field-content.no-html .save-button {
   margin-left: 0.4em;
 }
 
-.dm5-value-renderer .field .field-content.html .save-button {
+.dmx-value-renderer .field .field-content.html .save-button {
   margin-top: 0.4em;
 }
 
 /* Edit Button */
 
-.dm5-value-renderer button.edit {
+.dmx-value-renderer button.edit {
   position: absolute;
   bottom: 0;
   right: -12px;
@@ -246,7 +246,7 @@ export default {
   padding: 0 !important;
 }
 
-.dm5-value-renderer > .field:hover button.edit {
+.dmx-value-renderer > .field:hover button.edit {
   visibility: visible;
 }
 </style>

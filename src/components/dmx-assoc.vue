@@ -1,5 +1,5 @@
 <template>
-  <div class="dm5-assoc">
+  <div class="dmx-assoc">
     <!-- Association Type -->
     <div class="field-label">Association Type</div>
     <div v-if="infoMode">{{assoc.typeName}}</div>
@@ -104,8 +104,8 @@ export default {
 </script>
 
 <style>
-.dm5-assoc > .dm5-value-renderer,
-.dm5-assoc .dm5-player {
+.dmx-assoc > .dmx-value-renderer,
+.dmx-assoc .dmx-player {
   margin-top: var(--field-spacing);
 }
 </style>

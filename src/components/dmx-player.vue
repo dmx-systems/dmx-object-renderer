@@ -1,5 +1,5 @@
 <template>
-  <div class="dm5-player">
+  <div class="dmx-player">
     <!-- Player Object -->
     <div class="field" v-if="playerObject">
       <div class="field-label">{{playerObject.typeName}}</div>
@@ -88,22 +88,22 @@ export default {
 </script>
 
 <style>
-.dm5-player {
+.dmx-player {
   background-color: white;
   border: 1px solid var(--border-color);
   padding: var(--object-item-padding);
 }
 
-.dm5-player .object {
+.dmx-player .object {
   display: flex;
   align-items: baseline;
 }
 
-.dm5-player .object .icon {
+.dmx-player .object .icon {
   margin-right: var(--icon-spacing);
 }
 
-.dm5-player .field + .field {
+.dmx-player .field + .field {
   margin-top: var(--field-spacing);
 }
 </style>

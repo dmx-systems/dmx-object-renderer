@@ -1,6 +1,6 @@
 <template>
-  <div :class="['dm5-html-field', mode]" v-if="infoMode" v-html="object.value" ref="info"></div>
-  <quill :class="['dm5-html-field', mode]" v-else v-model="object.value" :options="quillOptions" ref="quill"
+  <div :class="['dmx-html-field', mode]" v-if="infoMode" v-html="object.value" ref="info"></div>
+  <quill :class="['dmx-html-field', mode]" v-else v-model="object.value" :options="quillOptions" ref="quill"
     @quill-imported="registerExtensions" @quill-ready="quillReady">
   </quill>
 </template>
@@ -109,43 +109,43 @@ export default {
 </script>
 
 <style>
-.dm5-html-field {
+.dmx-html-field {
   line-height: var(--line-height);
 }
 
-.dm5-html-field p {
+.dmx-html-field p {
   margin: 0;
 }
 
-.dm5-html-field p + p {
+.dmx-html-field p + p {
   margin-top: var(--paragraph-spacing);
 }
 
-.dm5-html-field img {
+.dmx-html-field img {
   max-width: 100%;
 }
 
-.dm5-html-field a {
+.dmx-html-field a {
   color: var(--highlight-color);
   text-decoration: none;
 }
 
-.dm5-html-field a:hover {
+.dmx-html-field a:hover {
   color: var(--highlight-color-2);
 }
 
 /* Adopt Quill list style in info mode */
 
-.dm5-html-field.info ol > li,
-.dm5-html-field.info ul > li {
+.dmx-html-field.info ol > li,
+.dmx-html-field.info ul > li {
   list-style-type: none;
 }
 
-.dm5-html-field.info ul > li::before {
+.dmx-html-field.info ul > li::before {
   content: '\2022';
 }
 
-.dm5-html-field.info li::before {
+.dmx-html-field.info li::before {
   display: inline-block;
   white-space: nowrap;
   width: 1.2em;
@@ -154,26 +154,26 @@ export default {
   text-align: right;
 }
 
-.dm5-html-field.info li.ql-indent-1 { padding-left:  3em; }
-.dm5-html-field.info li.ql-indent-2 { padding-left:  6em; }
-.dm5-html-field.info li.ql-indent-3 { padding-left:  9em; }
-.dm5-html-field.info li.ql-indent-4 { padding-left: 12em; }
-.dm5-html-field.info li.ql-indent-5 { padding-left: 15em; }
-.dm5-html-field.info li.ql-indent-6 { padding-left: 18em; }
+.dmx-html-field.info li.ql-indent-1 { padding-left:  3em; }
+.dmx-html-field.info li.ql-indent-2 { padding-left:  6em; }
+.dmx-html-field.info li.ql-indent-3 { padding-left:  9em; }
+.dmx-html-field.info li.ql-indent-4 { padding-left: 12em; }
+.dmx-html-field.info li.ql-indent-5 { padding-left: 15em; }
+.dmx-html-field.info li.ql-indent-6 { padding-left: 18em; }
 
-.dm5-html-field.info ol li             { counter-increment: list-0; counter-reset: list-1; }
-.dm5-html-field.info ol li.ql-indent-1 { counter-increment: list-1; counter-reset: list-2; }
-.dm5-html-field.info ol li.ql-indent-2 { counter-increment: list-2; counter-reset: list-3; }
-.dm5-html-field.info ol li.ql-indent-3 { counter-increment: list-3; counter-reset: list-4; }
-.dm5-html-field.info ol li.ql-indent-4 { counter-increment: list-4; counter-reset: list-5; }
-.dm5-html-field.info ol li.ql-indent-5 { counter-increment: list-5; counter-reset: list-6; }
+.dmx-html-field.info ol li             { counter-increment: list-0; counter-reset: list-1; }
+.dmx-html-field.info ol li.ql-indent-1 { counter-increment: list-1; counter-reset: list-2; }
+.dmx-html-field.info ol li.ql-indent-2 { counter-increment: list-2; counter-reset: list-3; }
+.dmx-html-field.info ol li.ql-indent-3 { counter-increment: list-3; counter-reset: list-4; }
+.dmx-html-field.info ol li.ql-indent-4 { counter-increment: list-4; counter-reset: list-5; }
+.dmx-html-field.info ol li.ql-indent-5 { counter-increment: list-5; counter-reset: list-6; }
 
-.dm5-html-field.info ol li:before             { content: counter(list-0, decimal)     '.'; }
-.dm5-html-field.info ol li.ql-indent-1:before { content: counter(list-1, lower-alpha) '.'; }
-.dm5-html-field.info ol li.ql-indent-2:before { content: counter(list-2, lower-roman) '.'; }
-.dm5-html-field.info ol li.ql-indent-3:before { content: counter(list-3, decimal)     '.'; }
-.dm5-html-field.info ol li.ql-indent-4:before { content: counter(list-4, lower-alpha) '.'; }
-.dm5-html-field.info ol li.ql-indent-5:before { content: counter(list-5, lower-roman) '.'; }
+.dmx-html-field.info ol li:before             { content: counter(list-0, decimal)     '.'; }
+.dmx-html-field.info ol li.ql-indent-1:before { content: counter(list-1, lower-alpha) '.'; }
+.dmx-html-field.info ol li.ql-indent-2:before { content: counter(list-2, lower-roman) '.'; }
+.dmx-html-field.info ol li.ql-indent-3:before { content: counter(list-3, decimal)     '.'; }
+.dmx-html-field.info ol li.ql-indent-4:before { content: counter(list-4, lower-alpha) '.'; }
+.dmx-html-field.info ol li.ql-indent-5:before { content: counter(list-5, lower-roman) '.'; }
 
 /* Quill Overrides */
 

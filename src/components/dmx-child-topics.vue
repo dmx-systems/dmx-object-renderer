@@ -1,5 +1,5 @@
 <template>
-  <div class="dm5-child-topics">
+  <div class="dmx-child-topics">
     <template v-for="compDef in compDefs">
       <!-- one -->
       <template v-if="isOne(compDef)">
@@ -59,13 +59,13 @@ export default {
   },
 
   components: {
-    'dmx-child-topic': require('./dmx-child-topic').default       // TODO: change prefix to "dmx"
+    'dmx-child-topic': require('./dmx-child-topic').default
   }
 }
 </script>
 
 <style>
-.dm5-child-topics > .dm5-child-topic + .dm5-child-topic {
+.dmx-child-topics > .dmx-child-topic + .dmx-child-topic {
   margin-top: var(--field-spacing);
 }
 </style>
