@@ -7,7 +7,7 @@
   "main": "src/components/dmx-object-renderer.vue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jri/dm5-object-renderer.git"
+    "url": "https://github.com/dmx-systems/dmx-object-renderer.git"
   },
   "dependencies": {
     "vue-quill-minimum": "1.8.1"
