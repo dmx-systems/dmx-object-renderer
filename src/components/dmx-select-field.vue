@@ -37,7 +37,7 @@ export default {
 
     sortedOptions () {
       return this.options && Object.values(this.options).sort(
-        (t1, t2) => t1.value.localeCompare ?
+        (t1, t2) => t1.value.localeCompare ?                                      /* eslint operator-linebreak: "off" */
           t1.value.localeCompare(t2.value) :
           t1.value < t2.value ? -1 : t1.value === t2.value ? 0 : 1
       )

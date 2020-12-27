@@ -73,6 +73,7 @@ export default {
       // "local form mode" is more specific than (global) "form mode" so the latter must not be checked.
       //
       return !this.isEmpty || this.isToplevel && this.object.isTopic || this.localFormMode
+      /* eslint no-mixed-operators: "off" */
     },
 
     showHeading () {

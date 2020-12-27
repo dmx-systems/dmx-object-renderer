@@ -51,6 +51,7 @@ export default {
     objectRenderer () {
       const objectRenderers = this.renderers.object
       return objectRenderers && objectRenderers[this.object.typeUri] || 'dmx-value-renderer'
+      /* eslint no-mixed-operators: "off" */
     },
 
     /**
