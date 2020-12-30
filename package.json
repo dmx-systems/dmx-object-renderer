@@ -1,6 +1,6 @@
 {
   "name": "dmx-object-renderer",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "The DMX 5 object renderer as a composable GUI component",
   "author": "Jörg Richter <jri@dmx.berlin>",
   "license": "AGPL-3.0",
@@ -10,6 +10,6 @@
     "url": "https://github.com/dmx-systems/dmx-object-renderer.git"
   },
   "dependencies": {
-    "vue-quill-minimum": "1.8.1"
+    "vue-quill-minimum": "1.8.2"
   }
 }
