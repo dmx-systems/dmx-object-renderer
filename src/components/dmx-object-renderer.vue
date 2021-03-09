@@ -82,11 +82,8 @@ export default {
       }
     },
 
-    // copy in dmx-info-tab.vue (as buttonDisabled())
-    // copy in plugin.js of platform's topicmaps module (in isEditDisabled())
     editDisabled () {
-      // only entity topics are enabled; assocs and types are always enabled
-      return this.object.isTopic && !this.object.isType && !this.object.type.isEntity
+      return !this.object.isEditable
     }
   },
 
