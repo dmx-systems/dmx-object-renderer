@@ -1,7 +1,7 @@
 <template>
   <dmx-assoc class="dmx-object-renderer" v-if="isAssoc" :assoc="object" :types="types" :context="context"></dmx-assoc>
-  <component class="dmx-object-renderer" v-else :is="objectRenderer" :object="object" :level="0" :path="[]"
-    :context="context">
+  <component class="dmx-object-renderer" v-else :is="objectRenderer" :object="object" :no-heading="noHeading" :level="0"
+    :path="[]" :context="context">
   </component>
 </template>
 
@@ -25,6 +25,7 @@ export default {
   ],
 
   props: {
+    noHeading: Boolean,
     renderers: {
       type: Object,
       default () {
