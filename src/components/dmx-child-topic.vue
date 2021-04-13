@@ -137,7 +137,7 @@ export default {
 .dmx-child-topic > .hover-button {
   position: absolute;
   top: 0;
-  right: -12px;
+  right: -19px;
   visibility: hidden;
   padding: 0 !important;
 }
