@@ -137,7 +137,7 @@ export default {
 .dmx-child-topic > .hover-button {
   position: absolute;
   top: 0;
-  right: -19px;
+  right: -18px;
   visibility: hidden;
   padding: 0 !important;
 }
@@ -164,10 +164,12 @@ export default {
 
 .dmx-child-topic > .hover-button.add {
   top: unset;
+  right: -16px;
   bottom: 0;
 }
 
 .dmx-child-topic > .hover-button.remove {
+  right: -16px;
   color: var(--color-danger);
 }
 </style>

@@ -7,10 +7,10 @@
         <component :is="simpleRenderer" :object="object" :mode="localMode" :comp-def="compDef" :context="context"
           @keyup.native.enter="enter">
         </component>
-        <!-- Save Button -->
+        <!-- Save button -->
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
-      <!-- Edit Button -->
+      <!-- Edit button -->
       <el-button class="edit fa fa-pencil" v-if="inlineEnabled" type="text" @click="editInline"></el-button>
     </div>
     <!-- composite -->
@@ -242,7 +242,7 @@ export default {
 .dmx-value-renderer button.edit {
   position: absolute;
   bottom: 0;
-  right: -18px;
+  right: -17px;
   visibility: hidden;
   padding: 0 !important;
 }
