@@ -242,8 +242,9 @@ export default {
 .dmx-value-renderer button.edit {
   position: absolute;
   bottom: 0;
-  right: -17px;
+  right: -18px;
   visibility: hidden;
+  font-size: 16px !important;
   padding: 0 !important;
 }
 

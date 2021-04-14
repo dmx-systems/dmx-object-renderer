@@ -136,8 +136,6 @@ export default {
 
 .dmx-child-topic > .hover-button {
   position: absolute;
-  top: 0;
-  right: -18px;
   visibility: hidden;
   padding: 0 !important;
 }
@@ -156,6 +154,12 @@ export default {
   border-color: var(--highlight-color);
 }
 
+.dmx-child-topic > .hover-button.reveal {
+  font-size: 16px !important;
+  top: -2px;
+  right: -19px;
+}
+
 /* Add/Remove Button */
 
 .dmx-child-topic.form.multi:hover {
@@ -163,12 +167,12 @@ export default {
 }
 
 .dmx-child-topic > .hover-button.add {
-  top: unset;
-  right: -16px;
   bottom: 0;
+  right: -16px;
 }
 
 .dmx-child-topic > .hover-button.remove {
+  top: 0;
   right: -16px;
   color: var(--color-danger);
 }
