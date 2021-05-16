@@ -50,9 +50,14 @@ export default {
     },
 
     objectRenderer () {
+      // 1) custom renderer
       const objectRenderers = this.renderers.object
-      return objectRenderers && objectRenderers[this.object.typeUri] || 'dmx-value-renderer'
-      /* eslint no-mixed-operators: "off" */
+      const renderer = objectRenderers && objectRenderers[this.object.typeUri]
+      if (renderer) {
+        return renderer
+      }
+      // 2) standard renderer
+      return 'dmx-value-renderer'
     },
 
     /**
