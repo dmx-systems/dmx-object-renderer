@@ -2,6 +2,12 @@
 
 ## Version History
 
+**2.1** -- Jun 14, 2020
+
+* Improvements:
+    * Add component attribute `no-heading` (boolean)
+    * Bigger Reveal and Edit buttons
+
 **2.0** -- Dec 30, 2020
 
 * BREAKING CHANGES
@@ -104,7 +110,7 @@
 **0.11** -- Nov 24, 2018
 
 * Improvements:
-    * Composability: new component property `types` (component does not access app state anymore)
+    * Composability: new component attribute `types` (component does not access app state anymore)
     * Sort custom assoc type menu and role type menu
     * Revised reduced details rendering logic
 
@@ -119,7 +125,7 @@
 
 **0.9** -- Oct 21, 2018
 
-* Feature: configurable value renderers. The `renderers` component prop contains both, `object` renderers and `value` renderers.
+* Feature: configurable value renderers. The `renderers` component attribute contains both, `object` renderers and `value` renderers.
 * Layout/CSS fixes:
     * Simple topics are rendered without heading
     * Don't show label if assoc value is empty
@@ -127,7 +133,7 @@
 
 **0.8** -- Oct 6, 2018
 
-* Component `dm5-object` renders object title, omittable by `noHeading` prop
+* Component `dm5-object` renders object title, omittable by `no-heading` attribute
 * Fixes:
     * Display of multi-valued objects after update
     * Render real value instead of `ref_id:...`
@@ -152,7 +158,7 @@
 
 * Fix: clicking a topic-link does not activate inline edit
 * Improved composability:
-    * New `quill-config` property allows parent component to customize the Quill editor in both ways, setting options, and providing extensions (e.g. formats)
+    * New `quill-config` attribute allows parent component to customize the Quill editor in both ways, setting options, and providing extensions (e.g. formats)
     * Emit `child-topic-reveal` to signalize "user clicked 'Reveal' button"
 * Code splitting: the Quill editor is loaded on-demand
 
@@ -165,15 +171,11 @@
 
 * Also responsible for rendering *assoc* details
 * Improved composability:
-    * Component relies on explicit props instead of context injection
-    * Props have reasonable defaults
+    * Component relies on attributes instead of context injection
+    * Attributes have reasonable defaults
     * Emit `inline` and `updated` events
 
 **0.1** -- Feb 3, 2018
 
 * Factored out as a standalone component from:  
   https://github.com/jri/dm5-detail-panel
-
-------------
-Jörg Richter  
-Dec 30, 2020
