@@ -2,7 +2,7 @@
 
 ## Version History
 
-**2.1** -- Jun 14, 2020
+**2.1** -- Jun 14, 2021
 
 * Improvements:
     * Add component attribute `no-heading` (boolean)
