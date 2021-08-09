@@ -54,7 +54,7 @@ export default {
       const objectRenderers = this.renderers.object
       const renderer = objectRenderers && objectRenderers[this.object.typeUri]
       if (renderer) {
-        return renderer
+        return renderer.comp ? renderer.comp : renderer
       }
       // 2) standard renderer
       return 'dmx-value-renderer'
