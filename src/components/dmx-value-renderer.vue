@@ -2,7 +2,7 @@
   <div :class="['dmx-value-renderer', localMode, {editable}]" v-if="show">
     <!-- simple -->
     <div v-if="isSimple" class="field">
-      <div class="field-label">{{fieldLabel}}</div>
+      <div class="field-label" v-if="!noFieldLabel">{{fieldLabel}}</div>
       <div :class="['field-content', isHtmlField ? 'html' : 'no-html']">
         <component :is="simpleRenderer" :object="object" :mode="localMode" :comp-def="compDef" :context="context"
           @keyup.native.enter="enter">
@@ -50,7 +50,8 @@ export default {
 
   props: {
     compDef: dmx.CompDef,     // undefined for top-level object
-    noHeading: Boolean
+    noHeading: Boolean,
+    noFieldLabel: Boolean
   },
 
   computed: {
