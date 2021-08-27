@@ -2,6 +2,12 @@
 
 ## Version History
 
+**2.2** -- Aug 27, 2021
+
+* Improvements:
+    * Add component attribute `no-field-label` (boolean)
+    * Custom renderers can provide model customizers
+
 **2.1** -- Jun 14, 2021
 
 * Improvements:
