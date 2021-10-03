@@ -21,7 +21,7 @@
               :path="path" :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`"
               @child-topic-add="addChildTopic">
             </dmx-child-topic>
-            <div :class="['handle', {drag}]"></div>
+            <div :class="['handle', {drag}]" v-if="handleVisibility(compDef)"></div>
           </div>
         </draggable>
       </template>
@@ -71,6 +71,10 @@ export default {
 
     children (compDef) {
       return this.object.children[compDef.compDefUri]
+    },
+
+    handleVisibility (compDef) {
+      return this.children(compDef).length > 1
     },
 
     addChildTopic (compDef) {
