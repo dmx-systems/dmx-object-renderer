@@ -78,7 +78,7 @@ export default {
     },
 
     addChildTopic (compDef) {
-      this.children(compDef).push(compDef.emptyChildInstance())
+      this.children(compDef).push(compDef.emptyChildInstance(this.level + 1))
     }
   },
 
