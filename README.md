@@ -2,6 +2,15 @@
 
 ## Version History
 
+**3.0** -- May 20, 2023
+
+* BREAKING CHANGES
+    * Make use of `dmx-api` 3.0
+* Feature:
+    * User can reorder multi-values by the means of drag handles
+* Fixes:
+    * Fixed a bug where nested entities loose their child values while update request
+
 **2.2** -- Aug 27, 2021
 
 * Improvements:
