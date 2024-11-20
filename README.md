@@ -2,6 +2,11 @@
 
 ## Version History
 
+**4.0** -- Nov 20, 2024
+
+* BREAKING CHANGES
+    * Make use of `vue-quill-minimum` 2.x which incorporates Quill 2
+
 **3.0.1** -- Jun 21, 2023
 
 * Chore:
