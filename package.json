@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "dmx-api": "3.x",
-    "vue-quill-minimum": "1.x",
+    "vue-quill-minimum": "2.x",
     "vuedraggable": "2.23.2"
   }
 }
