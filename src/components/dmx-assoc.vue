@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import dmx from 'dmx-api'
 
 export default {
@@ -92,7 +91,7 @@ export default {
 
     updatePlayer ({playerObject, pos}) {
       // console.log('updatePlayer', pos, playerObject)
-      Vue.set(this.playerObjects, pos - 1, playerObject)
+      this.playerObjects[pos - 1] = playerObject
     }
   },
 
