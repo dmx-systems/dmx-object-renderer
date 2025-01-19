@@ -11,7 +11,7 @@
         <el-button class="save-button" v-if="inlineEdit" @click.stop="submitInline">Save</el-button>
       </div>
       <!-- Edit button -->
-      <el-button class="edit fa fa-pencil" v-if="inlineEnabled" type="text" @click="editInline"></el-button>
+      <el-button class="edit fa fa-pencil" v-if="inlineEnabled" type="primary" link @click="editInline"></el-button>
     </div>
     <!-- composite -->
     <template v-else>

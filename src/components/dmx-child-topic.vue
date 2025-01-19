@@ -6,16 +6,16 @@
     <dmx-value-renderer :object="object" :level="level" :path="newPath" :comp-def="compDef" :context="context">
     </dmx-value-renderer>
     <!-- Reveal Button -->
-    <el-button class="hover-button reveal fa fa-eye" v-if="showRevealButton" type="text" :title="revealTitle"
+    <el-button class="hover-button reveal fa fa-eye" v-if="showRevealButton" type="primary" link :title="revealTitle"
       @click="reveal">
     </el-button>
     <!-- Add Button -->
-    <el-button class="hover-button add fa fa-plus" v-if="showAddRemoveButton" type="text" :title="addTitle"
+    <el-button class="hover-button add fa fa-plus" v-if="showAddRemoveButton" type="primary" link :title="addTitle"
       @click="add">
     </el-button>
     <!-- Remove Button -->
-    <el-button class="hover-button remove fa fa-times" v-if="showAddRemoveButton" type="text" :title="removeTitle"
-      @click="remove">
+    <el-button class="hover-button remove fa fa-times" v-if="showAddRemoveButton" type="primary" link
+      :title="removeTitle" @click="remove">
     </el-button>
   </div>
 </template>
