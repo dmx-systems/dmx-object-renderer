@@ -102,7 +102,7 @@ export default {
 
   methods: {
     focus () {
-      if (!this.formMode) {
+      if (true /* !this.formMode */) {      // ### TODO: focus w/o using $children
         return
       }
       // Note: at dmx-object-renderer instantiation resp. at enter-form-mode the form components are not yet created
