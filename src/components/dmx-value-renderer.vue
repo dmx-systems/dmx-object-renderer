@@ -161,8 +161,8 @@ export default {
     },
 
     inlineEdit () {
-      // console.log('inlineEdit', this.context.inlineId, this._uid)
-      return this.context.inlineId === this._uid  // FIXME: _uid is Vue internal
+      // console.log('inlineEdit', this.context.inlineId, this._uid, this.$.uid)
+      return this.context.inlineId === this.$.uid     // FIXME: is this.$.uid Vue official?
     },
 
     editable () {
@@ -173,7 +173,7 @@ export default {
   methods: {
 
     editInline () {
-      this.context.setInlineId(this._uid)     // FIXME: _uid is Vue internal
+      this.context.setInlineId(this.$.uid)            // FIXME: is this.$.uid Vue official?
     },
 
     enter () {

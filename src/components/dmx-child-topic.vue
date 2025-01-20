@@ -23,11 +23,6 @@
 <script>
 export default {
 
-  beforeCreate () {
-    // Note: postponed loading resolves cyclic dependency between <dmx-value-renderer> and <dmx-child-topic>
-    this.$options.components['dmx-value-renderer'] = require('./dmx-value-renderer').default
-  },
-
   mixins: [
     require('./mixins/object').default,       // child topic to render
     require('./mixins/level').default,
