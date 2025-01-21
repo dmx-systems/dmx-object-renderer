@@ -3,26 +3,27 @@
     <template v-for="compDef in compDefs">
       <!-- one -->
       <template v-if="compDef.isOne">
-        <dmx-child-topic v-if="children(compDef)" :object="children(compDef)" :level="level+1" :path="path"
-          :comp-def="compDef" :context="context" :key="compDef.compDefUri">
+        <dmx-child-topic v-if="children(compDef)" :object="children(compDef)" :level="level+1" :path :comp-def :context
+          :key="compDef.compDefUri">
         </dmx-child-topic>
       </template>
       <!-- many -->
       <template v-else>
         <template v-if="infoMode">
-          <dmx-child-topic v-for="(child, i) in children(compDef)" class="multi" :object="child" :level="level+1"
-            :path="path" :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`">
+          <dmx-child-topic v-for="(child, i) in children(compDef)" class="multi" :object="child" :level="level+1" :path
+            :comp-def :context :key="`${compDef.compDefUri}-${i}-${child.id}`">
           </dmx-child-topic>
         </template>
-        <draggable v-else class="draggable" :list="children(compDef)" handle=".handle" :animation="300"
-            @start="drag=true" @end="drag=false">
-          <div v-for="(child, i) in children(compDef)" class="item">
-            <dmx-child-topic class="multi" :object="child" :level="level+1"
-              :path="path" :comp-def="compDef" :context="context" :key="`${compDef.compDefUri}-${i}-${child.id}`"
-              @child-topic-add="addChildTopic">
-            </dmx-child-topic>
-            <div :class="['handle', {drag}]" v-if="handleVisibility(compDef)"></div>
-          </div>
+        <draggable v-else class="draggable" :list="children(compDef)" :item-key="itemKeyGenerator(compDef)"
+            handle=".handle" :animation="300" @start="drag=true" @end="drag=false">
+          <template #item="{element: child}">
+            <div class="item">
+              <dmx-child-topic class="multi" :object="child" :level="level+1" :path :comp-def :context
+                @child-topic-add="addChildTopic">
+              </dmx-child-topic>
+              <div :class="['handle', {drag}]" v-if="handleVisibility(compDef)"></div>
+            </div>
+          </template>
         </draggable>
       </template>
     </template>
@@ -79,6 +80,15 @@ export default {
 
     addChildTopic (compDef) {
       this.children(compDef).push(compDef.emptyChildInstance(this.level + 1))
+    },
+
+    itemKeyGenerator (compDef) {
+      return (childTopic, i) => {
+        // FIXME: vuedraggable does not pass "i", it is undefined. So in case of value-doublettes (in a multi-value) the
+        // key is not unique, in particular when more than one limbo-topic is added (which all have ID -1).
+        // console.log('# itemKey', `${compDef.compDefUri}-${i}-${childTopic.id}`)
+        return `${compDef.compDefUri}-${i}-${childTopic.id}`
+      }
     }
   },
 
