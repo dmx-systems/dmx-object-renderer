@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue'
+
 export default {
 
   created () {
@@ -100,9 +102,9 @@ export default {
   },
 
   components: {
-    quill: () => ({
-      component: import('vue-quill-minimum' /* webpackChunkName: "vue-quill-minimum" */),
-      loading: require('./dmx-spinner')
+    quill: defineAsyncComponent({
+      loader: () => import('vue-quill-minimum'),
+      loadingComponent: require('./dmx-spinner')
     })
   }
 }

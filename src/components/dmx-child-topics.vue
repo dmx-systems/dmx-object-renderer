@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue'
+
 export default {
 
   mixins: [
@@ -84,8 +86,8 @@ export default {
 
     itemKeyGenerator (compDef) {
       return (childTopic, i) => {
-        // FIXME: vuedraggable does not pass "i", it is undefined. So in case of value-doublettes (in a multi-value) the
-        // key is not unique, in particular when more than one limbo-topic is added (which all have ID -1).
+        // FIXME: vuedraggable does not pass "i", it is undefined. So in case of value-doublettes (in a multi-value)
+        // the key is not unique, in particular when more than one limbo-topic is added (which all have ID -1 then).
         // console.log('# itemKey', `${compDef.compDefUri}-${i}-${childTopic.id}`)
         return `${compDef.compDefUri}-${i}-${childTopic.id}`
       }
@@ -94,9 +96,9 @@ export default {
 
   components: {
     'dmx-child-topic': require('./dmx-child-topic').default,
-    draggable: () => ({
-      component: import('vuedraggable' /* webpackChunkName: "vuedraggable" */),
-      loading: require('./dmx-spinner')
+    draggable: defineAsyncComponent({
+      loader: () => import('vuedraggable'),
+      loadingComponent: require('./dmx-spinner')
     })
   }
 }
