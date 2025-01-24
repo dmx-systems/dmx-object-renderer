@@ -3,7 +3,7 @@
     <!-- Association Type -->
     <div class="field-label">Association Type</div>
     <div v-if="infoMode">{{assoc.typeName}}</div>
-    <el-select v-else v-model="assoc.typeUri">
+    <el-select v-else class="assoc-type-selector" v-model="assoc.typeUri">
       <el-option v-for="assocType in assocTypes" :label="assocType.value" :value="assocType.uri" :key="assocType.uri"
         :disabled="disabled(assocType)">
       </el-option>
@@ -103,6 +103,10 @@ export default {
 </script>
 
 <style>
+.dmx-assoc .assoc-type-selector {
+  max-width: 200px;
+}
+
 .dmx-assoc > .dmx-value-renderer,
 .dmx-assoc .dmx-player {
   margin-top: var(--field-spacing);

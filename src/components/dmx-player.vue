@@ -14,7 +14,7 @@
     <div class="field">
       <div class="field-label">Role Type</div>
       <div v-if="infoMode">{{player.roleTypeName}}</div>
-      <el-select v-else v-model="player.roleTypeUri">
+      <el-select v-else class="role-type-selector" v-model="player.roleTypeUri">
         <el-option v-for="roleType in roleTypes" :label="roleType.value" :value="roleType.uri" :key="roleType.uri">
         </el-option>
       </el-select>
@@ -101,6 +101,10 @@ export default {
 
 .dmx-player .object .icon {
   margin-right: var(--icon-spacing);
+}
+
+.dmx-player .role-type-selector {
+  max-width: 200px;
 }
 
 .dmx-player .field + .field {
