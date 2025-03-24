@@ -10,8 +10,8 @@
     "url": "https://github.com/dmx-systems/dmx-object-renderer.git"
   },
   "dependencies": {
-    "dmx-api": "4.x",
-    "vue-quill-minimum": "2.x",
+    "dmx-api": "git+https://github.com/dmx-systems/dmx-api.git",
+    "vue-quill-minimum": "git+https://github.com/dmx-systems/vue-quill-minimum.git",
     "vuedraggable": "4.1.0"
   }
 }
